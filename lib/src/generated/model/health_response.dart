@@ -68,9 +68,11 @@ class _$HealthResponseSerializer
     HealthResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -86,17 +88,21 @@ class _$HealthResponseSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(HealthResponseStatusEnum),
-          ) as HealthResponseStatusEnum;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(HealthResponseStatusEnum),
+                  )
+                  as HealthResponseStatusEnum;
           result.status = valueDes;
           break;
         case r'version':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.version = valueDes;
           break;
         default:

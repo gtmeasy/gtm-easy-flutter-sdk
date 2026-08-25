@@ -23,7 +23,7 @@ class FlutterGrowthContextProvider implements GrowthContextProvider {
     final bcp47 = locale.toLanguageTag();
     var timezone = DateTime.now().timeZoneName;
     try {
-      timezone = await FlutterTimezone.getLocalTimezone();
+      timezone = (await FlutterTimezone.getLocalTimezone()).identifier;
     } catch (_) {}
 
     String? resolvedVersion = appVersion;
@@ -83,8 +83,9 @@ class FlutterGrowthContextProvider implements GrowthContextProvider {
       ctx['os_version'] = info.systemVersion;
       ctx['device_manufacturer'] = 'Apple';
       ctx['device_model'] = info.utsname.machine;
-      ctx['physical_memory_bytes'] =
-          info.physicalRamSize > 0 ? info.physicalRamSize * 1024 * 1024 : null;
+      ctx['physical_memory_bytes'] = info.physicalRamSize > 0
+          ? info.physicalRamSize * 1024 * 1024
+          : null;
     } else if (Platform.isMacOS) {
       final info = await plugin.macOsInfo;
       ctx['os_version'] = info.osRelease;

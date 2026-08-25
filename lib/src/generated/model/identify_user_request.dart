@@ -98,7 +98,7 @@ class _$IdentifyUserRequestSerializer
   @override
   final Iterable<Type> types = const [
     IdentifyUserRequest,
-    _$IdentifyUserRequest
+    _$IdentifyUserRequest,
   ];
 
   @override
@@ -202,8 +202,10 @@ class _$IdentifyUserRequestSerializer
       yield r'traits';
       yield serializers.serialize(
         object.traits,
-        specifiedType: const FullType(
-            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(JsonObject),
+        ]),
       );
     }
   }
@@ -214,9 +216,11 @@ class _$IdentifyUserRequestSerializer
     IdentifyUserRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -232,116 +236,148 @@ class _$IdentifyUserRequestSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'app':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.app = valueDes;
           break;
         case r'environment':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(IdentifyUserRequestEnvironmentEnum),
-          ) as IdentifyUserRequestEnvironmentEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      IdentifyUserRequestEnvironmentEnum,
+                    ),
+                  )
+                  as IdentifyUserRequestEnvironmentEnum?;
           if (valueDes == null) continue;
           result.environment = valueDes;
           break;
         case r'platform':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(IdentifyUserRequestPlatformEnum),
-          ) as IdentifyUserRequestPlatformEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      IdentifyUserRequestPlatformEnum,
+                    ),
+                  )
+                  as IdentifyUserRequestPlatformEnum?;
           if (valueDes == null) continue;
           result.platform = valueDes;
           break;
         case r'userId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.userId = valueDes;
           break;
         case r'anonymousId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.anonymousId = valueDes;
           break;
         case r'deviceId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.deviceId = valueDes;
           break;
         case r'username':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.username = valueDes;
           break;
         case r'email':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.email = valueDes;
           break;
         case r'appVersion':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.appVersion = valueDes;
           break;
         case r'buildNumber':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.buildNumber = valueDes;
           break;
         case r'country':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.country = valueDes;
           break;
         case r'locale':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.locale = valueDes;
           break;
         case r'timezone':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.timezone = valueDes;
           break;
         case r'traits':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltMap, [
+                      FullType(String),
+                      FullType.nullable(JsonObject),
+                    ]),
+                  )
+                  as BuiltMap<String, JsonObject?>?;
           if (valueDes == null) continue;
           result.traits.replace(valueDes);
           break;

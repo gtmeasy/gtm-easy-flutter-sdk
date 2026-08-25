@@ -4,12 +4,10 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:gtmeasy_growth/src/generated/model/apple_attribution_request.dart';
-import 'package:gtmeasy_growth/src/generated/model/error_response.dart';
 import 'package:gtmeasy_growth/src/generated/model/ingest_event_response.dart';
 import 'package:gtmeasy_growth/src/generated/model/play_install_referrer_request.dart';
 import 'package:gtmeasy_growth/src/generated/model/web_referrer_request.dart';
@@ -72,14 +70,13 @@ class AttributionApi {
 
     try {
       const _type = FullType(AppleAttributionRequest);
-      _bodyData =
-          _serializers.serialize(appleAttributionRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(
+        appleAttributionRequest,
+        specifiedType: _type,
+      );
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -102,9 +99,10 @@ class AttributionApi {
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(IngestEventResponse),
-            ) as IngestEventResponse;
+                  rawResponse,
+                  specifiedType: const FullType(IngestEventResponse),
+                )
+                as IngestEventResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -178,14 +176,13 @@ class AttributionApi {
 
     try {
       const _type = FullType(PlayInstallReferrerRequest);
-      _bodyData = _serializers.serialize(playInstallReferrerRequest,
-          specifiedType: _type);
+      _bodyData = _serializers.serialize(
+        playInstallReferrerRequest,
+        specifiedType: _type,
+      );
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -208,9 +205,10 @@ class AttributionApi {
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(IngestEventResponse),
-            ) as IngestEventResponse;
+                  rawResponse,
+                  specifiedType: const FullType(IngestEventResponse),
+                )
+                as IngestEventResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -284,14 +282,13 @@ class AttributionApi {
 
     try {
       const _type = FullType(WebReferrerRequest);
-      _bodyData =
-          _serializers.serialize(webReferrerRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(
+        webReferrerRequest,
+        specifiedType: _type,
+      );
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -314,9 +311,10 @@ class AttributionApi {
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(IngestEventResponse),
-            ) as IngestEventResponse;
+                  rawResponse,
+                  specifiedType: const FullType(IngestEventResponse),
+                )
+                as IngestEventResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

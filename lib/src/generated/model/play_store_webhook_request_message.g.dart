@@ -16,17 +16,20 @@ class _$PlayStoreWebhookRequestMessage extends PlayStoreWebhookRequestMessage {
   @override
   final String? publishTime;
 
-  factory _$PlayStoreWebhookRequestMessage(
-          [void Function(PlayStoreWebhookRequestMessageBuilder)? updates]) =>
-      (PlayStoreWebhookRequestMessageBuilder()..update(updates))._build();
+  factory _$PlayStoreWebhookRequestMessage([
+    void Function(PlayStoreWebhookRequestMessageBuilder)? updates,
+  ]) => (PlayStoreWebhookRequestMessageBuilder()..update(updates))._build();
 
-  _$PlayStoreWebhookRequestMessage._(
-      {required this.data, this.attributes, this.messageId, this.publishTime})
-      : super._();
+  _$PlayStoreWebhookRequestMessage._({
+    required this.data,
+    this.attributes,
+    this.messageId,
+    this.publishTime,
+  }) : super._();
   @override
   PlayStoreWebhookRequestMessage rebuild(
-          void Function(PlayStoreWebhookRequestMessageBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(PlayStoreWebhookRequestMessageBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   PlayStoreWebhookRequestMessageBuilder toBuilder() =>
@@ -66,8 +69,10 @@ class _$PlayStoreWebhookRequestMessage extends PlayStoreWebhookRequestMessage {
 
 class PlayStoreWebhookRequestMessageBuilder
     implements
-        Builder<PlayStoreWebhookRequestMessage,
-            PlayStoreWebhookRequestMessageBuilder> {
+        Builder<
+          PlayStoreWebhookRequestMessage,
+          PlayStoreWebhookRequestMessageBuilder
+        > {
   _$PlayStoreWebhookRequestMessage? _$v;
 
   String? _data;
@@ -120,10 +125,14 @@ class PlayStoreWebhookRequestMessageBuilder
   _$PlayStoreWebhookRequestMessage _build() {
     _$PlayStoreWebhookRequestMessage _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$PlayStoreWebhookRequestMessage._(
             data: BuiltValueNullFieldError.checkNotNull(
-                data, r'PlayStoreWebhookRequestMessage', 'data'),
+              data,
+              r'PlayStoreWebhookRequestMessage',
+              'data',
+            ),
             attributes: _attributes?.build(),
             messageId: messageId,
             publishTime: publishTime,
@@ -135,7 +144,10 @@ class PlayStoreWebhookRequestMessageBuilder
         _attributes?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'PlayStoreWebhookRequestMessage', _$failedField, e.toString());
+          r'PlayStoreWebhookRequestMessage',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

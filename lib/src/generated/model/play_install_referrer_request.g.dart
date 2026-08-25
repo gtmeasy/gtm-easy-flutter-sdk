@@ -7,17 +7,17 @@ part of 'play_install_referrer_request.dart';
 // **************************************************************************
 
 const PlayInstallReferrerRequestEnvironmentEnum
-    _$playInstallReferrerRequestEnvironmentEnum_production =
+_$playInstallReferrerRequestEnvironmentEnum_production =
     const PlayInstallReferrerRequestEnvironmentEnum._('production');
 const PlayInstallReferrerRequestEnvironmentEnum
-    _$playInstallReferrerRequestEnvironmentEnum_staging =
+_$playInstallReferrerRequestEnvironmentEnum_staging =
     const PlayInstallReferrerRequestEnvironmentEnum._('staging');
 const PlayInstallReferrerRequestEnvironmentEnum
-    _$playInstallReferrerRequestEnvironmentEnum_development =
+_$playInstallReferrerRequestEnvironmentEnum_development =
     const PlayInstallReferrerRequestEnvironmentEnum._('development');
 
 PlayInstallReferrerRequestEnvironmentEnum
-    _$playInstallReferrerRequestEnvironmentEnumValueOf(String name) {
+_$playInstallReferrerRequestEnvironmentEnumValueOf(String name) {
   switch (name) {
     case 'production':
       return _$playInstallReferrerRequestEnvironmentEnum_production;
@@ -31,19 +31,21 @@ PlayInstallReferrerRequestEnvironmentEnum
 }
 
 final BuiltSet<PlayInstallReferrerRequestEnvironmentEnum>
-    _$playInstallReferrerRequestEnvironmentEnumValues = BuiltSet<
-        PlayInstallReferrerRequestEnvironmentEnum>(const <PlayInstallReferrerRequestEnvironmentEnum>[
-  _$playInstallReferrerRequestEnvironmentEnum_production,
-  _$playInstallReferrerRequestEnvironmentEnum_staging,
-  _$playInstallReferrerRequestEnvironmentEnum_development,
-]);
+_$playInstallReferrerRequestEnvironmentEnumValues =
+    BuiltSet<PlayInstallReferrerRequestEnvironmentEnum>(
+      const <PlayInstallReferrerRequestEnvironmentEnum>[
+        _$playInstallReferrerRequestEnvironmentEnum_production,
+        _$playInstallReferrerRequestEnvironmentEnum_staging,
+        _$playInstallReferrerRequestEnvironmentEnum_development,
+      ],
+    );
 
 const PlayInstallReferrerRequestPlatformEnum
-    _$playInstallReferrerRequestPlatformEnum_android =
+_$playInstallReferrerRequestPlatformEnum_android =
     const PlayInstallReferrerRequestPlatformEnum._('android');
 
 PlayInstallReferrerRequestPlatformEnum
-    _$playInstallReferrerRequestPlatformEnumValueOf(String name) {
+_$playInstallReferrerRequestPlatformEnumValueOf(String name) {
   switch (name) {
     case 'android':
       return _$playInstallReferrerRequestPlatformEnum_android;
@@ -53,16 +55,18 @@ PlayInstallReferrerRequestPlatformEnum
 }
 
 final BuiltSet<PlayInstallReferrerRequestPlatformEnum>
-    _$playInstallReferrerRequestPlatformEnumValues = BuiltSet<
-        PlayInstallReferrerRequestPlatformEnum>(const <PlayInstallReferrerRequestPlatformEnum>[
-  _$playInstallReferrerRequestPlatformEnum_android,
-]);
+_$playInstallReferrerRequestPlatformEnumValues =
+    BuiltSet<PlayInstallReferrerRequestPlatformEnum>(
+      const <PlayInstallReferrerRequestPlatformEnum>[
+        _$playInstallReferrerRequestPlatformEnum_android,
+      ],
+    );
 
 Serializer<PlayInstallReferrerRequestEnvironmentEnum>
-    _$playInstallReferrerRequestEnvironmentEnumSerializer =
+_$playInstallReferrerRequestEnvironmentEnumSerializer =
     _$PlayInstallReferrerRequestEnvironmentEnumSerializer();
 Serializer<PlayInstallReferrerRequestPlatformEnum>
-    _$playInstallReferrerRequestPlatformEnumSerializer =
+_$playInstallReferrerRequestPlatformEnumSerializer =
     _$PlayInstallReferrerRequestPlatformEnumSerializer();
 
 class _$PlayInstallReferrerRequestEnvironmentEnumSerializer
@@ -80,23 +84,26 @@ class _$PlayInstallReferrerRequestEnvironmentEnumSerializer
 
   @override
   final Iterable<Type> types = const <Type>[
-    PlayInstallReferrerRequestEnvironmentEnum
+    PlayInstallReferrerRequestEnvironmentEnum,
   ];
   @override
   final String wireName = 'PlayInstallReferrerRequestEnvironmentEnum';
 
   @override
-  Object serialize(Serializers serializers,
-          PlayInstallReferrerRequestEnvironmentEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+  Object serialize(
+    Serializers serializers,
+    PlayInstallReferrerRequestEnvironmentEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   PlayInstallReferrerRequestEnvironmentEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      PlayInstallReferrerRequestEnvironmentEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => PlayInstallReferrerRequestEnvironmentEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$PlayInstallReferrerRequestPlatformEnumSerializer
@@ -110,23 +117,26 @@ class _$PlayInstallReferrerRequestPlatformEnumSerializer
 
   @override
   final Iterable<Type> types = const <Type>[
-    PlayInstallReferrerRequestPlatformEnum
+    PlayInstallReferrerRequestPlatformEnum,
   ];
   @override
   final String wireName = 'PlayInstallReferrerRequestPlatformEnum';
 
   @override
-  Object serialize(Serializers serializers,
-          PlayInstallReferrerRequestPlatformEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+  Object serialize(
+    Serializers serializers,
+    PlayInstallReferrerRequestPlatformEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   PlayInstallReferrerRequestPlatformEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      PlayInstallReferrerRequestPlatformEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => PlayInstallReferrerRequestPlatformEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$PlayInstallReferrerRequest extends PlayInstallReferrerRequest {
@@ -149,25 +159,25 @@ class _$PlayInstallReferrerRequest extends PlayInstallReferrerRequest {
   @override
   final BuiltMap<String, JsonObject?>? properties;
 
-  factory _$PlayInstallReferrerRequest(
-          [void Function(PlayInstallReferrerRequestBuilder)? updates]) =>
-      (PlayInstallReferrerRequestBuilder()..update(updates))._build();
+  factory _$PlayInstallReferrerRequest([
+    void Function(PlayInstallReferrerRequestBuilder)? updates,
+  ]) => (PlayInstallReferrerRequestBuilder()..update(updates))._build();
 
-  _$PlayInstallReferrerRequest._(
-      {required this.app,
-      this.environment,
-      this.userId,
-      this.anonymousId,
-      this.platform,
-      this.source_,
-      this.occurredAt,
-      required this.playInstallReferrer,
-      this.properties})
-      : super._();
+  _$PlayInstallReferrerRequest._({
+    required this.app,
+    this.environment,
+    this.userId,
+    this.anonymousId,
+    this.platform,
+    this.source_,
+    this.occurredAt,
+    required this.playInstallReferrer,
+    this.properties,
+  }) : super._();
   @override
   PlayInstallReferrerRequest rebuild(
-          void Function(PlayInstallReferrerRequestBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(PlayInstallReferrerRequestBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   PlayInstallReferrerRequestBuilder toBuilder() =>
@@ -304,10 +314,14 @@ class PlayInstallReferrerRequestBuilder
   _$PlayInstallReferrerRequest _build() {
     _$PlayInstallReferrerRequest _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$PlayInstallReferrerRequest._(
             app: BuiltValueNullFieldError.checkNotNull(
-                app, r'PlayInstallReferrerRequest', 'app'),
+              app,
+              r'PlayInstallReferrerRequest',
+              'app',
+            ),
             environment: environment,
             userId: userId,
             anonymousId: anonymousId,
@@ -315,9 +329,10 @@ class PlayInstallReferrerRequestBuilder
             source_: source_,
             occurredAt: occurredAt,
             playInstallReferrer: BuiltValueNullFieldError.checkNotNull(
-                playInstallReferrer,
-                r'PlayInstallReferrerRequest',
-                'playInstallReferrer'),
+              playInstallReferrer,
+              r'PlayInstallReferrerRequest',
+              'playInstallReferrer',
+            ),
             properties: _properties?.build(),
           );
     } catch (_) {
@@ -327,7 +342,10 @@ class PlayInstallReferrerRequestBuilder
         _properties?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'PlayInstallReferrerRequest', _$failedField, e.toString());
+          r'PlayInstallReferrerRequest',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

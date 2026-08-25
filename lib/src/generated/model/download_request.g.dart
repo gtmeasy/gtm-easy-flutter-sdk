@@ -7,16 +7,17 @@ part of 'download_request.dart';
 // **************************************************************************
 
 const DownloadRequestEnvironmentEnum
-    _$downloadRequestEnvironmentEnum_production =
+_$downloadRequestEnvironmentEnum_production =
     const DownloadRequestEnvironmentEnum._('production');
 const DownloadRequestEnvironmentEnum _$downloadRequestEnvironmentEnum_staging =
     const DownloadRequestEnvironmentEnum._('staging');
 const DownloadRequestEnvironmentEnum
-    _$downloadRequestEnvironmentEnum_development =
+_$downloadRequestEnvironmentEnum_development =
     const DownloadRequestEnvironmentEnum._('development');
 
 DownloadRequestEnvironmentEnum _$downloadRequestEnvironmentEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'production':
       return _$downloadRequestEnvironmentEnum_production;
@@ -30,12 +31,14 @@ DownloadRequestEnvironmentEnum _$downloadRequestEnvironmentEnumValueOf(
 }
 
 final BuiltSet<DownloadRequestEnvironmentEnum>
-    _$downloadRequestEnvironmentEnumValues = BuiltSet<
-        DownloadRequestEnvironmentEnum>(const <DownloadRequestEnvironmentEnum>[
-  _$downloadRequestEnvironmentEnum_production,
-  _$downloadRequestEnvironmentEnum_staging,
-  _$downloadRequestEnvironmentEnum_development,
-]);
+_$downloadRequestEnvironmentEnumValues =
+    BuiltSet<DownloadRequestEnvironmentEnum>(
+      const <DownloadRequestEnvironmentEnum>[
+        _$downloadRequestEnvironmentEnum_production,
+        _$downloadRequestEnvironmentEnum_staging,
+        _$downloadRequestEnvironmentEnum_development,
+      ],
+    );
 
 const DownloadRequestPlatformEnum _$downloadRequestPlatformEnum_ios =
     const DownloadRequestPlatformEnum._('ios');
@@ -74,22 +77,22 @@ DownloadRequestPlatformEnum _$downloadRequestPlatformEnumValueOf(String name) {
 }
 
 final BuiltSet<DownloadRequestPlatformEnum>
-    _$downloadRequestPlatformEnumValues =
+_$downloadRequestPlatformEnumValues =
     BuiltSet<DownloadRequestPlatformEnum>(const <DownloadRequestPlatformEnum>[
-  _$downloadRequestPlatformEnum_ios,
-  _$downloadRequestPlatformEnum_android,
-  _$downloadRequestPlatformEnum_web,
-  _$downloadRequestPlatformEnum_macos,
-  _$downloadRequestPlatformEnum_windows,
-  _$downloadRequestPlatformEnum_linux,
-  _$downloadRequestPlatformEnum_server,
-]);
+      _$downloadRequestPlatformEnum_ios,
+      _$downloadRequestPlatformEnum_android,
+      _$downloadRequestPlatformEnum_web,
+      _$downloadRequestPlatformEnum_macos,
+      _$downloadRequestPlatformEnum_windows,
+      _$downloadRequestPlatformEnum_linux,
+      _$downloadRequestPlatformEnum_server,
+    ]);
 
 Serializer<DownloadRequestEnvironmentEnum>
-    _$downloadRequestEnvironmentEnumSerializer =
+_$downloadRequestEnvironmentEnumSerializer =
     _$DownloadRequestEnvironmentEnumSerializer();
 Serializer<DownloadRequestPlatformEnum>
-    _$downloadRequestPlatformEnumSerializer =
+_$downloadRequestPlatformEnumSerializer =
     _$DownloadRequestPlatformEnumSerializer();
 
 class _$DownloadRequestEnvironmentEnumSerializer
@@ -112,16 +115,19 @@ class _$DownloadRequestEnvironmentEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, DownloadRequestEnvironmentEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    DownloadRequestEnvironmentEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   DownloadRequestEnvironmentEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      DownloadRequestEnvironmentEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => DownloadRequestEnvironmentEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$DownloadRequestPlatformEnumSerializer
@@ -151,16 +157,20 @@ class _$DownloadRequestPlatformEnumSerializer
   final String wireName = 'DownloadRequestPlatformEnum';
 
   @override
-  Object serialize(Serializers serializers, DownloadRequestPlatformEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+  Object serialize(
+    Serializers serializers,
+    DownloadRequestPlatformEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   DownloadRequestPlatformEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      DownloadRequestPlatformEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => DownloadRequestPlatformEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$DownloadRequest extends DownloadRequest {
@@ -200,24 +210,24 @@ class _$DownloadRequest extends DownloadRequest {
   factory _$DownloadRequest([void Function(DownloadRequestBuilder)? updates]) =>
       (DownloadRequestBuilder()..update(updates))._build();
 
-  _$DownloadRequest._(
-      {this.app,
-      this.environment,
-      this.platform,
-      this.userId,
-      this.anonymousId,
-      this.deviceId,
-      this.appVersion,
-      this.buildNumber,
-      this.source_,
-      this.country,
-      this.locale,
-      this.timezone,
-      this.attributionProvider,
-      this.attributionId,
-      this.occurredAt,
-      this.properties})
-      : super._();
+  _$DownloadRequest._({
+    this.app,
+    this.environment,
+    this.platform,
+    this.userId,
+    this.anonymousId,
+    this.deviceId,
+    this.appVersion,
+    this.buildNumber,
+    this.source_,
+    this.country,
+    this.locale,
+    this.timezone,
+    this.attributionProvider,
+    this.attributionId,
+    this.occurredAt,
+    this.properties,
+  }) : super._();
   @override
   DownloadRequest rebuild(void Function(DownloadRequestBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -411,7 +421,8 @@ class DownloadRequestBuilder
   _$DownloadRequest _build() {
     _$DownloadRequest _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$DownloadRequest._(
             app: app,
             environment: environment,
@@ -437,7 +448,10 @@ class DownloadRequestBuilder
         _properties?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'DownloadRequest', _$failedField, e.toString());
+          r'DownloadRequest',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

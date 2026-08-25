@@ -12,16 +12,16 @@ class _$IngestEventResponse extends IngestEventResponse {
   @override
   final BuiltList<String> warnings;
 
-  factory _$IngestEventResponse(
-          [void Function(IngestEventResponseBuilder)? updates]) =>
-      (IngestEventResponseBuilder()..update(updates))._build();
+  factory _$IngestEventResponse([
+    void Function(IngestEventResponseBuilder)? updates,
+  ]) => (IngestEventResponseBuilder()..update(updates))._build();
 
   _$IngestEventResponse._({required this.event, required this.warnings})
-      : super._();
+    : super._();
   @override
   IngestEventResponse rebuild(
-          void Function(IngestEventResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(IngestEventResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   IngestEventResponseBuilder toBuilder() =>
@@ -97,7 +97,8 @@ class IngestEventResponseBuilder
   _$IngestEventResponse _build() {
     _$IngestEventResponse _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$IngestEventResponse._(
             event: event.build(),
             warnings: warnings.build(),
@@ -111,7 +112,10 @@ class IngestEventResponseBuilder
         warnings.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'IngestEventResponse', _$failedField, e.toString());
+          r'IngestEventResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

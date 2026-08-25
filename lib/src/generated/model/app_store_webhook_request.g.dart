@@ -10,15 +10,15 @@ class _$AppStoreWebhookRequest extends AppStoreWebhookRequest {
   @override
   final String signedPayload;
 
-  factory _$AppStoreWebhookRequest(
-          [void Function(AppStoreWebhookRequestBuilder)? updates]) =>
-      (AppStoreWebhookRequestBuilder()..update(updates))._build();
+  factory _$AppStoreWebhookRequest([
+    void Function(AppStoreWebhookRequestBuilder)? updates,
+  ]) => (AppStoreWebhookRequestBuilder()..update(updates))._build();
 
   _$AppStoreWebhookRequest._({required this.signedPayload}) : super._();
   @override
   AppStoreWebhookRequest rebuild(
-          void Function(AppStoreWebhookRequestBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(AppStoreWebhookRequestBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   AppStoreWebhookRequestBuilder toBuilder() =>
@@ -41,9 +41,9 @@ class _$AppStoreWebhookRequest extends AppStoreWebhookRequest {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'AppStoreWebhookRequest')
-          ..add('signedPayload', signedPayload))
-        .toString();
+    return (newBuiltValueToStringHelper(
+      r'AppStoreWebhookRequest',
+    )..add('signedPayload', signedPayload)).toString();
   }
 }
 
@@ -83,10 +83,14 @@ class AppStoreWebhookRequestBuilder
   AppStoreWebhookRequest build() => _build();
 
   _$AppStoreWebhookRequest _build() {
-    final _$result = _$v ??
+    final _$result =
+        _$v ??
         _$AppStoreWebhookRequest._(
           signedPayload: BuiltValueNullFieldError.checkNotNull(
-              signedPayload, r'AppStoreWebhookRequest', 'signedPayload'),
+            signedPayload,
+            r'AppStoreWebhookRequest',
+            'signedPayload',
+          ),
         );
     replace(_$result);
     return _$result;

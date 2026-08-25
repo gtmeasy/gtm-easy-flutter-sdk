@@ -47,7 +47,7 @@ class _$RegistrationResponseSerializer
   @override
   final Iterable<Type> types = const [
     RegistrationResponse,
-    _$RegistrationResponse
+    _$RegistrationResponse,
   ];
 
   @override
@@ -81,9 +81,11 @@ class _$RegistrationResponseSerializer
     RegistrationResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -99,24 +101,32 @@ class _$RegistrationResponseSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'user':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(RegistrationResponseUser),
-          ) as RegistrationResponseUser;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(RegistrationResponseUser),
+                  )
+                  as RegistrationResponseUser;
           result.user.replace(valueDes);
           break;
         case r'event':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(RegistrationResponseEvent),
-          ) as RegistrationResponseEvent;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(RegistrationResponseEvent),
+                  )
+                  as RegistrationResponseEvent;
           result.event.replace(valueDes);
           break;
         case r'warnings':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(BuiltList, [
+                      FullType(String),
+                    ]),
+                  )
+                  as BuiltList<String>;
           result.warnings.replace(valueDes);
           break;
         default:

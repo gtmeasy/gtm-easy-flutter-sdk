@@ -14,19 +14,19 @@ class _$SubmitSurveyResponse extends SubmitSurveyResponse {
   @override
   final BuiltList<String> warnings;
 
-  factory _$SubmitSurveyResponse(
-          [void Function(SubmitSurveyResponseBuilder)? updates]) =>
-      (SubmitSurveyResponseBuilder()..update(updates))._build();
+  factory _$SubmitSurveyResponse([
+    void Function(SubmitSurveyResponseBuilder)? updates,
+  ]) => (SubmitSurveyResponseBuilder()..update(updates))._build();
 
-  _$SubmitSurveyResponse._(
-      {required this.submissionId,
-      required this.accepted,
-      required this.warnings})
-      : super._();
+  _$SubmitSurveyResponse._({
+    required this.submissionId,
+    required this.accepted,
+    required this.warnings,
+  }) : super._();
   @override
   SubmitSurveyResponse rebuild(
-          void Function(SubmitSurveyResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(SubmitSurveyResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   SubmitSurveyResponseBuilder toBuilder() =>
@@ -109,12 +109,19 @@ class SubmitSurveyResponseBuilder
   _$SubmitSurveyResponse _build() {
     _$SubmitSurveyResponse _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$SubmitSurveyResponse._(
             submissionId: BuiltValueNullFieldError.checkNotNull(
-                submissionId, r'SubmitSurveyResponse', 'submissionId'),
+              submissionId,
+              r'SubmitSurveyResponse',
+              'submissionId',
+            ),
             accepted: BuiltValueNullFieldError.checkNotNull(
-                accepted, r'SubmitSurveyResponse', 'accepted'),
+              accepted,
+              r'SubmitSurveyResponse',
+              'accepted',
+            ),
             warnings: warnings.build(),
           );
     } catch (_) {
@@ -124,7 +131,10 @@ class SubmitSurveyResponseBuilder
         warnings.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'SubmitSurveyResponse', _$failedField, e.toString());
+          r'SubmitSurveyResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

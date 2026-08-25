@@ -57,11 +57,14 @@ void main() {
     await analytics.recordClickId('gclid', 'g-99');
     await analytics.track(GrowthEvents.pageViewed);
     await analytics.flush();
-    final event = ((transport.requests.single.body
-            as Map<Object?, Object?>)['events'] as List<Object?>)
-        .single as Map<Object?, Object?>;
-    final ctx = (event['properties'] as Map<Object?, Object?>)['_ctx']
-        as Map<Object?, Object?>;
+    final event =
+        ((transport.requests.single.body as Map<Object?, Object?>)['events']
+                    as List<Object?>)
+                .single
+            as Map<Object?, Object?>;
+    final ctx =
+        (event['properties'] as Map<Object?, Object?>)['_ctx']
+            as Map<Object?, Object?>;
     expect(ctx['gclid'], 'g-99');
   });
 }

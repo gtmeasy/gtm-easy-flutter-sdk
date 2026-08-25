@@ -43,8 +43,9 @@ class SurveyAnswer {
       questionText: questionText,
       position: position,
       choices: List<String>.from(choices),
-      choiceLabels:
-          choiceLabels == null ? null : List<String>.from(choiceLabels),
+      choiceLabels: choiceLabels == null
+          ? null
+          : List<String>.from(choiceLabels),
     );
   }
 

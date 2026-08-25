@@ -7,17 +7,18 @@ part of 'batch_ingest_item_result.dart';
 // **************************************************************************
 
 const BatchIngestItemResultStatusEnum
-    _$batchIngestItemResultStatusEnum_accepted =
+_$batchIngestItemResultStatusEnum_accepted =
     const BatchIngestItemResultStatusEnum._('accepted');
 const BatchIngestItemResultStatusEnum
-    _$batchIngestItemResultStatusEnum_ignored =
+_$batchIngestItemResultStatusEnum_ignored =
     const BatchIngestItemResultStatusEnum._('ignored');
 const BatchIngestItemResultStatusEnum
-    _$batchIngestItemResultStatusEnum_rejected =
+_$batchIngestItemResultStatusEnum_rejected =
     const BatchIngestItemResultStatusEnum._('rejected');
 
 BatchIngestItemResultStatusEnum _$batchIngestItemResultStatusEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'accepted':
       return _$batchIngestItemResultStatusEnum_accepted;
@@ -31,15 +32,17 @@ BatchIngestItemResultStatusEnum _$batchIngestItemResultStatusEnumValueOf(
 }
 
 final BuiltSet<BatchIngestItemResultStatusEnum>
-    _$batchIngestItemResultStatusEnumValues = BuiltSet<
-        BatchIngestItemResultStatusEnum>(const <BatchIngestItemResultStatusEnum>[
-  _$batchIngestItemResultStatusEnum_accepted,
-  _$batchIngestItemResultStatusEnum_ignored,
-  _$batchIngestItemResultStatusEnum_rejected,
-]);
+_$batchIngestItemResultStatusEnumValues =
+    BuiltSet<BatchIngestItemResultStatusEnum>(
+      const <BatchIngestItemResultStatusEnum>[
+        _$batchIngestItemResultStatusEnum_accepted,
+        _$batchIngestItemResultStatusEnum_ignored,
+        _$batchIngestItemResultStatusEnum_rejected,
+      ],
+    );
 
 Serializer<BatchIngestItemResultStatusEnum>
-    _$batchIngestItemResultStatusEnumSerializer =
+_$batchIngestItemResultStatusEnumSerializer =
     _$BatchIngestItemResultStatusEnumSerializer();
 
 class _$BatchIngestItemResultStatusEnumSerializer
@@ -62,16 +65,19 @@ class _$BatchIngestItemResultStatusEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, BatchIngestItemResultStatusEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    BatchIngestItemResultStatusEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   BatchIngestItemResultStatusEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      BatchIngestItemResultStatusEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => BatchIngestItemResultStatusEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$BatchIngestItemResult extends BatchIngestItemResult {
@@ -86,21 +92,21 @@ class _$BatchIngestItemResult extends BatchIngestItemResult {
   @override
   final BuiltList<String> warnings;
 
-  factory _$BatchIngestItemResult(
-          [void Function(BatchIngestItemResultBuilder)? updates]) =>
-      (BatchIngestItemResultBuilder()..update(updates))._build();
+  factory _$BatchIngestItemResult([
+    void Function(BatchIngestItemResultBuilder)? updates,
+  ]) => (BatchIngestItemResultBuilder()..update(updates))._build();
 
-  _$BatchIngestItemResult._(
-      {required this.index,
-      this.eventId,
-      required this.status,
-      this.reason,
-      required this.warnings})
-      : super._();
+  _$BatchIngestItemResult._({
+    required this.index,
+    this.eventId,
+    required this.status,
+    this.reason,
+    required this.warnings,
+  }) : super._();
   @override
   BatchIngestItemResult rebuild(
-          void Function(BatchIngestItemResultBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(BatchIngestItemResultBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   BatchIngestItemResultBuilder toBuilder() =>
@@ -200,13 +206,20 @@ class BatchIngestItemResultBuilder
   _$BatchIngestItemResult _build() {
     _$BatchIngestItemResult _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$BatchIngestItemResult._(
             index: BuiltValueNullFieldError.checkNotNull(
-                index, r'BatchIngestItemResult', 'index'),
+              index,
+              r'BatchIngestItemResult',
+              'index',
+            ),
             eventId: eventId,
             status: BuiltValueNullFieldError.checkNotNull(
-                status, r'BatchIngestItemResult', 'status'),
+              status,
+              r'BatchIngestItemResult',
+              'status',
+            ),
             reason: reason,
             warnings: warnings.build(),
           );
@@ -217,7 +230,10 @@ class BatchIngestItemResultBuilder
         warnings.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'BatchIngestItemResult', _$failedField, e.toString());
+          r'BatchIngestItemResult',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

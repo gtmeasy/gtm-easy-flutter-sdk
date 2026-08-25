@@ -30,8 +30,8 @@ const clickIdTtl = Duration(days: 90);
 
 class ClickIdStore {
   ClickIdStore(this._prefs, {Random? random, DateTime Function()? now})
-      : _random = random ?? Random(),
-        _now = now ?? DateTime.now;
+    : _random = random ?? Random(),
+      _now = now ?? DateTime.now;
 
   final SharedPreferences _prefs;
   final Random _random;
@@ -113,12 +113,15 @@ class ClickIdStore {
   }
 
   static (String, int)? _parse(String raw) {
-    final valueMatch =
-        RegExp(r'"value"\s*:\s*"((?:\\.|[^"\\])*)"').firstMatch(raw);
+    final valueMatch = RegExp(
+      r'"value"\s*:\s*"((?:\\.|[^"\\])*)"',
+    ).firstMatch(raw);
     final tsMatch = RegExp(r'"ts"\s*:\s*(\d+)').firstMatch(raw);
     if (valueMatch == null || tsMatch == null) return null;
-    final value =
-        valueMatch.group(1)!.replaceAll(r'\"', '"').replaceAll(r'\\', r'\');
+    final value = valueMatch
+        .group(1)!
+        .replaceAll(r'\"', '"')
+        .replaceAll(r'\\', r'\');
     return (value, int.parse(tsMatch.group(1)!));
   }
 }

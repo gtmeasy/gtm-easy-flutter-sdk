@@ -68,9 +68,11 @@ class _$IngestUserResponseSerializer
     IngestUserResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -86,17 +88,23 @@ class _$IngestUserResponseSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'user':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(IngestUserResponseUser),
-          ) as IngestUserResponseUser;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(IngestUserResponseUser),
+                  )
+                  as IngestUserResponseUser;
           result.user.replace(valueDes);
           break;
         case r'warnings':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(BuiltList, [
+                      FullType(String),
+                    ]),
+                  )
+                  as BuiltList<String>;
           result.warnings.replace(valueDes);
           break;
         default:

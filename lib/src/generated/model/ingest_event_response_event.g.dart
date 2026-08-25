@@ -12,16 +12,16 @@ class _$IngestEventResponseEvent extends IngestEventResponseEvent {
   @override
   final String eventName;
 
-  factory _$IngestEventResponseEvent(
-          [void Function(IngestEventResponseEventBuilder)? updates]) =>
-      (IngestEventResponseEventBuilder()..update(updates))._build();
+  factory _$IngestEventResponseEvent([
+    void Function(IngestEventResponseEventBuilder)? updates,
+  ]) => (IngestEventResponseEventBuilder()..update(updates))._build();
 
   _$IngestEventResponseEvent._({required this.id, required this.eventName})
-      : super._();
+    : super._();
   @override
   IngestEventResponseEvent rebuild(
-          void Function(IngestEventResponseEventBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(IngestEventResponseEventBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   IngestEventResponseEventBuilder toBuilder() =>
@@ -94,12 +94,19 @@ class IngestEventResponseEventBuilder
   IngestEventResponseEvent build() => _build();
 
   _$IngestEventResponseEvent _build() {
-    final _$result = _$v ??
+    final _$result =
+        _$v ??
         _$IngestEventResponseEvent._(
           id: BuiltValueNullFieldError.checkNotNull(
-              id, r'IngestEventResponseEvent', 'id'),
+            id,
+            r'IngestEventResponseEvent',
+            'id',
+          ),
           eventName: BuiltValueNullFieldError.checkNotNull(
-              eventName, r'IngestEventResponseEvent', 'eventName'),
+            eventName,
+            r'IngestEventResponseEvent',
+            'eventName',
+          ),
         );
     replace(_$result);
     return _$result;

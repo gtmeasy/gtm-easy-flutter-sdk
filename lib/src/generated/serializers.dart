@@ -75,37 +75,40 @@ part 'serializers.g.dart';
   TrackEventRequest,
   WebReferrerRequest,
 ])
-Serializers serializers = (_$serializers.toBuilder()
-      ..addBuilderFactory(
-        const FullType(BuiltMap, [FullType(String), FullType(String)]),
-        () => MapBuilder<String, String>(),
-      )
-      ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(BatchIngestItemResult)]),
-        () => ListBuilder<BatchIngestItemResult>(),
-      )
-      ..addBuilderFactory(
-        const FullType(
-            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-        () => MapBuilder<String, JsonObject?>(),
-      )
-      ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(SurveyResponseAnswer)]),
-        () => ListBuilder<SurveyResponseAnswer>(),
-      )
-      ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(String)]),
-        () => ListBuilder<String>(),
-      )
-      ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(TrackEventRequest)]),
-        () => ListBuilder<TrackEventRequest>(),
-      )
-      ..add(const OneOfSerializer())
-      ..add(const AnyOfSerializer())
-      ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer()))
-    .build();
+Serializers serializers =
+    (_$serializers.toBuilder()
+          ..addBuilderFactory(
+            const FullType(BuiltMap, [FullType(String), FullType(String)]),
+            () => MapBuilder<String, String>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, [FullType(BatchIngestItemResult)]),
+            () => ListBuilder<BatchIngestItemResult>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltMap, [
+              FullType(String),
+              FullType.nullable(JsonObject),
+            ]),
+            () => MapBuilder<String, JsonObject?>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, [FullType(SurveyResponseAnswer)]),
+            () => ListBuilder<SurveyResponseAnswer>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, [FullType(String)]),
+            () => ListBuilder<String>(),
+          )
+          ..addBuilderFactory(
+            const FullType(BuiltList, [FullType(TrackEventRequest)]),
+            () => ListBuilder<TrackEventRequest>(),
+          )
+          ..add(const OneOfSerializer())
+          ..add(const AnyOfSerializer())
+          ..add(const DateSerializer())
+          ..add(Iso8601DateTimeSerializer()))
+        .build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

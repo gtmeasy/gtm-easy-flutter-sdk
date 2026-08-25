@@ -7,17 +7,18 @@ part of 'web_referrer_request.dart';
 // **************************************************************************
 
 const WebReferrerRequestEnvironmentEnum
-    _$webReferrerRequestEnvironmentEnum_production =
+_$webReferrerRequestEnvironmentEnum_production =
     const WebReferrerRequestEnvironmentEnum._('production');
 const WebReferrerRequestEnvironmentEnum
-    _$webReferrerRequestEnvironmentEnum_staging =
+_$webReferrerRequestEnvironmentEnum_staging =
     const WebReferrerRequestEnvironmentEnum._('staging');
 const WebReferrerRequestEnvironmentEnum
-    _$webReferrerRequestEnvironmentEnum_development =
+_$webReferrerRequestEnvironmentEnum_development =
     const WebReferrerRequestEnvironmentEnum._('development');
 
 WebReferrerRequestEnvironmentEnum _$webReferrerRequestEnvironmentEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'production':
       return _$webReferrerRequestEnvironmentEnum_production;
@@ -31,12 +32,14 @@ WebReferrerRequestEnvironmentEnum _$webReferrerRequestEnvironmentEnumValueOf(
 }
 
 final BuiltSet<WebReferrerRequestEnvironmentEnum>
-    _$webReferrerRequestEnvironmentEnumValues = BuiltSet<
-        WebReferrerRequestEnvironmentEnum>(const <WebReferrerRequestEnvironmentEnum>[
-  _$webReferrerRequestEnvironmentEnum_production,
-  _$webReferrerRequestEnvironmentEnum_staging,
-  _$webReferrerRequestEnvironmentEnum_development,
-]);
+_$webReferrerRequestEnvironmentEnumValues =
+    BuiltSet<WebReferrerRequestEnvironmentEnum>(
+      const <WebReferrerRequestEnvironmentEnum>[
+        _$webReferrerRequestEnvironmentEnum_production,
+        _$webReferrerRequestEnvironmentEnum_staging,
+        _$webReferrerRequestEnvironmentEnum_development,
+      ],
+    );
 
 const WebReferrerRequestPlatformEnum _$webReferrerRequestPlatformEnum_ios =
     const WebReferrerRequestPlatformEnum._('ios');
@@ -54,7 +57,8 @@ const WebReferrerRequestPlatformEnum _$webReferrerRequestPlatformEnum_server =
     const WebReferrerRequestPlatformEnum._('server');
 
 WebReferrerRequestPlatformEnum _$webReferrerRequestPlatformEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'ios':
       return _$webReferrerRequestPlatformEnum_ios;
@@ -76,22 +80,24 @@ WebReferrerRequestPlatformEnum _$webReferrerRequestPlatformEnumValueOf(
 }
 
 final BuiltSet<WebReferrerRequestPlatformEnum>
-    _$webReferrerRequestPlatformEnumValues = BuiltSet<
-        WebReferrerRequestPlatformEnum>(const <WebReferrerRequestPlatformEnum>[
-  _$webReferrerRequestPlatformEnum_ios,
-  _$webReferrerRequestPlatformEnum_android,
-  _$webReferrerRequestPlatformEnum_web,
-  _$webReferrerRequestPlatformEnum_macos,
-  _$webReferrerRequestPlatformEnum_windows,
-  _$webReferrerRequestPlatformEnum_linux,
-  _$webReferrerRequestPlatformEnum_server,
-]);
+_$webReferrerRequestPlatformEnumValues =
+    BuiltSet<WebReferrerRequestPlatformEnum>(
+      const <WebReferrerRequestPlatformEnum>[
+        _$webReferrerRequestPlatformEnum_ios,
+        _$webReferrerRequestPlatformEnum_android,
+        _$webReferrerRequestPlatformEnum_web,
+        _$webReferrerRequestPlatformEnum_macos,
+        _$webReferrerRequestPlatformEnum_windows,
+        _$webReferrerRequestPlatformEnum_linux,
+        _$webReferrerRequestPlatformEnum_server,
+      ],
+    );
 
 Serializer<WebReferrerRequestEnvironmentEnum>
-    _$webReferrerRequestEnvironmentEnumSerializer =
+_$webReferrerRequestEnvironmentEnumSerializer =
     _$WebReferrerRequestEnvironmentEnumSerializer();
 Serializer<WebReferrerRequestPlatformEnum>
-    _$webReferrerRequestPlatformEnumSerializer =
+_$webReferrerRequestPlatformEnumSerializer =
     _$WebReferrerRequestPlatformEnumSerializer();
 
 class _$WebReferrerRequestEnvironmentEnumSerializer
@@ -114,16 +120,19 @@ class _$WebReferrerRequestEnvironmentEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, WebReferrerRequestEnvironmentEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    WebReferrerRequestEnvironmentEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   WebReferrerRequestEnvironmentEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      WebReferrerRequestEnvironmentEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => WebReferrerRequestEnvironmentEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$WebReferrerRequestPlatformEnumSerializer
@@ -154,16 +163,19 @@ class _$WebReferrerRequestPlatformEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, WebReferrerRequestPlatformEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    WebReferrerRequestPlatformEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   WebReferrerRequestPlatformEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      WebReferrerRequestPlatformEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => WebReferrerRequestPlatformEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$WebReferrerRequest extends WebReferrerRequest {
@@ -188,26 +200,26 @@ class _$WebReferrerRequest extends WebReferrerRequest {
   @override
   final BuiltMap<String, JsonObject?>? properties;
 
-  factory _$WebReferrerRequest(
-          [void Function(WebReferrerRequestBuilder)? updates]) =>
-      (WebReferrerRequestBuilder()..update(updates))._build();
+  factory _$WebReferrerRequest([
+    void Function(WebReferrerRequestBuilder)? updates,
+  ]) => (WebReferrerRequestBuilder()..update(updates))._build();
 
-  _$WebReferrerRequest._(
-      {required this.app,
-      this.environment,
-      this.userId,
-      this.anonymousId,
-      this.platform,
-      this.source_,
-      this.occurredAt,
-      required this.webReferrer,
-      this.clickId,
-      this.properties})
-      : super._();
+  _$WebReferrerRequest._({
+    required this.app,
+    this.environment,
+    this.userId,
+    this.anonymousId,
+    this.platform,
+    this.source_,
+    this.occurredAt,
+    required this.webReferrer,
+    this.clickId,
+    this.properties,
+  }) : super._();
   @override
   WebReferrerRequest rebuild(
-          void Function(WebReferrerRequestBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(WebReferrerRequestBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   WebReferrerRequestBuilder toBuilder() =>
@@ -349,10 +361,14 @@ class WebReferrerRequestBuilder
   _$WebReferrerRequest _build() {
     _$WebReferrerRequest _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$WebReferrerRequest._(
             app: BuiltValueNullFieldError.checkNotNull(
-                app, r'WebReferrerRequest', 'app'),
+              app,
+              r'WebReferrerRequest',
+              'app',
+            ),
             environment: environment,
             userId: userId,
             anonymousId: anonymousId,
@@ -360,7 +376,10 @@ class WebReferrerRequestBuilder
             source_: source_,
             occurredAt: occurredAt,
             webReferrer: BuiltValueNullFieldError.checkNotNull(
-                webReferrer, r'WebReferrerRequest', 'webReferrer'),
+              webReferrer,
+              r'WebReferrerRequest',
+              'webReferrer',
+            ),
             clickId: clickId,
             properties: _properties?.build(),
           );
@@ -371,7 +390,10 @@ class WebReferrerRequestBuilder
         _properties?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'WebReferrerRequest', _$failedField, e.toString());
+          r'WebReferrerRequest',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

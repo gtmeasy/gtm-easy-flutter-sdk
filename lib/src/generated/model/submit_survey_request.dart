@@ -119,7 +119,7 @@ class _$SubmitSurveyRequestSerializer
   @override
   final Iterable<Type> types = const [
     SubmitSurveyRequest,
-    _$SubmitSurveyRequest
+    _$SubmitSurveyRequest,
   ];
 
   @override
@@ -237,24 +237,29 @@ class _$SubmitSurveyRequestSerializer
       yield r'responses';
       yield serializers.serialize(
         object.responses,
-        specifiedType:
-            const FullType(BuiltList, [FullType(SurveyResponseAnswer)]),
+        specifiedType: const FullType(BuiltList, [
+          FullType(SurveyResponseAnswer),
+        ]),
       );
     }
     if (object.properties != null) {
       yield r'properties';
       yield serializers.serialize(
         object.properties,
-        specifiedType: const FullType(
-            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(JsonObject),
+        ]),
       );
     }
     if (object.metadata != null) {
       yield r'metadata';
       yield serializers.serialize(
         object.metadata,
-        specifiedType: const FullType(
-            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(JsonObject),
+        ]),
       );
     }
   }
@@ -265,9 +270,11 @@ class _$SubmitSurveyRequestSerializer
     SubmitSurveyRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -283,151 +290,195 @@ class _$SubmitSurveyRequestSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'app':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.app = valueDes;
           break;
         case r'environment':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(SubmitSurveyRequestEnvironmentEnum),
-          ) as SubmitSurveyRequestEnvironmentEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      SubmitSurveyRequestEnvironmentEnum,
+                    ),
+                  )
+                  as SubmitSurveyRequestEnvironmentEnum?;
           if (valueDes == null) continue;
           result.environment = valueDes;
           break;
         case r'platform':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(SubmitSurveyRequestPlatformEnum),
-          ) as SubmitSurveyRequestPlatformEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      SubmitSurveyRequestPlatformEnum,
+                    ),
+                  )
+                  as SubmitSurveyRequestPlatformEnum?;
           if (valueDes == null) continue;
           result.platform = valueDes;
           break;
         case r'userId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.userId = valueDes;
           break;
         case r'anonymousId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.anonymousId = valueDes;
           break;
         case r'deviceId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.deviceId = valueDes;
           break;
         case r'surveyId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.surveyId = valueDes;
           break;
         case r'surveyVersion':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.surveyVersion = valueDes;
           break;
         case r'surveyName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.surveyName = valueDes;
           break;
         case r'submissionId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.submissionId = valueDes;
           break;
         case r'status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(SubmitSurveyRequestStatusEnum),
-          ) as SubmitSurveyRequestStatusEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      SubmitSurveyRequestStatusEnum,
+                    ),
+                  )
+                  as SubmitSurveyRequestStatusEnum?;
           if (valueDes == null) continue;
           result.status = valueDes;
           break;
         case r'appVersion':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.appVersion = valueDes;
           break;
         case r'locale':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.locale = valueDes;
           break;
         case r'country':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.country = valueDes;
           break;
         case r'occurredAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(DateTime),
-          ) as DateTime?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(DateTime),
+                  )
+                  as DateTime?;
           if (valueDes == null) continue;
           result.occurredAt = valueDes;
           break;
         case r'responses':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                BuiltList, [FullType(SurveyResponseAnswer)]),
-          ) as BuiltList<SurveyResponseAnswer>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltList, [
+                      FullType(SurveyResponseAnswer),
+                    ]),
+                  )
+                  as BuiltList<SurveyResponseAnswer>?;
           if (valueDes == null) continue;
           result.responses.replace(valueDes);
           break;
         case r'properties':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltMap, [
+                      FullType(String),
+                      FullType.nullable(JsonObject),
+                    ]),
+                  )
+                  as BuiltMap<String, JsonObject?>?;
           if (valueDes == null) continue;
           result.properties.replace(valueDes);
           break;
         case r'metadata':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltMap, [
+                      FullType(String),
+                      FullType.nullable(JsonObject),
+                    ]),
+                  )
+                  as BuiltMap<String, JsonObject?>?;
           if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;

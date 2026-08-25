@@ -46,7 +46,7 @@ class _$BatchIngestResponseSerializer
   @override
   final Iterable<Type> types = const [
     BatchIngestResponse,
-    _$BatchIngestResponse
+    _$BatchIngestResponse,
   ];
 
   @override
@@ -70,8 +70,9 @@ class _$BatchIngestResponseSerializer
     yield r'results';
     yield serializers.serialize(
       object.results,
-      specifiedType:
-          const FullType(BuiltList, [FullType(BatchIngestItemResult)]),
+      specifiedType: const FullType(BuiltList, [
+        FullType(BatchIngestItemResult),
+      ]),
     );
   }
 
@@ -81,9 +82,11 @@ class _$BatchIngestResponseSerializer
     BatchIngestResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -99,25 +102,26 @@ class _$BatchIngestResponseSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'accepted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
+          final valueDes =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int;
           result.accepted = valueDes;
           break;
         case r'rejected':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
+          final valueDes =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int;
           result.rejected = valueDes;
           break;
         case r'results':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType(BuiltList, [FullType(BatchIngestItemResult)]),
-          ) as BuiltList<BatchIngestItemResult>;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(BuiltList, [
+                      FullType(BatchIngestItemResult),
+                    ]),
+                  )
+                  as BuiltList<BatchIngestItemResult>;
           result.results.replace(valueDes);
           break;
         default:

@@ -19,20 +19,17 @@ GenericOkResponseStatusEnum _$genericOkResponseStatusEnumValueOf(String name) {
 }
 
 final BuiltSet<GenericOkResponseStatusEnum>
-    _$genericOkResponseStatusEnumValues =
-    BuiltSet<GenericOkResponseStatusEnum>(const <GenericOkResponseStatusEnum>[
-  _$genericOkResponseStatusEnum_ok,
-]);
+_$genericOkResponseStatusEnumValues = BuiltSet<GenericOkResponseStatusEnum>(
+  const <GenericOkResponseStatusEnum>[_$genericOkResponseStatusEnum_ok],
+);
 
 Serializer<GenericOkResponseStatusEnum>
-    _$genericOkResponseStatusEnumSerializer =
+_$genericOkResponseStatusEnumSerializer =
     _$GenericOkResponseStatusEnumSerializer();
 
 class _$GenericOkResponseStatusEnumSerializer
     implements PrimitiveSerializer<GenericOkResponseStatusEnum> {
-  static const Map<String, Object> _toWire = const <String, Object>{
-    'ok': 'ok',
-  };
+  static const Map<String, Object> _toWire = const <String, Object>{'ok': 'ok'};
   static const Map<Object, String> _fromWire = const <Object, String>{
     'ok': 'ok',
   };
@@ -43,25 +40,29 @@ class _$GenericOkResponseStatusEnumSerializer
   final String wireName = 'GenericOkResponseStatusEnum';
 
   @override
-  Object serialize(Serializers serializers, GenericOkResponseStatusEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+  Object serialize(
+    Serializers serializers,
+    GenericOkResponseStatusEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   GenericOkResponseStatusEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      GenericOkResponseStatusEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => GenericOkResponseStatusEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$GenericOkResponse extends GenericOkResponse {
   @override
   final GenericOkResponseStatusEnum status;
 
-  factory _$GenericOkResponse(
-          [void Function(GenericOkResponseBuilder)? updates]) =>
-      (GenericOkResponseBuilder()..update(updates))._build();
+  factory _$GenericOkResponse([
+    void Function(GenericOkResponseBuilder)? updates,
+  ]) => (GenericOkResponseBuilder()..update(updates))._build();
 
   _$GenericOkResponse._({required this.status}) : super._();
   @override
@@ -88,9 +89,9 @@ class _$GenericOkResponse extends GenericOkResponse {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GenericOkResponse')
-          ..add('status', status))
-        .toString();
+    return (newBuiltValueToStringHelper(
+      r'GenericOkResponse',
+    )..add('status', status)).toString();
   }
 }
 
@@ -129,10 +130,14 @@ class GenericOkResponseBuilder
   GenericOkResponse build() => _build();
 
   _$GenericOkResponse _build() {
-    final _$result = _$v ??
+    final _$result =
+        _$v ??
         _$GenericOkResponse._(
           status: BuiltValueNullFieldError.checkNotNull(
-              status, r'GenericOkResponse', 'status'),
+            status,
+            r'GenericOkResponse',
+            'status',
+          ),
         );
     replace(_$result);
     return _$result;

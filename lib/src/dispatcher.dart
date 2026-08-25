@@ -21,9 +21,9 @@ class GrowthDispatcher {
     required this.apiKey,
     Random? random,
     Future<void> Function(Duration duration)? sleep,
-  })  : _random = random ?? Random(),
-        _sleep = sleep ?? Future<void>.delayed,
-        _useBatch = config.useBatchEndpoint;
+  }) : _random = random ?? Random(),
+       _sleep = sleep ?? Future<void>.delayed,
+       _useBatch = config.useBatchEndpoint;
 
   final GrowthConfig config;
   final GrowthStorage storage;
@@ -365,10 +365,7 @@ class GrowthDispatcher {
     if (status == 400) {
       final dropIds = events.map((e) => e.id);
       await storage.removeIds(dropIds);
-      return _SendOutcome(
-        kind: _OutcomeKind.dropped,
-        failed: events.length,
-      );
+      return _SendOutcome(kind: _OutcomeKind.dropped, failed: events.length);
     }
     if (status == 200 || status == 201) {
       final body = response.body;

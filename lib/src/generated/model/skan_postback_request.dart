@@ -95,7 +95,7 @@ class _$SkanPostbackRequestSerializer
   @override
   final Iterable<Type> types = const [
     SkanPostbackRequest,
-    _$SkanPostbackRequest
+    _$SkanPostbackRequest,
   ];
 
   @override
@@ -184,8 +184,9 @@ class _$SkanPostbackRequestSerializer
       yield r'coarse-conversion-value';
       yield serializers.serialize(
         object.coarseConversionValue,
-        specifiedType:
-            const FullType(SkanPostbackRequestCoarseConversionValueEnum),
+        specifiedType: const FullType(
+          SkanPostbackRequestCoarseConversionValueEnum,
+        ),
       );
     }
     if (object.didWin != null) {
@@ -210,9 +211,11 @@ class _$SkanPostbackRequestSerializer
     SkanPostbackRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -228,118 +231,146 @@ class _$SkanPostbackRequestSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'version':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.version = valueDes;
           break;
         case r'ad-network-id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.adNetworkId = valueDes;
           break;
         case r'campaign-id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(int),
-          ) as int?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(int),
+                  )
+                  as int?;
           if (valueDes == null) continue;
           result.campaignId = valueDes;
           break;
         case r'source-identifier':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.sourceIdentifier = valueDes;
           break;
         case r'transaction-id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.transactionId = valueDes;
           break;
         case r'app-id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
+          final valueDes =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int;
           result.appId = valueDes;
           break;
         case r'attribution-signature':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.attributionSignature = valueDes;
           break;
         case r'redownload':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(bool),
+                  )
+                  as bool?;
           if (valueDes == null) continue;
           result.redownload = valueDes;
           break;
         case r'source-app-id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(int),
-          ) as int?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(int),
+                  )
+                  as int?;
           if (valueDes == null) continue;
           result.sourceAppId = valueDes;
           break;
         case r'source-domain':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.sourceDomain = valueDes;
           break;
         case r'fidelity-type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(int),
-          ) as int?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(int),
+                  )
+                  as int?;
           if (valueDes == null) continue;
           result.fidelityType = valueDes;
           break;
         case r'conversion-value':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(int),
-          ) as int?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(int),
+                  )
+                  as int?;
           if (valueDes == null) continue;
           result.conversionValue = valueDes;
           break;
         case r'coarse-conversion-value':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                SkanPostbackRequestCoarseConversionValueEnum),
-          ) as SkanPostbackRequestCoarseConversionValueEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      SkanPostbackRequestCoarseConversionValueEnum,
+                    ),
+                  )
+                  as SkanPostbackRequestCoarseConversionValueEnum?;
           if (valueDes == null) continue;
           result.coarseConversionValue = valueDes;
           break;
         case r'did-win':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(bool),
+                  )
+                  as bool?;
           if (valueDes == null) continue;
           result.didWin = valueDes;
           break;
         case r'postback-sequence-index':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(int),
-          ) as int?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(int),
+                  )
+                  as int?;
           if (valueDes == null) continue;
           result.postbackSequenceIndex = valueDes;
           break;
@@ -384,11 +415,10 @@ class SkanPostbackRequestCoarseConversionValueEnum extends EnumClass {
       _$skanPostbackRequestCoarseConversionValueEnum_high;
 
   static Serializer<SkanPostbackRequestCoarseConversionValueEnum>
-      get serializer =>
-          _$skanPostbackRequestCoarseConversionValueEnumSerializer;
+  get serializer => _$skanPostbackRequestCoarseConversionValueEnumSerializer;
 
   const SkanPostbackRequestCoarseConversionValueEnum._(String name)
-      : super(name);
+    : super(name);
 
   static BuiltSet<SkanPostbackRequestCoarseConversionValueEnum> get values =>
       _$skanPostbackRequestCoarseConversionValueEnumValues;

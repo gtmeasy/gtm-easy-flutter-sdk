@@ -152,8 +152,10 @@ class _$WebReferrerRequestSerializer
       yield r'properties';
       yield serializers.serialize(
         object.properties,
-        specifiedType: const FullType(
-            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(JsonObject),
+        ]),
       );
     }
   }
@@ -164,9 +166,11 @@ class _$WebReferrerRequestSerializer
     WebReferrerRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -182,83 +186,107 @@ class _$WebReferrerRequestSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'app':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.app = valueDes;
           break;
         case r'environment':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(WebReferrerRequestEnvironmentEnum),
-          ) as WebReferrerRequestEnvironmentEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      WebReferrerRequestEnvironmentEnum,
+                    ),
+                  )
+                  as WebReferrerRequestEnvironmentEnum?;
           if (valueDes == null) continue;
           result.environment = valueDes;
           break;
         case r'userId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.userId = valueDes;
           break;
         case r'anonymousId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.anonymousId = valueDes;
           break;
         case r'platform':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(WebReferrerRequestPlatformEnum),
-          ) as WebReferrerRequestPlatformEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      WebReferrerRequestPlatformEnum,
+                    ),
+                  )
+                  as WebReferrerRequestPlatformEnum?;
           if (valueDes == null) continue;
           result.platform = valueDes;
           break;
         case r'source':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.source_ = valueDes;
           break;
         case r'occurredAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(DateTime),
-          ) as DateTime?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(DateTime),
+                  )
+                  as DateTime?;
           if (valueDes == null) continue;
           result.occurredAt = valueDes;
           break;
         case r'webReferrer':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.webReferrer = valueDes;
           break;
         case r'clickId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.clickId = valueDes;
           break;
         case r'properties':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltMap, [
+                      FullType(String),
+                      FullType.nullable(JsonObject),
+                    ]),
+                  )
+                  as BuiltMap<String, JsonObject?>?;
           if (valueDes == null) continue;
           result.properties.replace(valueDes);
           break;

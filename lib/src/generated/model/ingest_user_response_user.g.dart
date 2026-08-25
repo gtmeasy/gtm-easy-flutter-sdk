@@ -12,16 +12,16 @@ class _$IngestUserResponseUser extends IngestUserResponseUser {
   @override
   final String? principalId;
 
-  factory _$IngestUserResponseUser(
-          [void Function(IngestUserResponseUserBuilder)? updates]) =>
-      (IngestUserResponseUserBuilder()..update(updates))._build();
+  factory _$IngestUserResponseUser([
+    void Function(IngestUserResponseUserBuilder)? updates,
+  ]) => (IngestUserResponseUserBuilder()..update(updates))._build();
 
   _$IngestUserResponseUser._({required this.identityHash, this.principalId})
-      : super._();
+    : super._();
   @override
   IngestUserResponseUser rebuild(
-          void Function(IngestUserResponseUserBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(IngestUserResponseUserBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   IngestUserResponseUserBuilder toBuilder() =>
@@ -93,10 +93,14 @@ class IngestUserResponseUserBuilder
   IngestUserResponseUser build() => _build();
 
   _$IngestUserResponseUser _build() {
-    final _$result = _$v ??
+    final _$result =
+        _$v ??
         _$IngestUserResponseUser._(
           identityHash: BuiltValueNullFieldError.checkNotNull(
-              identityHash, r'IngestUserResponseUser', 'identityHash'),
+            identityHash,
+            r'IngestUserResponseUser',
+            'identityHash',
+          ),
           principalId: principalId,
         );
     replace(_$result);

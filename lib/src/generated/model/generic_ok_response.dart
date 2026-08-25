@@ -59,9 +59,11 @@ class _$GenericOkResponseSerializer
     GenericOkResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -77,10 +79,12 @@ class _$GenericOkResponseSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(GenericOkResponseStatusEnum),
-          ) as GenericOkResponseStatusEnum;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(GenericOkResponseStatusEnum),
+                  )
+                  as GenericOkResponseStatusEnum;
           result.status = valueDes;
           break;
         default:

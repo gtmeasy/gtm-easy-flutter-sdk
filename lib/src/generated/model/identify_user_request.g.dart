@@ -7,17 +7,18 @@ part of 'identify_user_request.dart';
 // **************************************************************************
 
 const IdentifyUserRequestEnvironmentEnum
-    _$identifyUserRequestEnvironmentEnum_production =
+_$identifyUserRequestEnvironmentEnum_production =
     const IdentifyUserRequestEnvironmentEnum._('production');
 const IdentifyUserRequestEnvironmentEnum
-    _$identifyUserRequestEnvironmentEnum_staging =
+_$identifyUserRequestEnvironmentEnum_staging =
     const IdentifyUserRequestEnvironmentEnum._('staging');
 const IdentifyUserRequestEnvironmentEnum
-    _$identifyUserRequestEnvironmentEnum_development =
+_$identifyUserRequestEnvironmentEnum_development =
     const IdentifyUserRequestEnvironmentEnum._('development');
 
 IdentifyUserRequestEnvironmentEnum _$identifyUserRequestEnvironmentEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'production':
       return _$identifyUserRequestEnvironmentEnum_production;
@@ -31,24 +32,26 @@ IdentifyUserRequestEnvironmentEnum _$identifyUserRequestEnvironmentEnumValueOf(
 }
 
 final BuiltSet<IdentifyUserRequestEnvironmentEnum>
-    _$identifyUserRequestEnvironmentEnumValues = BuiltSet<
-        IdentifyUserRequestEnvironmentEnum>(const <IdentifyUserRequestEnvironmentEnum>[
-  _$identifyUserRequestEnvironmentEnum_production,
-  _$identifyUserRequestEnvironmentEnum_staging,
-  _$identifyUserRequestEnvironmentEnum_development,
-]);
+_$identifyUserRequestEnvironmentEnumValues =
+    BuiltSet<IdentifyUserRequestEnvironmentEnum>(
+      const <IdentifyUserRequestEnvironmentEnum>[
+        _$identifyUserRequestEnvironmentEnum_production,
+        _$identifyUserRequestEnvironmentEnum_staging,
+        _$identifyUserRequestEnvironmentEnum_development,
+      ],
+    );
 
 const IdentifyUserRequestPlatformEnum _$identifyUserRequestPlatformEnum_ios =
     const IdentifyUserRequestPlatformEnum._('ios');
 const IdentifyUserRequestPlatformEnum
-    _$identifyUserRequestPlatformEnum_android =
+_$identifyUserRequestPlatformEnum_android =
     const IdentifyUserRequestPlatformEnum._('android');
 const IdentifyUserRequestPlatformEnum _$identifyUserRequestPlatformEnum_web =
     const IdentifyUserRequestPlatformEnum._('web');
 const IdentifyUserRequestPlatformEnum _$identifyUserRequestPlatformEnum_macos =
     const IdentifyUserRequestPlatformEnum._('macos');
 const IdentifyUserRequestPlatformEnum
-    _$identifyUserRequestPlatformEnum_windows =
+_$identifyUserRequestPlatformEnum_windows =
     const IdentifyUserRequestPlatformEnum._('windows');
 const IdentifyUserRequestPlatformEnum _$identifyUserRequestPlatformEnum_linux =
     const IdentifyUserRequestPlatformEnum._('linux');
@@ -56,7 +59,8 @@ const IdentifyUserRequestPlatformEnum _$identifyUserRequestPlatformEnum_server =
     const IdentifyUserRequestPlatformEnum._('server');
 
 IdentifyUserRequestPlatformEnum _$identifyUserRequestPlatformEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'ios':
       return _$identifyUserRequestPlatformEnum_ios;
@@ -78,22 +82,24 @@ IdentifyUserRequestPlatformEnum _$identifyUserRequestPlatformEnumValueOf(
 }
 
 final BuiltSet<IdentifyUserRequestPlatformEnum>
-    _$identifyUserRequestPlatformEnumValues = BuiltSet<
-        IdentifyUserRequestPlatformEnum>(const <IdentifyUserRequestPlatformEnum>[
-  _$identifyUserRequestPlatformEnum_ios,
-  _$identifyUserRequestPlatformEnum_android,
-  _$identifyUserRequestPlatformEnum_web,
-  _$identifyUserRequestPlatformEnum_macos,
-  _$identifyUserRequestPlatformEnum_windows,
-  _$identifyUserRequestPlatformEnum_linux,
-  _$identifyUserRequestPlatformEnum_server,
-]);
+_$identifyUserRequestPlatformEnumValues =
+    BuiltSet<IdentifyUserRequestPlatformEnum>(
+      const <IdentifyUserRequestPlatformEnum>[
+        _$identifyUserRequestPlatformEnum_ios,
+        _$identifyUserRequestPlatformEnum_android,
+        _$identifyUserRequestPlatformEnum_web,
+        _$identifyUserRequestPlatformEnum_macos,
+        _$identifyUserRequestPlatformEnum_windows,
+        _$identifyUserRequestPlatformEnum_linux,
+        _$identifyUserRequestPlatformEnum_server,
+      ],
+    );
 
 Serializer<IdentifyUserRequestEnvironmentEnum>
-    _$identifyUserRequestEnvironmentEnumSerializer =
+_$identifyUserRequestEnvironmentEnumSerializer =
     _$IdentifyUserRequestEnvironmentEnumSerializer();
 Serializer<IdentifyUserRequestPlatformEnum>
-    _$identifyUserRequestPlatformEnumSerializer =
+_$identifyUserRequestPlatformEnumSerializer =
     _$IdentifyUserRequestPlatformEnumSerializer();
 
 class _$IdentifyUserRequestEnvironmentEnumSerializer
@@ -116,16 +122,19 @@ class _$IdentifyUserRequestEnvironmentEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, IdentifyUserRequestEnvironmentEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    IdentifyUserRequestEnvironmentEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   IdentifyUserRequestEnvironmentEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      IdentifyUserRequestEnvironmentEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => IdentifyUserRequestEnvironmentEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$IdentifyUserRequestPlatformEnumSerializer
@@ -156,16 +165,19 @@ class _$IdentifyUserRequestPlatformEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, IdentifyUserRequestPlatformEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    IdentifyUserRequestPlatformEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   IdentifyUserRequestPlatformEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      IdentifyUserRequestPlatformEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => IdentifyUserRequestPlatformEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$IdentifyUserRequest extends IdentifyUserRequest {
@@ -198,30 +210,30 @@ class _$IdentifyUserRequest extends IdentifyUserRequest {
   @override
   final BuiltMap<String, JsonObject?>? traits;
 
-  factory _$IdentifyUserRequest(
-          [void Function(IdentifyUserRequestBuilder)? updates]) =>
-      (IdentifyUserRequestBuilder()..update(updates))._build();
+  factory _$IdentifyUserRequest([
+    void Function(IdentifyUserRequestBuilder)? updates,
+  ]) => (IdentifyUserRequestBuilder()..update(updates))._build();
 
-  _$IdentifyUserRequest._(
-      {required this.app,
-      this.environment,
-      this.platform,
-      this.userId,
-      this.anonymousId,
-      this.deviceId,
-      this.username,
-      this.email,
-      this.appVersion,
-      this.buildNumber,
-      this.country,
-      this.locale,
-      this.timezone,
-      this.traits})
-      : super._();
+  _$IdentifyUserRequest._({
+    required this.app,
+    this.environment,
+    this.platform,
+    this.userId,
+    this.anonymousId,
+    this.deviceId,
+    this.username,
+    this.email,
+    this.appVersion,
+    this.buildNumber,
+    this.country,
+    this.locale,
+    this.timezone,
+    this.traits,
+  }) : super._();
   @override
   IdentifyUserRequest rebuild(
-          void Function(IdentifyUserRequestBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(IdentifyUserRequestBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   IdentifyUserRequestBuilder toBuilder() =>
@@ -395,10 +407,14 @@ class IdentifyUserRequestBuilder
   _$IdentifyUserRequest _build() {
     _$IdentifyUserRequest _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$IdentifyUserRequest._(
             app: BuiltValueNullFieldError.checkNotNull(
-                app, r'IdentifyUserRequest', 'app'),
+              app,
+              r'IdentifyUserRequest',
+              'app',
+            ),
             environment: environment,
             platform: platform,
             userId: userId,
@@ -420,7 +436,10 @@ class IdentifyUserRequestBuilder
         _traits?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'IdentifyUserRequest', _$failedField, e.toString());
+          r'IdentifyUserRequest',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

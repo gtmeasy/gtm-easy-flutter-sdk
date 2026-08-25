@@ -20,10 +20,8 @@ import 'survey.dart';
 import 'transport/dio_transport.dart';
 import 'transport/transport.dart';
 
-typedef FlutterContextFactory = GrowthContextProvider Function({
-  String? appVersion,
-  String? buildNumber,
-});
+typedef FlutterContextFactory =
+    GrowthContextProvider Function({String? appVersion, String? buildNumber});
 
 /// Client for the GTM Easy Growth ingest API.
 class GrowthAnalytics {
@@ -37,14 +35,14 @@ class GrowthAnalytics {
     required GrowthLogger logger,
     required Uuid uuid,
     required DateTime Function() now,
-  })  : _identity = identity,
-        _clickIds = clickIds,
-        _dispatcher = dispatcher,
-        _contextProvider = contextProvider,
-        _snapshot = snapshot,
-        _logger = logger,
-        _uuid = uuid,
-        _now = now;
+  }) : _identity = identity,
+       _clickIds = clickIds,
+       _dispatcher = dispatcher,
+       _contextProvider = contextProvider,
+       _snapshot = snapshot,
+       _logger = logger,
+       _uuid = uuid,
+       _now = now;
 
   static GrowthAnalytics? _instance;
   static FlutterContextFactory? _flutterContextFactory;
@@ -113,7 +111,8 @@ class GrowthAnalytics {
     await identity.load();
     final clickIds = ClickIdStore(prefs, random: random, now: clock);
 
-    final resolvedContext = contextProvider ??
+    final resolvedContext =
+        contextProvider ??
         _flutterContextFactory?.call(
           appVersion: config.appVersion,
           buildNumber: config.buildNumber,
@@ -131,10 +130,7 @@ class GrowthAnalytics {
         timezone: snapshot.timezone,
         appVersion: config.appVersion ?? snapshot.appVersion,
         buildNumber: config.buildNumber ?? snapshot.buildNumber,
-        ctx: const {
-          'sdk': 'flutter',
-          'sdk_version': '0.1.0',
-        },
+        ctx: const {'sdk': 'flutter', 'sdk_version': '0.1.0'},
       );
     }
 
@@ -238,10 +234,10 @@ class GrowthAnalytics {
       await track(GrowthEvents.appFirstOpen);
       await track(GrowthEvents.appOpened);
     } else if (last != version) {
-      await track(GrowthEvents.appUpdated, properties: {
-        'previous_version': last,
-        'version': version,
-      });
+      await track(
+        GrowthEvents.appUpdated,
+        properties: {'previous_version': last, 'version': version},
+      );
       await track(GrowthEvents.appOpened);
     } else {
       await track(GrowthEvents.appOpened);
@@ -384,10 +380,7 @@ class GrowthAnalytics {
       if (userCtx is Map) ...Map<String, Object?>.from(userCtx),
       ...sdkCtx,
     };
-    return <String, Object?>{
-      ...input,
-      '_ctx': mergedCtx,
-    };
+    return <String, Object?>{...input, '_ctx': mergedCtx};
   }
 
   Future<void> _enqueueWebReferrer(String referrer) async {

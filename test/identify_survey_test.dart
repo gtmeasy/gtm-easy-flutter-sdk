@@ -40,8 +40,10 @@ void main() {
     expect(userBody['username'], 'ada');
     expect(userBody['email'], 'ada@example.com');
     expect((userBody['traits'] as Map<Object?, Object?>)['plan'], 'pro');
-    expect((userBody['traits'] as Map<Object?, Object?>)['_ctx'],
-        isA<Map<Object?, Object?>>());
+    expect(
+      (userBody['traits'] as Map<Object?, Object?>)['_ctx'],
+      isA<Map<Object?, Object?>>(),
+    );
   });
 
   test('submitSurvey shape matches the spec', () async {

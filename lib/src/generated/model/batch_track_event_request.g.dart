@@ -10,15 +10,15 @@ class _$BatchTrackEventRequest extends BatchTrackEventRequest {
   @override
   final BuiltList<TrackEventRequest> events;
 
-  factory _$BatchTrackEventRequest(
-          [void Function(BatchTrackEventRequestBuilder)? updates]) =>
-      (BatchTrackEventRequestBuilder()..update(updates))._build();
+  factory _$BatchTrackEventRequest([
+    void Function(BatchTrackEventRequestBuilder)? updates,
+  ]) => (BatchTrackEventRequestBuilder()..update(updates))._build();
 
   _$BatchTrackEventRequest._({required this.events}) : super._();
   @override
   BatchTrackEventRequest rebuild(
-          void Function(BatchTrackEventRequestBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(BatchTrackEventRequestBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   BatchTrackEventRequestBuilder toBuilder() =>
@@ -40,9 +40,9 @@ class _$BatchTrackEventRequest extends BatchTrackEventRequest {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'BatchTrackEventRequest')
-          ..add('events', events))
-        .toString();
+    return (newBuiltValueToStringHelper(
+      r'BatchTrackEventRequest',
+    )..add('events', events)).toString();
   }
 }
 
@@ -84,10 +84,7 @@ class BatchTrackEventRequestBuilder
   _$BatchTrackEventRequest _build() {
     _$BatchTrackEventRequest _$result;
     try {
-      _$result = _$v ??
-          _$BatchTrackEventRequest._(
-            events: events.build(),
-          );
+      _$result = _$v ?? _$BatchTrackEventRequest._(events: events.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -95,7 +92,10 @@ class BatchTrackEventRequestBuilder
         events.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'BatchTrackEventRequest', _$failedField, e.toString());
+          r'BatchTrackEventRequest',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

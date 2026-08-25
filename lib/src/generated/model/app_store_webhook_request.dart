@@ -20,9 +20,9 @@ abstract class AppStoreWebhookRequest
 
   AppStoreWebhookRequest._();
 
-  factory AppStoreWebhookRequest(
-          [void updates(AppStoreWebhookRequestBuilder b)]) =
-      _$AppStoreWebhookRequest;
+  factory AppStoreWebhookRequest([
+    void updates(AppStoreWebhookRequestBuilder b),
+  ]) = _$AppStoreWebhookRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AppStoreWebhookRequestBuilder b) => b;
@@ -37,7 +37,7 @@ class _$AppStoreWebhookRequestSerializer
   @override
   final Iterable<Type> types = const [
     AppStoreWebhookRequest,
-    _$AppStoreWebhookRequest
+    _$AppStoreWebhookRequest,
   ];
 
   @override
@@ -61,9 +61,11 @@ class _$AppStoreWebhookRequestSerializer
     AppStoreWebhookRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -79,10 +81,12 @@ class _$AppStoreWebhookRequestSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'signedPayload':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.signedPayload = valueDes;
           break;
         default:

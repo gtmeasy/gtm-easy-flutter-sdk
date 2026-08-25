@@ -82,9 +82,9 @@ abstract class AppleAttributionRequest
 
   AppleAttributionRequest._();
 
-  factory AppleAttributionRequest(
-          [void updates(AppleAttributionRequestBuilder b)]) =
-      _$AppleAttributionRequest;
+  factory AppleAttributionRequest([
+    void updates(AppleAttributionRequestBuilder b),
+  ]) = _$AppleAttributionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AppleAttributionRequestBuilder b) => b
@@ -102,7 +102,7 @@ class _$AppleAttributionRequestSerializer
   @override
   final Iterable<Type> types = const [
     AppleAttributionRequest,
-    _$AppleAttributionRequest
+    _$AppleAttributionRequest,
   ];
 
   @override
@@ -206,8 +206,10 @@ class _$AppleAttributionRequestSerializer
       yield r'properties';
       yield serializers.serialize(
         object.properties,
-        specifiedType: const FullType(
-            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(JsonObject),
+        ]),
       );
     }
     yield r'appleAttributionToken';
@@ -223,9 +225,11 @@ class _$AppleAttributionRequestSerializer
     AppleAttributionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -241,124 +245,158 @@ class _$AppleAttributionRequestSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'app':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.app = valueDes;
           break;
         case r'environment':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(AppleAttributionRequestEnvironmentEnum),
-          ) as AppleAttributionRequestEnvironmentEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      AppleAttributionRequestEnvironmentEnum,
+                    ),
+                  )
+                  as AppleAttributionRequestEnvironmentEnum?;
           if (valueDes == null) continue;
           result.environment = valueDes;
           break;
         case r'userId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.userId = valueDes;
           break;
         case r'anonymousId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.anonymousId = valueDes;
           break;
         case r'deviceId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.deviceId = valueDes;
           break;
         case r'platform':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(AppleAttributionRequestPlatformEnum),
-          ) as AppleAttributionRequestPlatformEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      AppleAttributionRequestPlatformEnum,
+                    ),
+                  )
+                  as AppleAttributionRequestPlatformEnum?;
           if (valueDes == null) continue;
           result.platform = valueDes;
           break;
         case r'appVersion':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.appVersion = valueDes;
           break;
         case r'buildNumber':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.buildNumber = valueDes;
           break;
         case r'source':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.source_ = valueDes;
           break;
         case r'country':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.country = valueDes;
           break;
         case r'locale':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.locale = valueDes;
           break;
         case r'timezone':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.timezone = valueDes;
           break;
         case r'occurredAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(DateTime),
-          ) as DateTime?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(DateTime),
+                  )
+                  as DateTime?;
           if (valueDes == null) continue;
           result.occurredAt = valueDes;
           break;
         case r'properties':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltMap, [
+                      FullType(String),
+                      FullType.nullable(JsonObject),
+                    ]),
+                  )
+                  as BuiltMap<String, JsonObject?>?;
           if (valueDes == null) continue;
           result.properties.replace(valueDes);
           break;
         case r'appleAttributionToken':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.appleAttributionToken = valueDes;
           break;
         default:

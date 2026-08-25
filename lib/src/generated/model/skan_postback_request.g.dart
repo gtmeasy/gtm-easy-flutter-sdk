@@ -7,17 +7,17 @@ part of 'skan_postback_request.dart';
 // **************************************************************************
 
 const SkanPostbackRequestCoarseConversionValueEnum
-    _$skanPostbackRequestCoarseConversionValueEnum_low =
+_$skanPostbackRequestCoarseConversionValueEnum_low =
     const SkanPostbackRequestCoarseConversionValueEnum._('low');
 const SkanPostbackRequestCoarseConversionValueEnum
-    _$skanPostbackRequestCoarseConversionValueEnum_medium =
+_$skanPostbackRequestCoarseConversionValueEnum_medium =
     const SkanPostbackRequestCoarseConversionValueEnum._('medium');
 const SkanPostbackRequestCoarseConversionValueEnum
-    _$skanPostbackRequestCoarseConversionValueEnum_high =
+_$skanPostbackRequestCoarseConversionValueEnum_high =
     const SkanPostbackRequestCoarseConversionValueEnum._('high');
 
 SkanPostbackRequestCoarseConversionValueEnum
-    _$skanPostbackRequestCoarseConversionValueEnumValueOf(String name) {
+_$skanPostbackRequestCoarseConversionValueEnumValueOf(String name) {
   switch (name) {
     case 'low':
       return _$skanPostbackRequestCoarseConversionValueEnum_low;
@@ -31,15 +31,17 @@ SkanPostbackRequestCoarseConversionValueEnum
 }
 
 final BuiltSet<SkanPostbackRequestCoarseConversionValueEnum>
-    _$skanPostbackRequestCoarseConversionValueEnumValues = BuiltSet<
-        SkanPostbackRequestCoarseConversionValueEnum>(const <SkanPostbackRequestCoarseConversionValueEnum>[
-  _$skanPostbackRequestCoarseConversionValueEnum_low,
-  _$skanPostbackRequestCoarseConversionValueEnum_medium,
-  _$skanPostbackRequestCoarseConversionValueEnum_high,
-]);
+_$skanPostbackRequestCoarseConversionValueEnumValues =
+    BuiltSet<SkanPostbackRequestCoarseConversionValueEnum>(
+      const <SkanPostbackRequestCoarseConversionValueEnum>[
+        _$skanPostbackRequestCoarseConversionValueEnum_low,
+        _$skanPostbackRequestCoarseConversionValueEnum_medium,
+        _$skanPostbackRequestCoarseConversionValueEnum_high,
+      ],
+    );
 
 Serializer<SkanPostbackRequestCoarseConversionValueEnum>
-    _$skanPostbackRequestCoarseConversionValueEnumSerializer =
+_$skanPostbackRequestCoarseConversionValueEnumSerializer =
     _$SkanPostbackRequestCoarseConversionValueEnumSerializer();
 
 class _$SkanPostbackRequestCoarseConversionValueEnumSerializer
@@ -58,23 +60,26 @@ class _$SkanPostbackRequestCoarseConversionValueEnumSerializer
 
   @override
   final Iterable<Type> types = const <Type>[
-    SkanPostbackRequestCoarseConversionValueEnum
+    SkanPostbackRequestCoarseConversionValueEnum,
   ];
   @override
   final String wireName = 'SkanPostbackRequestCoarseConversionValueEnum';
 
   @override
-  Object serialize(Serializers serializers,
-          SkanPostbackRequestCoarseConversionValueEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+  Object serialize(
+    Serializers serializers,
+    SkanPostbackRequestCoarseConversionValueEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   SkanPostbackRequestCoarseConversionValueEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      SkanPostbackRequestCoarseConversionValueEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => SkanPostbackRequestCoarseConversionValueEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$SkanPostbackRequest extends SkanPostbackRequest {
@@ -109,31 +114,31 @@ class _$SkanPostbackRequest extends SkanPostbackRequest {
   @override
   final int? postbackSequenceIndex;
 
-  factory _$SkanPostbackRequest(
-          [void Function(SkanPostbackRequestBuilder)? updates]) =>
-      (SkanPostbackRequestBuilder()..update(updates))._build();
+  factory _$SkanPostbackRequest([
+    void Function(SkanPostbackRequestBuilder)? updates,
+  ]) => (SkanPostbackRequestBuilder()..update(updates))._build();
 
-  _$SkanPostbackRequest._(
-      {required this.version,
-      required this.adNetworkId,
-      this.campaignId,
-      this.sourceIdentifier,
-      required this.transactionId,
-      required this.appId,
-      required this.attributionSignature,
-      this.redownload,
-      this.sourceAppId,
-      this.sourceDomain,
-      this.fidelityType,
-      this.conversionValue,
-      this.coarseConversionValue,
-      this.didWin,
-      this.postbackSequenceIndex})
-      : super._();
+  _$SkanPostbackRequest._({
+    required this.version,
+    required this.adNetworkId,
+    this.campaignId,
+    this.sourceIdentifier,
+    required this.transactionId,
+    required this.appId,
+    required this.attributionSignature,
+    this.redownload,
+    this.sourceAppId,
+    this.sourceDomain,
+    this.fidelityType,
+    this.conversionValue,
+    this.coarseConversionValue,
+    this.didWin,
+    this.postbackSequenceIndex,
+  }) : super._();
   @override
   SkanPostbackRequest rebuild(
-          void Function(SkanPostbackRequestBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(SkanPostbackRequestBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   SkanPostbackRequestBuilder toBuilder() =>
@@ -264,9 +269,8 @@ class SkanPostbackRequestBuilder
   SkanPostbackRequestCoarseConversionValueEnum? get coarseConversionValue =>
       _$this._coarseConversionValue;
   set coarseConversionValue(
-          SkanPostbackRequestCoarseConversionValueEnum?
-              coarseConversionValue) =>
-      _$this._coarseConversionValue = coarseConversionValue;
+    SkanPostbackRequestCoarseConversionValueEnum? coarseConversionValue,
+  ) => _$this._coarseConversionValue = coarseConversionValue;
 
   bool? _didWin;
   bool? get didWin => _$this._didWin;
@@ -318,22 +322,36 @@ class SkanPostbackRequestBuilder
   SkanPostbackRequest build() => _build();
 
   _$SkanPostbackRequest _build() {
-    final _$result = _$v ??
+    final _$result =
+        _$v ??
         _$SkanPostbackRequest._(
           version: BuiltValueNullFieldError.checkNotNull(
-              version, r'SkanPostbackRequest', 'version'),
+            version,
+            r'SkanPostbackRequest',
+            'version',
+          ),
           adNetworkId: BuiltValueNullFieldError.checkNotNull(
-              adNetworkId, r'SkanPostbackRequest', 'adNetworkId'),
+            adNetworkId,
+            r'SkanPostbackRequest',
+            'adNetworkId',
+          ),
           campaignId: campaignId,
           sourceIdentifier: sourceIdentifier,
           transactionId: BuiltValueNullFieldError.checkNotNull(
-              transactionId, r'SkanPostbackRequest', 'transactionId'),
+            transactionId,
+            r'SkanPostbackRequest',
+            'transactionId',
+          ),
           appId: BuiltValueNullFieldError.checkNotNull(
-              appId, r'SkanPostbackRequest', 'appId'),
+            appId,
+            r'SkanPostbackRequest',
+            'appId',
+          ),
           attributionSignature: BuiltValueNullFieldError.checkNotNull(
-              attributionSignature,
-              r'SkanPostbackRequest',
-              'attributionSignature'),
+            attributionSignature,
+            r'SkanPostbackRequest',
+            'attributionSignature',
+          ),
           redownload: redownload,
           sourceAppId: sourceAppId,
           sourceDomain: sourceDomain,

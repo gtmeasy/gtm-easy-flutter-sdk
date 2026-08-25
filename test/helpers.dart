@@ -49,9 +49,7 @@ class FakeTransport implements GrowthTransport {
   }
 }
 
-StaticGrowthContextProvider testContext({
-  String platform = 'ios',
-}) {
+StaticGrowthContextProvider testContext({String platform = 'ios'}) {
   return StaticGrowthContextProvider(
     DeviceSnapshot(
       platform: platform,

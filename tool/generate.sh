@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 # Regenerate lib/src/generated from openapi/growth.openapi.json.
+# Regenerated dart-dio output is copied into lib/src/generated/ and then
+# dart-fix/format are applied. Unused-import cleanup may be done by hand
+# after generate; those edits are allowed for analyzer/pana cleanliness.
+
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -31,5 +35,12 @@ cp _gen/.openapi-generator/VERSION .openapi-generator/VERSION
 cp _gen/.openapi-generator-ignore .openapi-generator-ignore
 
 dart run build_runner build --delete-conflicting-outputs
+# dart fix does not rewrite this tree while analysis_options excludes it.
+# OpenAPI dart-dio leaves unused json_object / ErrorResponse imports on *Api classes.
+dart fix --apply lib/src/generated || true
+find lib/src/generated/api -name '*.dart' -print0 | xargs -0 sed -i '' \
+  -e '/^import '\''package:built_value\/json_object.dart'\'';$/d' \
+  -e '/^import '\''package:gtmeasy_growth\/src\/generated\/model\/error_response.dart'\'';$/d'
+dart format lib/src/generated
 /bin/rm -rf _gen
 echo "Generated client written to lib/src/generated/"

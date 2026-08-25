@@ -1,19 +1,15 @@
 class QueueItem {
-  const QueueItem({
-    required this.id,
-    required this.kind,
-    required this.body,
-  });
+  const QueueItem({required this.id, required this.kind, required this.body});
 
   final String id;
   final String kind;
   final Map<String, Object?> body;
 
   Map<String, Object?> toJson() => <String, Object?>{
-        'id': id,
-        'kind': kind,
-        'body': body,
-      };
+    'id': id,
+    'kind': kind,
+    'body': body,
+  };
 
   factory QueueItem.fromJson(Map<String, Object?> json) {
     final bodyRaw = json['body'];

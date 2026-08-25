@@ -30,27 +30,27 @@ class _$SurveyResponseAnswer extends SurveyResponseAnswer {
   @override
   final BuiltMap<String, JsonObject?>? metadata;
 
-  factory _$SurveyResponseAnswer(
-          [void Function(SurveyResponseAnswerBuilder)? updates]) =>
-      (SurveyResponseAnswerBuilder()..update(updates))._build();
+  factory _$SurveyResponseAnswer([
+    void Function(SurveyResponseAnswerBuilder)? updates,
+  ]) => (SurveyResponseAnswerBuilder()..update(updates))._build();
 
-  _$SurveyResponseAnswer._(
-      {required this.questionId,
-      required this.type,
-      this.questionText,
-      this.position,
-      this.choices,
-      this.choiceLabels,
-      this.number,
-      this.text,
-      this.bool_,
-      this.skipped,
-      this.metadata})
-      : super._();
+  _$SurveyResponseAnswer._({
+    required this.questionId,
+    required this.type,
+    this.questionText,
+    this.position,
+    this.choices,
+    this.choiceLabels,
+    this.number,
+    this.text,
+    this.bool_,
+    this.skipped,
+    this.metadata,
+  }) : super._();
   @override
   SurveyResponseAnswer rebuild(
-          void Function(SurveyResponseAnswerBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(SurveyResponseAnswerBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   SurveyResponseAnswerBuilder toBuilder() =>
@@ -200,12 +200,19 @@ class SurveyResponseAnswerBuilder
   _$SurveyResponseAnswer _build() {
     _$SurveyResponseAnswer _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$SurveyResponseAnswer._(
             questionId: BuiltValueNullFieldError.checkNotNull(
-                questionId, r'SurveyResponseAnswer', 'questionId'),
+              questionId,
+              r'SurveyResponseAnswer',
+              'questionId',
+            ),
             type: BuiltValueNullFieldError.checkNotNull(
-                type, r'SurveyResponseAnswer', 'type'),
+              type,
+              r'SurveyResponseAnswer',
+              'type',
+            ),
             questionText: questionText,
             position: position,
             choices: _choices?.build(),
@@ -228,7 +235,10 @@ class SurveyResponseAnswerBuilder
         _metadata?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'SurveyResponseAnswer', _$failedField, e.toString());
+          r'SurveyResponseAnswer',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

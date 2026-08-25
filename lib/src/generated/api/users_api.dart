@@ -4,11 +4,9 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:gtmeasy_growth/src/generated/model/error_response.dart';
 import 'package:gtmeasy_growth/src/generated/model/identify_user_request.dart';
 import 'package:gtmeasy_growth/src/generated/model/ingest_user_response.dart';
 
@@ -70,14 +68,13 @@ class UsersApi {
 
     try {
       const _type = FullType(IdentifyUserRequest);
-      _bodyData =
-          _serializers.serialize(identifyUserRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(
+        identifyUserRequest,
+        specifiedType: _type,
+      );
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -100,9 +97,10 @@ class UsersApi {
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(IngestUserResponse),
-            ) as IngestUserResponse;
+                  rawResponse,
+                  specifiedType: const FullType(IngestUserResponse),
+                )
+                as IngestUserResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

@@ -12,16 +12,16 @@ class _$RegistrationResponseUser extends RegistrationResponseUser {
   @override
   final String? principalId;
 
-  factory _$RegistrationResponseUser(
-          [void Function(RegistrationResponseUserBuilder)? updates]) =>
-      (RegistrationResponseUserBuilder()..update(updates))._build();
+  factory _$RegistrationResponseUser([
+    void Function(RegistrationResponseUserBuilder)? updates,
+  ]) => (RegistrationResponseUserBuilder()..update(updates))._build();
 
   _$RegistrationResponseUser._({required this.identityHash, this.principalId})
-      : super._();
+    : super._();
   @override
   RegistrationResponseUser rebuild(
-          void Function(RegistrationResponseUserBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(RegistrationResponseUserBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   RegistrationResponseUserBuilder toBuilder() =>
@@ -94,10 +94,14 @@ class RegistrationResponseUserBuilder
   RegistrationResponseUser build() => _build();
 
   _$RegistrationResponseUser _build() {
-    final _$result = _$v ??
+    final _$result =
+        _$v ??
         _$RegistrationResponseUser._(
           identityHash: BuiltValueNullFieldError.checkNotNull(
-              identityHash, r'RegistrationResponseUser', 'identityHash'),
+            identityHash,
+            r'RegistrationResponseUser',
+            'identityHash',
+          ),
           principalId: principalId,
         );
     replace(_$result);

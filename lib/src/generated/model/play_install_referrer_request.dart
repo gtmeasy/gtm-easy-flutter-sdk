@@ -58,14 +58,15 @@ abstract class PlayInstallReferrerRequest
 
   PlayInstallReferrerRequest._();
 
-  factory PlayInstallReferrerRequest(
-          [void updates(PlayInstallReferrerRequestBuilder b)]) =
-      _$PlayInstallReferrerRequest;
+  factory PlayInstallReferrerRequest([
+    void updates(PlayInstallReferrerRequestBuilder b),
+  ]) = _$PlayInstallReferrerRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PlayInstallReferrerRequestBuilder b) => b
-    ..environment =
-        PlayInstallReferrerRequestEnvironmentEnum.valueOf('production')
+    ..environment = PlayInstallReferrerRequestEnvironmentEnum.valueOf(
+      'production',
+    )
     ..platform = PlayInstallReferrerRequestPlatformEnum.valueOf('android')
     ..source_ = 'native';
 
@@ -79,7 +80,7 @@ class _$PlayInstallReferrerRequestSerializer
   @override
   final Iterable<Type> types = const [
     PlayInstallReferrerRequest,
-    _$PlayInstallReferrerRequest
+    _$PlayInstallReferrerRequest,
   ];
 
   @override
@@ -99,8 +100,9 @@ class _$PlayInstallReferrerRequestSerializer
       yield r'environment';
       yield serializers.serialize(
         object.environment,
-        specifiedType:
-            const FullType(PlayInstallReferrerRequestEnvironmentEnum),
+        specifiedType: const FullType(
+          PlayInstallReferrerRequestEnvironmentEnum,
+        ),
       );
     }
     if (object.userId != null) {
@@ -147,8 +149,10 @@ class _$PlayInstallReferrerRequestSerializer
       yield r'properties';
       yield serializers.serialize(
         object.properties,
-        specifiedType: const FullType(
-            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(JsonObject),
+        ]),
       );
     }
   }
@@ -159,9 +163,11 @@ class _$PlayInstallReferrerRequestSerializer
     PlayInstallReferrerRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -177,75 +183,97 @@ class _$PlayInstallReferrerRequestSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'app':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.app = valueDes;
           break;
         case r'environment':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                PlayInstallReferrerRequestEnvironmentEnum),
-          ) as PlayInstallReferrerRequestEnvironmentEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      PlayInstallReferrerRequestEnvironmentEnum,
+                    ),
+                  )
+                  as PlayInstallReferrerRequestEnvironmentEnum?;
           if (valueDes == null) continue;
           result.environment = valueDes;
           break;
         case r'userId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.userId = valueDes;
           break;
         case r'anonymousId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.anonymousId = valueDes;
           break;
         case r'platform':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(PlayInstallReferrerRequestPlatformEnum),
-          ) as PlayInstallReferrerRequestPlatformEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      PlayInstallReferrerRequestPlatformEnum,
+                    ),
+                  )
+                  as PlayInstallReferrerRequestPlatformEnum?;
           if (valueDes == null) continue;
           result.platform = valueDes;
           break;
         case r'source':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.source_ = valueDes;
           break;
         case r'occurredAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(DateTime),
-          ) as DateTime?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(DateTime),
+                  )
+                  as DateTime?;
           if (valueDes == null) continue;
           result.occurredAt = valueDes;
           break;
         case r'playInstallReferrer':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.playInstallReferrer = valueDes;
           break;
         case r'properties':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltMap, [
+                      FullType(String),
+                      FullType.nullable(JsonObject),
+                    ]),
+                  )
+                  as BuiltMap<String, JsonObject?>?;
           if (valueDes == null) continue;
           result.properties.replace(valueDes);
           break;

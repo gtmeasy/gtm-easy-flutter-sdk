@@ -14,17 +14,19 @@ class _$RegistrationResponse extends RegistrationResponse {
   @override
   final BuiltList<String> warnings;
 
-  factory _$RegistrationResponse(
-          [void Function(RegistrationResponseBuilder)? updates]) =>
-      (RegistrationResponseBuilder()..update(updates))._build();
+  factory _$RegistrationResponse([
+    void Function(RegistrationResponseBuilder)? updates,
+  ]) => (RegistrationResponseBuilder()..update(updates))._build();
 
-  _$RegistrationResponse._(
-      {required this.user, required this.event, required this.warnings})
-      : super._();
+  _$RegistrationResponse._({
+    required this.user,
+    required this.event,
+    required this.warnings,
+  }) : super._();
   @override
   RegistrationResponse rebuild(
-          void Function(RegistrationResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(RegistrationResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   RegistrationResponseBuilder toBuilder() =>
@@ -109,7 +111,8 @@ class RegistrationResponseBuilder
   _$RegistrationResponse _build() {
     _$RegistrationResponse _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$RegistrationResponse._(
             user: user.build(),
             event: event.build(),
@@ -126,7 +129,10 @@ class RegistrationResponseBuilder
         warnings.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'RegistrationResponse', _$failedField, e.toString());
+          r'RegistrationResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

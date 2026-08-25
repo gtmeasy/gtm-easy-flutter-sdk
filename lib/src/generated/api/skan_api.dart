@@ -4,11 +4,9 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:gtmeasy_growth/src/generated/model/error_response.dart';
 import 'package:gtmeasy_growth/src/generated/model/health_response.dart';
 import 'package:gtmeasy_growth/src/generated/model/skan_postback_request.dart';
 
@@ -45,13 +43,8 @@ class SkanApi {
     final _path = r'/skan/postback';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -60,14 +53,13 @@ class SkanApi {
 
     try {
       const _type = FullType(SkanPostbackRequest);
-      _bodyData =
-          _serializers.serialize(skanPostbackRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(
+        skanPostbackRequest,
+        specifiedType: _type,
+      );
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -90,9 +82,10 @@ class SkanApi {
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(HealthResponse),
-            ) as HealthResponse;
+                  rawResponse,
+                  specifiedType: const FullType(HealthResponse),
+                )
+                as HealthResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

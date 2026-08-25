@@ -14,17 +14,19 @@ class _$BatchIngestResponse extends BatchIngestResponse {
   @override
   final BuiltList<BatchIngestItemResult> results;
 
-  factory _$BatchIngestResponse(
-          [void Function(BatchIngestResponseBuilder)? updates]) =>
-      (BatchIngestResponseBuilder()..update(updates))._build();
+  factory _$BatchIngestResponse([
+    void Function(BatchIngestResponseBuilder)? updates,
+  ]) => (BatchIngestResponseBuilder()..update(updates))._build();
 
-  _$BatchIngestResponse._(
-      {required this.accepted, required this.rejected, required this.results})
-      : super._();
+  _$BatchIngestResponse._({
+    required this.accepted,
+    required this.rejected,
+    required this.results,
+  }) : super._();
   @override
   BatchIngestResponse rebuild(
-          void Function(BatchIngestResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(BatchIngestResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   BatchIngestResponseBuilder toBuilder() =>
@@ -108,12 +110,19 @@ class BatchIngestResponseBuilder
   _$BatchIngestResponse _build() {
     _$BatchIngestResponse _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$BatchIngestResponse._(
             accepted: BuiltValueNullFieldError.checkNotNull(
-                accepted, r'BatchIngestResponse', 'accepted'),
+              accepted,
+              r'BatchIngestResponse',
+              'accepted',
+            ),
             rejected: BuiltValueNullFieldError.checkNotNull(
-                rejected, r'BatchIngestResponse', 'rejected'),
+              rejected,
+              r'BatchIngestResponse',
+              'rejected',
+            ),
             results: results.build(),
           );
     } catch (_) {
@@ -123,7 +132,10 @@ class BatchIngestResponseBuilder
         results.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'BatchIngestResponse', _$failedField, e.toString());
+          r'BatchIngestResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

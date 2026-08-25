@@ -13,8 +13,9 @@ void main() {
     } catch (_) {}
   });
 
-  testWidgets('paused triggers flush; resumed re-opens after debounce',
-      (tester) async {
+  testWidgets('paused triggers flush; resumed re-opens after debounce', (
+    tester,
+  ) async {
     await mockPrefs();
     final storage = MemoryGrowthStorage();
     final transport = FakeTransport();

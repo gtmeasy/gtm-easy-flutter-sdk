@@ -25,9 +25,9 @@ abstract class IngestUserResponseUser
 
   IngestUserResponseUser._();
 
-  factory IngestUserResponseUser(
-          [void updates(IngestUserResponseUserBuilder b)]) =
-      _$IngestUserResponseUser;
+  factory IngestUserResponseUser([
+    void updates(IngestUserResponseUserBuilder b),
+  ]) = _$IngestUserResponseUser;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(IngestUserResponseUserBuilder b) => b;
@@ -42,7 +42,7 @@ class _$IngestUserResponseUserSerializer
   @override
   final Iterable<Type> types = const [
     IngestUserResponseUser,
-    _$IngestUserResponseUser
+    _$IngestUserResponseUser,
   ];
 
   @override
@@ -73,9 +73,11 @@ class _$IngestUserResponseUserSerializer
     IngestUserResponseUser object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -91,17 +93,21 @@ class _$IngestUserResponseUserSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'identityHash':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.identityHash = valueDes;
           break;
         case r'principalId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.principalId = valueDes;
           break;

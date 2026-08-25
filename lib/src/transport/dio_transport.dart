@@ -4,20 +4,19 @@ import '../config.dart';
 import 'transport.dart';
 
 class DioGrowthTransport implements GrowthTransport {
-  DioGrowthTransport({
-    required GrowthConfig config,
-    Dio? dio,
-  }) : _dio = dio ??
-            Dio(
-              BaseOptions(
-                baseUrl: config.normalizedBaseUrl,
-                connectTimeout: config.requestTimeout,
-                receiveTimeout: config.requestTimeout,
-                sendTimeout: config.requestTimeout,
-                validateStatus: (_) => true,
-                headers: const {'content-type': 'application/json'},
-              ),
-            );
+  DioGrowthTransport({required GrowthConfig config, Dio? dio})
+    : _dio =
+          dio ??
+          Dio(
+            BaseOptions(
+              baseUrl: config.normalizedBaseUrl,
+              connectTimeout: config.requestTimeout,
+              receiveTimeout: config.requestTimeout,
+              sendTimeout: config.requestTimeout,
+              validateStatus: (_) => true,
+              headers: const {'content-type': 'application/json'},
+            ),
+          );
 
   final Dio _dio;
 

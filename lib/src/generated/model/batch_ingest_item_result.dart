@@ -41,8 +41,9 @@ abstract class BatchIngestItemResult
 
   BatchIngestItemResult._();
 
-  factory BatchIngestItemResult(
-      [void updates(BatchIngestItemResultBuilder b)]) = _$BatchIngestItemResult;
+  factory BatchIngestItemResult([
+    void updates(BatchIngestItemResultBuilder b),
+  ]) = _$BatchIngestItemResult;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BatchIngestItemResultBuilder b) => b;
@@ -57,7 +58,7 @@ class _$BatchIngestItemResultSerializer
   @override
   final Iterable<Type> types = const [
     BatchIngestItemResult,
-    _$BatchIngestItemResult
+    _$BatchIngestItemResult,
   ];
 
   @override
@@ -105,9 +106,11 @@ class _$BatchIngestItemResultSerializer
     BatchIngestItemResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -123,40 +126,51 @@ class _$BatchIngestItemResultSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'index':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
+          final valueDes =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int;
           result.index = valueDes;
           break;
         case r'eventId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.eventId = valueDes;
           break;
         case r'status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BatchIngestItemResultStatusEnum),
-          ) as BatchIngestItemResultStatusEnum;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(
+                      BatchIngestItemResultStatusEnum,
+                    ),
+                  )
+                  as BatchIngestItemResultStatusEnum;
           result.status = valueDes;
           break;
         case r'reason':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.reason = valueDes;
           break;
         case r'warnings':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(BuiltList, [
+                      FullType(String),
+                    ]),
+                  )
+                  as BuiltList<String>;
           result.warnings.replace(valueDes);
           break;
         default:

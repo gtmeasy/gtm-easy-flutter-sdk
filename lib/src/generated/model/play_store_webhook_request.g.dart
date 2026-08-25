@@ -12,16 +12,16 @@ class _$PlayStoreWebhookRequest extends PlayStoreWebhookRequest {
   @override
   final String? subscription;
 
-  factory _$PlayStoreWebhookRequest(
-          [void Function(PlayStoreWebhookRequestBuilder)? updates]) =>
-      (PlayStoreWebhookRequestBuilder()..update(updates))._build();
+  factory _$PlayStoreWebhookRequest([
+    void Function(PlayStoreWebhookRequestBuilder)? updates,
+  ]) => (PlayStoreWebhookRequestBuilder()..update(updates))._build();
 
   _$PlayStoreWebhookRequest._({required this.message, this.subscription})
-      : super._();
+    : super._();
   @override
   PlayStoreWebhookRequest rebuild(
-          void Function(PlayStoreWebhookRequestBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(PlayStoreWebhookRequestBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   PlayStoreWebhookRequestBuilder toBuilder() =>
@@ -98,7 +98,8 @@ class PlayStoreWebhookRequestBuilder
   _$PlayStoreWebhookRequest _build() {
     _$PlayStoreWebhookRequest _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$PlayStoreWebhookRequest._(
             message: message.build(),
             subscription: subscription,
@@ -110,7 +111,10 @@ class PlayStoreWebhookRequestBuilder
         message.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'PlayStoreWebhookRequest', _$failedField, e.toString());
+          r'PlayStoreWebhookRequest',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

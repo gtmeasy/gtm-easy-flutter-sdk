@@ -4,13 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:gtmeasy_growth/src/generated/model/download_request.dart';
 import 'package:gtmeasy_growth/src/generated/model/download_response.dart';
-import 'package:gtmeasy_growth/src/generated/model/error_response.dart';
 import 'package:gtmeasy_growth/src/generated/model/registration_request.dart';
 import 'package:gtmeasy_growth/src/generated/model/registration_response.dart';
 
@@ -75,10 +73,7 @@ class AcquisitionApi {
       _bodyData = _serializers.serialize(downloadRequest, specifiedType: _type);
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -101,9 +96,10 @@ class AcquisitionApi {
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(DownloadResponse),
-            ) as DownloadResponse;
+                  rawResponse,
+                  specifiedType: const FullType(DownloadResponse),
+                )
+                as DownloadResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -177,14 +173,13 @@ class AcquisitionApi {
 
     try {
       const _type = FullType(RegistrationRequest);
-      _bodyData =
-          _serializers.serialize(registrationRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(
+        registrationRequest,
+        specifiedType: _type,
+      );
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -207,9 +202,10 @@ class AcquisitionApi {
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(RegistrationResponse),
-            ) as RegistrationResponse;
+                  rawResponse,
+                  specifiedType: const FullType(RegistrationResponse),
+                )
+                as RegistrationResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

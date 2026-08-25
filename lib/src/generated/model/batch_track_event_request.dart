@@ -23,9 +23,9 @@ abstract class BatchTrackEventRequest
 
   BatchTrackEventRequest._();
 
-  factory BatchTrackEventRequest(
-          [void updates(BatchTrackEventRequestBuilder b)]) =
-      _$BatchTrackEventRequest;
+  factory BatchTrackEventRequest([
+    void updates(BatchTrackEventRequestBuilder b),
+  ]) = _$BatchTrackEventRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BatchTrackEventRequestBuilder b) => b;
@@ -40,7 +40,7 @@ class _$BatchTrackEventRequestSerializer
   @override
   final Iterable<Type> types = const [
     BatchTrackEventRequest,
-    _$BatchTrackEventRequest
+    _$BatchTrackEventRequest,
   ];
 
   @override
@@ -64,9 +64,11 @@ class _$BatchTrackEventRequestSerializer
     BatchTrackEventRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -82,11 +84,14 @@ class _$BatchTrackEventRequestSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'events':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType(BuiltList, [FullType(TrackEventRequest)]),
-          ) as BuiltList<TrackEventRequest>;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(BuiltList, [
+                      FullType(TrackEventRequest),
+                    ]),
+                  )
+                  as BuiltList<TrackEventRequest>;
           result.events.replace(valueDes);
           break;
         default:

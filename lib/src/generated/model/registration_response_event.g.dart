@@ -10,15 +10,15 @@ class _$RegistrationResponseEvent extends RegistrationResponseEvent {
   @override
   final String id;
 
-  factory _$RegistrationResponseEvent(
-          [void Function(RegistrationResponseEventBuilder)? updates]) =>
-      (RegistrationResponseEventBuilder()..update(updates))._build();
+  factory _$RegistrationResponseEvent([
+    void Function(RegistrationResponseEventBuilder)? updates,
+  ]) => (RegistrationResponseEventBuilder()..update(updates))._build();
 
   _$RegistrationResponseEvent._({required this.id}) : super._();
   @override
   RegistrationResponseEvent rebuild(
-          void Function(RegistrationResponseEventBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(RegistrationResponseEventBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   RegistrationResponseEventBuilder toBuilder() =>
@@ -40,9 +40,9 @@ class _$RegistrationResponseEvent extends RegistrationResponseEvent {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'RegistrationResponseEvent')
-          ..add('id', id))
-        .toString();
+    return (newBuiltValueToStringHelper(
+      r'RegistrationResponseEvent',
+    )..add('id', id)).toString();
   }
 }
 
@@ -82,10 +82,14 @@ class RegistrationResponseEventBuilder
   RegistrationResponseEvent build() => _build();
 
   _$RegistrationResponseEvent _build() {
-    final _$result = _$v ??
+    final _$result =
+        _$v ??
         _$RegistrationResponseEvent._(
           id: BuiltValueNullFieldError.checkNotNull(
-              id, r'RegistrationResponseEvent', 'id'),
+            id,
+            r'RegistrationResponseEvent',
+            'id',
+          ),
         );
     replace(_$result);
     return _$result;

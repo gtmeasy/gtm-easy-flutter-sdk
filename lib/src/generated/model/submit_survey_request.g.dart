@@ -7,17 +7,18 @@ part of 'submit_survey_request.dart';
 // **************************************************************************
 
 const SubmitSurveyRequestEnvironmentEnum
-    _$submitSurveyRequestEnvironmentEnum_production =
+_$submitSurveyRequestEnvironmentEnum_production =
     const SubmitSurveyRequestEnvironmentEnum._('production');
 const SubmitSurveyRequestEnvironmentEnum
-    _$submitSurveyRequestEnvironmentEnum_staging =
+_$submitSurveyRequestEnvironmentEnum_staging =
     const SubmitSurveyRequestEnvironmentEnum._('staging');
 const SubmitSurveyRequestEnvironmentEnum
-    _$submitSurveyRequestEnvironmentEnum_development =
+_$submitSurveyRequestEnvironmentEnum_development =
     const SubmitSurveyRequestEnvironmentEnum._('development');
 
 SubmitSurveyRequestEnvironmentEnum _$submitSurveyRequestEnvironmentEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'production':
       return _$submitSurveyRequestEnvironmentEnum_production;
@@ -31,24 +32,26 @@ SubmitSurveyRequestEnvironmentEnum _$submitSurveyRequestEnvironmentEnumValueOf(
 }
 
 final BuiltSet<SubmitSurveyRequestEnvironmentEnum>
-    _$submitSurveyRequestEnvironmentEnumValues = BuiltSet<
-        SubmitSurveyRequestEnvironmentEnum>(const <SubmitSurveyRequestEnvironmentEnum>[
-  _$submitSurveyRequestEnvironmentEnum_production,
-  _$submitSurveyRequestEnvironmentEnum_staging,
-  _$submitSurveyRequestEnvironmentEnum_development,
-]);
+_$submitSurveyRequestEnvironmentEnumValues =
+    BuiltSet<SubmitSurveyRequestEnvironmentEnum>(
+      const <SubmitSurveyRequestEnvironmentEnum>[
+        _$submitSurveyRequestEnvironmentEnum_production,
+        _$submitSurveyRequestEnvironmentEnum_staging,
+        _$submitSurveyRequestEnvironmentEnum_development,
+      ],
+    );
 
 const SubmitSurveyRequestPlatformEnum _$submitSurveyRequestPlatformEnum_ios =
     const SubmitSurveyRequestPlatformEnum._('ios');
 const SubmitSurveyRequestPlatformEnum
-    _$submitSurveyRequestPlatformEnum_android =
+_$submitSurveyRequestPlatformEnum_android =
     const SubmitSurveyRequestPlatformEnum._('android');
 const SubmitSurveyRequestPlatformEnum _$submitSurveyRequestPlatformEnum_web =
     const SubmitSurveyRequestPlatformEnum._('web');
 const SubmitSurveyRequestPlatformEnum _$submitSurveyRequestPlatformEnum_macos =
     const SubmitSurveyRequestPlatformEnum._('macos');
 const SubmitSurveyRequestPlatformEnum
-    _$submitSurveyRequestPlatformEnum_windows =
+_$submitSurveyRequestPlatformEnum_windows =
     const SubmitSurveyRequestPlatformEnum._('windows');
 const SubmitSurveyRequestPlatformEnum _$submitSurveyRequestPlatformEnum_linux =
     const SubmitSurveyRequestPlatformEnum._('linux');
@@ -56,7 +59,8 @@ const SubmitSurveyRequestPlatformEnum _$submitSurveyRequestPlatformEnum_server =
     const SubmitSurveyRequestPlatformEnum._('server');
 
 SubmitSurveyRequestPlatformEnum _$submitSurveyRequestPlatformEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'ios':
       return _$submitSurveyRequestPlatformEnum_ios;
@@ -78,16 +82,18 @@ SubmitSurveyRequestPlatformEnum _$submitSurveyRequestPlatformEnumValueOf(
 }
 
 final BuiltSet<SubmitSurveyRequestPlatformEnum>
-    _$submitSurveyRequestPlatformEnumValues = BuiltSet<
-        SubmitSurveyRequestPlatformEnum>(const <SubmitSurveyRequestPlatformEnum>[
-  _$submitSurveyRequestPlatformEnum_ios,
-  _$submitSurveyRequestPlatformEnum_android,
-  _$submitSurveyRequestPlatformEnum_web,
-  _$submitSurveyRequestPlatformEnum_macos,
-  _$submitSurveyRequestPlatformEnum_windows,
-  _$submitSurveyRequestPlatformEnum_linux,
-  _$submitSurveyRequestPlatformEnum_server,
-]);
+_$submitSurveyRequestPlatformEnumValues =
+    BuiltSet<SubmitSurveyRequestPlatformEnum>(
+      const <SubmitSurveyRequestPlatformEnum>[
+        _$submitSurveyRequestPlatformEnum_ios,
+        _$submitSurveyRequestPlatformEnum_android,
+        _$submitSurveyRequestPlatformEnum_web,
+        _$submitSurveyRequestPlatformEnum_macos,
+        _$submitSurveyRequestPlatformEnum_windows,
+        _$submitSurveyRequestPlatformEnum_linux,
+        _$submitSurveyRequestPlatformEnum_server,
+      ],
+    );
 
 const SubmitSurveyRequestStatusEnum _$submitSurveyRequestStatusEnum_completed =
     const SubmitSurveyRequestStatusEnum._('completed');
@@ -97,7 +103,8 @@ const SubmitSurveyRequestStatusEnum _$submitSurveyRequestStatusEnum_dismissed =
     const SubmitSurveyRequestStatusEnum._('dismissed');
 
 SubmitSurveyRequestStatusEnum _$submitSurveyRequestStatusEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'completed':
       return _$submitSurveyRequestStatusEnum_completed;
@@ -111,21 +118,22 @@ SubmitSurveyRequestStatusEnum _$submitSurveyRequestStatusEnumValueOf(
 }
 
 final BuiltSet<SubmitSurveyRequestStatusEnum>
-    _$submitSurveyRequestStatusEnumValues = BuiltSet<
-        SubmitSurveyRequestStatusEnum>(const <SubmitSurveyRequestStatusEnum>[
-  _$submitSurveyRequestStatusEnum_completed,
-  _$submitSurveyRequestStatusEnum_partial,
-  _$submitSurveyRequestStatusEnum_dismissed,
-]);
+_$submitSurveyRequestStatusEnumValues = BuiltSet<SubmitSurveyRequestStatusEnum>(
+  const <SubmitSurveyRequestStatusEnum>[
+    _$submitSurveyRequestStatusEnum_completed,
+    _$submitSurveyRequestStatusEnum_partial,
+    _$submitSurveyRequestStatusEnum_dismissed,
+  ],
+);
 
 Serializer<SubmitSurveyRequestEnvironmentEnum>
-    _$submitSurveyRequestEnvironmentEnumSerializer =
+_$submitSurveyRequestEnvironmentEnumSerializer =
     _$SubmitSurveyRequestEnvironmentEnumSerializer();
 Serializer<SubmitSurveyRequestPlatformEnum>
-    _$submitSurveyRequestPlatformEnumSerializer =
+_$submitSurveyRequestPlatformEnumSerializer =
     _$SubmitSurveyRequestPlatformEnumSerializer();
 Serializer<SubmitSurveyRequestStatusEnum>
-    _$submitSurveyRequestStatusEnumSerializer =
+_$submitSurveyRequestStatusEnumSerializer =
     _$SubmitSurveyRequestStatusEnumSerializer();
 
 class _$SubmitSurveyRequestEnvironmentEnumSerializer
@@ -148,16 +156,19 @@ class _$SubmitSurveyRequestEnvironmentEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, SubmitSurveyRequestEnvironmentEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    SubmitSurveyRequestEnvironmentEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   SubmitSurveyRequestEnvironmentEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      SubmitSurveyRequestEnvironmentEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => SubmitSurveyRequestEnvironmentEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$SubmitSurveyRequestPlatformEnumSerializer
@@ -188,16 +199,19 @@ class _$SubmitSurveyRequestPlatformEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, SubmitSurveyRequestPlatformEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    SubmitSurveyRequestPlatformEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   SubmitSurveyRequestPlatformEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      SubmitSurveyRequestPlatformEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => SubmitSurveyRequestPlatformEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$SubmitSurveyRequestStatusEnumSerializer
@@ -220,16 +234,19 @@ class _$SubmitSurveyRequestStatusEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, SubmitSurveyRequestStatusEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    SubmitSurveyRequestStatusEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   SubmitSurveyRequestStatusEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      SubmitSurveyRequestStatusEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => SubmitSurveyRequestStatusEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$SubmitSurveyRequest extends SubmitSurveyRequest {
@@ -270,34 +287,34 @@ class _$SubmitSurveyRequest extends SubmitSurveyRequest {
   @override
   final BuiltMap<String, JsonObject?>? metadata;
 
-  factory _$SubmitSurveyRequest(
-          [void Function(SubmitSurveyRequestBuilder)? updates]) =>
-      (SubmitSurveyRequestBuilder()..update(updates))._build();
+  factory _$SubmitSurveyRequest([
+    void Function(SubmitSurveyRequestBuilder)? updates,
+  ]) => (SubmitSurveyRequestBuilder()..update(updates))._build();
 
-  _$SubmitSurveyRequest._(
-      {this.app,
-      this.environment,
-      this.platform,
-      this.userId,
-      this.anonymousId,
-      this.deviceId,
-      required this.surveyId,
-      this.surveyVersion,
-      this.surveyName,
-      this.submissionId,
-      this.status,
-      this.appVersion,
-      this.locale,
-      this.country,
-      this.occurredAt,
-      this.responses,
-      this.properties,
-      this.metadata})
-      : super._();
+  _$SubmitSurveyRequest._({
+    this.app,
+    this.environment,
+    this.platform,
+    this.userId,
+    this.anonymousId,
+    this.deviceId,
+    required this.surveyId,
+    this.surveyVersion,
+    this.surveyName,
+    this.submissionId,
+    this.status,
+    this.appVersion,
+    this.locale,
+    this.country,
+    this.occurredAt,
+    this.responses,
+    this.properties,
+    this.metadata,
+  }) : super._();
   @override
   SubmitSurveyRequest rebuild(
-          void Function(SubmitSurveyRequestBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(SubmitSurveyRequestBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   SubmitSurveyRequestBuilder toBuilder() =>
@@ -508,7 +525,8 @@ class SubmitSurveyRequestBuilder
   _$SubmitSurveyRequest _build() {
     _$SubmitSurveyRequest _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$SubmitSurveyRequest._(
             app: app,
             environment: environment,
@@ -517,7 +535,10 @@ class SubmitSurveyRequestBuilder
             anonymousId: anonymousId,
             deviceId: deviceId,
             surveyId: BuiltValueNullFieldError.checkNotNull(
-                surveyId, r'SubmitSurveyRequest', 'surveyId'),
+              surveyId,
+              r'SubmitSurveyRequest',
+              'surveyId',
+            ),
             surveyVersion: surveyVersion,
             surveyName: surveyName,
             submissionId: submissionId,
@@ -541,7 +562,10 @@ class SubmitSurveyRequestBuilder
         _metadata?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'SubmitSurveyRequest', _$failedField, e.toString());
+          r'SubmitSurveyRequest',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

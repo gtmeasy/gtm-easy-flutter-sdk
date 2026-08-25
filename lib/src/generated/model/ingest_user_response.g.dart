@@ -12,16 +12,16 @@ class _$IngestUserResponse extends IngestUserResponse {
   @override
   final BuiltList<String> warnings;
 
-  factory _$IngestUserResponse(
-          [void Function(IngestUserResponseBuilder)? updates]) =>
-      (IngestUserResponseBuilder()..update(updates))._build();
+  factory _$IngestUserResponse([
+    void Function(IngestUserResponseBuilder)? updates,
+  ]) => (IngestUserResponseBuilder()..update(updates))._build();
 
   _$IngestUserResponse._({required this.user, required this.warnings})
-      : super._();
+    : super._();
   @override
   IngestUserResponse rebuild(
-          void Function(IngestUserResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(IngestUserResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   IngestUserResponseBuilder toBuilder() =>
@@ -97,7 +97,8 @@ class IngestUserResponseBuilder
   _$IngestUserResponse _build() {
     _$IngestUserResponse _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$IngestUserResponse._(
             user: user.build(),
             warnings: warnings.build(),
@@ -111,7 +112,10 @@ class IngestUserResponseBuilder
         warnings.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'IngestUserResponse', _$failedField, e.toString());
+          r'IngestUserResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

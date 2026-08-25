@@ -21,9 +21,9 @@ abstract class RegistrationResponseEvent
 
   RegistrationResponseEvent._();
 
-  factory RegistrationResponseEvent(
-          [void updates(RegistrationResponseEventBuilder b)]) =
-      _$RegistrationResponseEvent;
+  factory RegistrationResponseEvent([
+    void updates(RegistrationResponseEventBuilder b),
+  ]) = _$RegistrationResponseEvent;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RegistrationResponseEventBuilder b) => b;
@@ -38,7 +38,7 @@ class _$RegistrationResponseEventSerializer
   @override
   final Iterable<Type> types = const [
     RegistrationResponseEvent,
-    _$RegistrationResponseEvent
+    _$RegistrationResponseEvent,
   ];
 
   @override
@@ -62,9 +62,11 @@ class _$RegistrationResponseEventSerializer
     RegistrationResponseEvent object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -80,10 +82,12 @@ class _$RegistrationResponseEventSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.id = valueDes;
           break;
         default:

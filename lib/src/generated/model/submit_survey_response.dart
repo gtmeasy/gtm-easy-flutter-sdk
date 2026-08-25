@@ -46,7 +46,7 @@ class _$SubmitSurveyResponseSerializer
   @override
   final Iterable<Type> types = const [
     SubmitSurveyResponse,
-    _$SubmitSurveyResponse
+    _$SubmitSurveyResponse,
   ];
 
   @override
@@ -80,9 +80,11 @@ class _$SubmitSurveyResponseSerializer
     SubmitSurveyResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -98,24 +100,29 @@ class _$SubmitSurveyResponseSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'submissionId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.submissionId = valueDes;
           break;
         case r'accepted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
+          final valueDes =
+              serializers.deserialize(value, specifiedType: const FullType(int))
+                  as int;
           result.accepted = valueDes;
           break;
         case r'warnings':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(BuiltList, [
+                      FullType(String),
+                    ]),
+                  )
+                  as BuiltList<String>;
           result.warnings.replace(valueDes);
           break;
         default:

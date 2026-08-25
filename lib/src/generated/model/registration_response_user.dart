@@ -25,9 +25,9 @@ abstract class RegistrationResponseUser
 
   RegistrationResponseUser._();
 
-  factory RegistrationResponseUser(
-          [void updates(RegistrationResponseUserBuilder b)]) =
-      _$RegistrationResponseUser;
+  factory RegistrationResponseUser([
+    void updates(RegistrationResponseUserBuilder b),
+  ]) = _$RegistrationResponseUser;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RegistrationResponseUserBuilder b) => b;
@@ -42,7 +42,7 @@ class _$RegistrationResponseUserSerializer
   @override
   final Iterable<Type> types = const [
     RegistrationResponseUser,
-    _$RegistrationResponseUser
+    _$RegistrationResponseUser,
   ];
 
   @override
@@ -73,9 +73,11 @@ class _$RegistrationResponseUserSerializer
     RegistrationResponseUser object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -91,17 +93,21 @@ class _$RegistrationResponseUserSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'identityHash':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.identityHash = valueDes;
           break;
         case r'principalId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.principalId = valueDes;
           break;

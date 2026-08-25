@@ -4,12 +4,10 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:gtmeasy_growth/src/generated/model/app_store_webhook_request.dart';
-import 'package:gtmeasy_growth/src/generated/model/error_response.dart';
 import 'package:gtmeasy_growth/src/generated/model/generic_ok_response.dart';
 import 'package:gtmeasy_growth/src/generated/model/play_store_webhook_request.dart';
 
@@ -46,13 +44,8 @@ class WebhooksApi {
     final _path = r'/webhook/appstore';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -61,14 +54,13 @@ class WebhooksApi {
 
     try {
       const _type = FullType(AppStoreWebhookRequest);
-      _bodyData =
-          _serializers.serialize(appStoreWebhookRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(
+        appStoreWebhookRequest,
+        specifiedType: _type,
+      );
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -91,9 +83,10 @@ class WebhooksApi {
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GenericOkResponse),
-            ) as GenericOkResponse;
+                  rawResponse,
+                  specifiedType: const FullType(GenericOkResponse),
+                )
+                as GenericOkResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -142,13 +135,8 @@ class WebhooksApi {
     final _path = r'/webhook/playstore';
     final _options = Options(
       method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
+      headers: <String, dynamic>{...?headers},
+      extra: <String, dynamic>{'secure': <Map<String, String>>[], ...?extra},
       contentType: 'application/json',
       validateStatus: validateStatus,
     );
@@ -157,14 +145,13 @@ class WebhooksApi {
 
     try {
       const _type = FullType(PlayStoreWebhookRequest);
-      _bodyData =
-          _serializers.serialize(playStoreWebhookRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(
+        playStoreWebhookRequest,
+        specifiedType: _type,
+      );
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
+        requestOptions: _options.compose(_dio.options, _path),
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -187,9 +174,10 @@ class WebhooksApi {
       _responseData = rawResponse == null
           ? null
           : _serializers.deserialize(
-              rawResponse,
-              specifiedType: const FullType(GenericOkResponse),
-            ) as GenericOkResponse;
+                  rawResponse,
+                  specifiedType: const FullType(GenericOkResponse),
+                )
+                as GenericOkResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

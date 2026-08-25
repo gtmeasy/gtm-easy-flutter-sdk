@@ -19,8 +19,10 @@ part 'play_store_webhook_request_message.g.dart';
 @BuiltValue()
 abstract class PlayStoreWebhookRequestMessage
     implements
-        Built<PlayStoreWebhookRequestMessage,
-            PlayStoreWebhookRequestMessageBuilder> {
+        Built<
+          PlayStoreWebhookRequestMessage,
+          PlayStoreWebhookRequestMessageBuilder
+        > {
   @BuiltValueField(wireName: r'data')
   String get data;
 
@@ -35,9 +37,9 @@ abstract class PlayStoreWebhookRequestMessage
 
   PlayStoreWebhookRequestMessage._();
 
-  factory PlayStoreWebhookRequestMessage(
-          [void updates(PlayStoreWebhookRequestMessageBuilder b)]) =
-      _$PlayStoreWebhookRequestMessage;
+  factory PlayStoreWebhookRequestMessage([
+    void updates(PlayStoreWebhookRequestMessageBuilder b),
+  ]) = _$PlayStoreWebhookRequestMessage;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PlayStoreWebhookRequestMessageBuilder b) => b;
@@ -52,7 +54,7 @@ class _$PlayStoreWebhookRequestMessageSerializer
   @override
   final Iterable<Type> types = const [
     PlayStoreWebhookRequestMessage,
-    _$PlayStoreWebhookRequestMessage
+    _$PlayStoreWebhookRequestMessage,
   ];
 
   @override
@@ -72,8 +74,10 @@ class _$PlayStoreWebhookRequestMessageSerializer
       yield r'attributes';
       yield serializers.serialize(
         object.attributes,
-        specifiedType:
-            const FullType(BuiltMap, [FullType(String), FullType(String)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType(String),
+        ]),
       );
     }
     if (object.messageId != null) {
@@ -98,9 +102,11 @@ class _$PlayStoreWebhookRequestMessageSerializer
     PlayStoreWebhookRequestMessage object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -116,34 +122,44 @@ class _$PlayStoreWebhookRequestMessageSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'data':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.data = valueDes;
           break;
         case r'attributes':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                BuiltMap, [FullType(String), FullType(String)]),
-          ) as BuiltMap<String, String>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltMap, [
+                      FullType(String),
+                      FullType(String),
+                    ]),
+                  )
+                  as BuiltMap<String, String>?;
           if (valueDes == null) continue;
           result.attributes.replace(valueDes);
           break;
         case r'messageId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.messageId = valueDes;
           break;
         case r'publishTime':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.publishTime = valueDes;
           break;

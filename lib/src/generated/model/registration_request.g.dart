@@ -7,17 +7,18 @@ part of 'registration_request.dart';
 // **************************************************************************
 
 const RegistrationRequestEnvironmentEnum
-    _$registrationRequestEnvironmentEnum_production =
+_$registrationRequestEnvironmentEnum_production =
     const RegistrationRequestEnvironmentEnum._('production');
 const RegistrationRequestEnvironmentEnum
-    _$registrationRequestEnvironmentEnum_staging =
+_$registrationRequestEnvironmentEnum_staging =
     const RegistrationRequestEnvironmentEnum._('staging');
 const RegistrationRequestEnvironmentEnum
-    _$registrationRequestEnvironmentEnum_development =
+_$registrationRequestEnvironmentEnum_development =
     const RegistrationRequestEnvironmentEnum._('development');
 
 RegistrationRequestEnvironmentEnum _$registrationRequestEnvironmentEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'production':
       return _$registrationRequestEnvironmentEnum_production;
@@ -31,24 +32,26 @@ RegistrationRequestEnvironmentEnum _$registrationRequestEnvironmentEnumValueOf(
 }
 
 final BuiltSet<RegistrationRequestEnvironmentEnum>
-    _$registrationRequestEnvironmentEnumValues = BuiltSet<
-        RegistrationRequestEnvironmentEnum>(const <RegistrationRequestEnvironmentEnum>[
-  _$registrationRequestEnvironmentEnum_production,
-  _$registrationRequestEnvironmentEnum_staging,
-  _$registrationRequestEnvironmentEnum_development,
-]);
+_$registrationRequestEnvironmentEnumValues =
+    BuiltSet<RegistrationRequestEnvironmentEnum>(
+      const <RegistrationRequestEnvironmentEnum>[
+        _$registrationRequestEnvironmentEnum_production,
+        _$registrationRequestEnvironmentEnum_staging,
+        _$registrationRequestEnvironmentEnum_development,
+      ],
+    );
 
 const RegistrationRequestPlatformEnum _$registrationRequestPlatformEnum_ios =
     const RegistrationRequestPlatformEnum._('ios');
 const RegistrationRequestPlatformEnum
-    _$registrationRequestPlatformEnum_android =
+_$registrationRequestPlatformEnum_android =
     const RegistrationRequestPlatformEnum._('android');
 const RegistrationRequestPlatformEnum _$registrationRequestPlatformEnum_web =
     const RegistrationRequestPlatformEnum._('web');
 const RegistrationRequestPlatformEnum _$registrationRequestPlatformEnum_macos =
     const RegistrationRequestPlatformEnum._('macos');
 const RegistrationRequestPlatformEnum
-    _$registrationRequestPlatformEnum_windows =
+_$registrationRequestPlatformEnum_windows =
     const RegistrationRequestPlatformEnum._('windows');
 const RegistrationRequestPlatformEnum _$registrationRequestPlatformEnum_linux =
     const RegistrationRequestPlatformEnum._('linux');
@@ -56,7 +59,8 @@ const RegistrationRequestPlatformEnum _$registrationRequestPlatformEnum_server =
     const RegistrationRequestPlatformEnum._('server');
 
 RegistrationRequestPlatformEnum _$registrationRequestPlatformEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'ios':
       return _$registrationRequestPlatformEnum_ios;
@@ -78,22 +82,24 @@ RegistrationRequestPlatformEnum _$registrationRequestPlatformEnumValueOf(
 }
 
 final BuiltSet<RegistrationRequestPlatformEnum>
-    _$registrationRequestPlatformEnumValues = BuiltSet<
-        RegistrationRequestPlatformEnum>(const <RegistrationRequestPlatformEnum>[
-  _$registrationRequestPlatformEnum_ios,
-  _$registrationRequestPlatformEnum_android,
-  _$registrationRequestPlatformEnum_web,
-  _$registrationRequestPlatformEnum_macos,
-  _$registrationRequestPlatformEnum_windows,
-  _$registrationRequestPlatformEnum_linux,
-  _$registrationRequestPlatformEnum_server,
-]);
+_$registrationRequestPlatformEnumValues =
+    BuiltSet<RegistrationRequestPlatformEnum>(
+      const <RegistrationRequestPlatformEnum>[
+        _$registrationRequestPlatformEnum_ios,
+        _$registrationRequestPlatformEnum_android,
+        _$registrationRequestPlatformEnum_web,
+        _$registrationRequestPlatformEnum_macos,
+        _$registrationRequestPlatformEnum_windows,
+        _$registrationRequestPlatformEnum_linux,
+        _$registrationRequestPlatformEnum_server,
+      ],
+    );
 
 Serializer<RegistrationRequestEnvironmentEnum>
-    _$registrationRequestEnvironmentEnumSerializer =
+_$registrationRequestEnvironmentEnumSerializer =
     _$RegistrationRequestEnvironmentEnumSerializer();
 Serializer<RegistrationRequestPlatformEnum>
-    _$registrationRequestPlatformEnumSerializer =
+_$registrationRequestPlatformEnumSerializer =
     _$RegistrationRequestPlatformEnumSerializer();
 
 class _$RegistrationRequestEnvironmentEnumSerializer
@@ -116,16 +122,19 @@ class _$RegistrationRequestEnvironmentEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, RegistrationRequestEnvironmentEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    RegistrationRequestEnvironmentEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   RegistrationRequestEnvironmentEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      RegistrationRequestEnvironmentEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => RegistrationRequestEnvironmentEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$RegistrationRequestPlatformEnumSerializer
@@ -156,16 +165,19 @@ class _$RegistrationRequestPlatformEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, RegistrationRequestPlatformEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    RegistrationRequestPlatformEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   RegistrationRequestPlatformEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      RegistrationRequestPlatformEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => RegistrationRequestPlatformEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$RegistrationRequest extends RegistrationRequest {
@@ -208,35 +220,35 @@ class _$RegistrationRequest extends RegistrationRequest {
   @override
   final BuiltMap<String, JsonObject?>? properties;
 
-  factory _$RegistrationRequest(
-          [void Function(RegistrationRequestBuilder)? updates]) =>
-      (RegistrationRequestBuilder()..update(updates))._build();
+  factory _$RegistrationRequest([
+    void Function(RegistrationRequestBuilder)? updates,
+  ]) => (RegistrationRequestBuilder()..update(updates))._build();
 
-  _$RegistrationRequest._(
-      {this.app,
-      this.environment,
-      this.platform,
-      this.userId,
-      this.anonymousId,
-      this.deviceId,
-      this.username,
-      this.email,
-      this.appVersion,
-      this.buildNumber,
-      this.source_,
-      this.country,
-      this.locale,
-      this.timezone,
-      this.attributionProvider,
-      this.attributionId,
-      this.occurredAt,
-      this.traits,
-      this.properties})
-      : super._();
+  _$RegistrationRequest._({
+    this.app,
+    this.environment,
+    this.platform,
+    this.userId,
+    this.anonymousId,
+    this.deviceId,
+    this.username,
+    this.email,
+    this.appVersion,
+    this.buildNumber,
+    this.source_,
+    this.country,
+    this.locale,
+    this.timezone,
+    this.attributionProvider,
+    this.attributionId,
+    this.occurredAt,
+    this.traits,
+    this.properties,
+  }) : super._();
   @override
   RegistrationRequest rebuild(
-          void Function(RegistrationRequestBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(RegistrationRequestBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   RegistrationRequestBuilder toBuilder() =>
@@ -454,7 +466,8 @@ class RegistrationRequestBuilder
   _$RegistrationRequest _build() {
     _$RegistrationRequest _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$RegistrationRequest._(
             app: app,
             environment: environment,
@@ -485,7 +498,10 @@ class RegistrationRequestBuilder
         _properties?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'RegistrationRequest', _$failedField, e.toString());
+          r'RegistrationRequest',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

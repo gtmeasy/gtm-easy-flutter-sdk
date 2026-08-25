@@ -12,12 +12,12 @@ class _$DownloadResponse extends DownloadResponse {
   @override
   final BuiltList<String> warnings;
 
-  factory _$DownloadResponse(
-          [void Function(DownloadResponseBuilder)? updates]) =>
-      (DownloadResponseBuilder()..update(updates))._build();
+  factory _$DownloadResponse([
+    void Function(DownloadResponseBuilder)? updates,
+  ]) => (DownloadResponseBuilder()..update(updates))._build();
 
   _$DownloadResponse._({required this.event, required this.warnings})
-      : super._();
+    : super._();
   @override
   DownloadResponse rebuild(void Function(DownloadResponseBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -96,7 +96,8 @@ class DownloadResponseBuilder
   _$DownloadResponse _build() {
     _$DownloadResponse _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$DownloadResponse._(
             event: event.build(),
             warnings: warnings.build(),
@@ -110,7 +111,10 @@ class DownloadResponseBuilder
         warnings.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'DownloadResponse', _$failedField, e.toString());
+          r'DownloadResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

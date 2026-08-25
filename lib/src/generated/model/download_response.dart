@@ -68,9 +68,11 @@ class _$DownloadResponseSerializer
     DownloadResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -86,17 +88,23 @@ class _$DownloadResponseSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'event':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(RegistrationResponseEvent),
-          ) as RegistrationResponseEvent;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(RegistrationResponseEvent),
+                  )
+                  as RegistrationResponseEvent;
           result.event.replace(valueDes);
           break;
         case r'warnings':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(BuiltList, [
+                      FullType(String),
+                    ]),
+                  )
+                  as BuiltList<String>;
           result.warnings.replace(valueDes);
           break;
         default:

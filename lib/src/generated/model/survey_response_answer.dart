@@ -85,7 +85,7 @@ class _$SurveyResponseAnswerSerializer
   @override
   final Iterable<Type> types = const [
     SurveyResponseAnswer,
-    _$SurveyResponseAnswer
+    _$SurveyResponseAnswer,
   ];
 
   @override
@@ -166,8 +166,10 @@ class _$SurveyResponseAnswerSerializer
       yield r'metadata';
       yield serializers.serialize(
         object.metadata,
-        specifiedType: const FullType(
-            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(JsonObject),
+        ]),
       );
     }
   }
@@ -178,9 +180,11 @@ class _$SurveyResponseAnswerSerializer
     SurveyResponseAnswer object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -196,91 +200,117 @@ class _$SurveyResponseAnswerSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'questionId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.questionId = valueDes;
           break;
         case r'type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.type = valueDes;
           break;
         case r'questionText':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.questionText = valueDes;
           break;
         case r'position':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(int),
-          ) as int?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(int),
+                  )
+                  as int?;
           if (valueDes == null) continue;
           result.position = valueDes;
           break;
         case r'choices':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltList, [
+                      FullType(String),
+                    ]),
+                  )
+                  as BuiltList<String>?;
           if (valueDes == null) continue;
           result.choices.replace(valueDes);
           break;
         case r'choiceLabels':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltList, [
+                      FullType(String),
+                    ]),
+                  )
+                  as BuiltList<String>?;
           if (valueDes == null) continue;
           result.choiceLabels.replace(valueDes);
           break;
         case r'number':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(num),
+                  )
+                  as num?;
           if (valueDes == null) continue;
           result.number = valueDes;
           break;
         case r'text':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.text = valueDes;
           break;
         case r'bool':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(bool),
+                  )
+                  as bool?;
           if (valueDes == null) continue;
           result.bool_ = valueDes;
           break;
         case r'skipped':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(bool),
+                  )
+                  as bool?;
           if (valueDes == null) continue;
           result.skipped = valueDes;
           break;
         case r'metadata':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltMap, [
+                      FullType(String),
+                      FullType.nullable(JsonObject),
+                    ]),
+                  )
+                  as BuiltMap<String, JsonObject?>?;
           if (valueDes == null) continue;
           result.metadata.replace(valueDes);
           break;

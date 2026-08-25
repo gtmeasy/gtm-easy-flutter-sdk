@@ -251,8 +251,10 @@ class _$TrackEventRequestSerializer
       yield r'properties';
       yield serializers.serialize(
         object.properties,
-        specifiedType: const FullType(
-            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(BuiltMap, [
+          FullType(String),
+          FullType.nullable(JsonObject),
+        ]),
       );
     }
     if (object.metricValue != null) {
@@ -277,9 +279,11 @@ class _$TrackEventRequestSerializer
     TrackEventRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -295,163 +299,209 @@ class _$TrackEventRequestSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'app':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.app = valueDes;
           break;
         case r'environment':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(TrackEventRequestEnvironmentEnum),
-          ) as TrackEventRequestEnvironmentEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      TrackEventRequestEnvironmentEnum,
+                    ),
+                  )
+                  as TrackEventRequestEnvironmentEnum?;
           if (valueDes == null) continue;
           result.environment = valueDes;
           break;
         case r'platform':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType:
-                const FullType.nullable(TrackEventRequestPlatformEnum),
-          ) as TrackEventRequestPlatformEnum?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(
+                      TrackEventRequestPlatformEnum,
+                    ),
+                  )
+                  as TrackEventRequestPlatformEnum?;
           if (valueDes == null) continue;
           result.platform = valueDes;
           break;
         case r'userId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.userId = valueDes;
           break;
         case r'anonymousId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.anonymousId = valueDes;
           break;
         case r'deviceId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.deviceId = valueDes;
           break;
         case r'eventId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.eventId = valueDes;
           break;
         case r'eventName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(TrackEventRequestEventNameEnum),
-          ) as TrackEventRequestEventNameEnum;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(
+                      TrackEventRequestEventNameEnum,
+                    ),
+                  )
+                  as TrackEventRequestEventNameEnum;
           result.eventName = valueDes;
           break;
         case r'appVersion':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.appVersion = valueDes;
           break;
         case r'buildNumber':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.buildNumber = valueDes;
           break;
         case r'source':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.source_ = valueDes;
           break;
         case r'country':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.country = valueDes;
           break;
         case r'locale':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.locale = valueDes;
           break;
         case r'timezone':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.timezone = valueDes;
           break;
         case r'attributionProvider':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.attributionProvider = valueDes;
           break;
         case r'attributionId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.attributionId = valueDes;
           break;
         case r'occurredAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(DateTime),
-          ) as DateTime?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(DateTime),
+                  )
+                  as DateTime?;
           if (valueDes == null) continue;
           result.occurredAt = valueDes;
           break;
         case r'properties':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(
-                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(BuiltMap, [
+                      FullType(String),
+                      FullType.nullable(JsonObject),
+                    ]),
+                  )
+                  as BuiltMap<String, JsonObject?>?;
           if (valueDes == null) continue;
           result.properties.replace(valueDes);
           break;
         case r'metricValue':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(num),
+                  )
+                  as num?;
           if (valueDes == null) continue;
           result.metricValue = valueDes;
           break;
         case r'metricLabel':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.metricLabel = valueDes;
           break;
@@ -562,7 +612,7 @@ class TrackEventRequestEventNameEnum extends EnumClass {
       _$trackEventRequestEventNameEnum_sessionPeriodEnded;
   @BuiltValueEnumConst(wireName: r'acquisition.attribution_resolved')
   static const TrackEventRequestEventNameEnum
-      acquisitionPeriodAttributionResolved =
+  acquisitionPeriodAttributionResolved =
       _$trackEventRequestEventNameEnum_acquisitionPeriodAttributionResolved;
   @BuiltValueEnumConst(wireName: r'acquisition.app_download')
   static const TrackEventRequestEventNameEnum acquisitionPeriodAppDownload =
@@ -596,11 +646,11 @@ class TrackEventRequestEventNameEnum extends EnumClass {
       _$trackEventRequestEventNameEnum_onboardingPeriodGoalSelected;
   @BuiltValueEnumConst(wireName: r'onboarding.permission_prompted')
   static const TrackEventRequestEventNameEnum
-      onboardingPeriodPermissionPrompted =
+  onboardingPeriodPermissionPrompted =
       _$trackEventRequestEventNameEnum_onboardingPeriodPermissionPrompted;
   @BuiltValueEnumConst(wireName: r'onboarding.permission_granted')
   static const TrackEventRequestEventNameEnum
-      onboardingPeriodPermissionGranted =
+  onboardingPeriodPermissionGranted =
       _$trackEventRequestEventNameEnum_onboardingPeriodPermissionGranted;
   @BuiltValueEnumConst(wireName: r'onboarding.permission_denied')
   static const TrackEventRequestEventNameEnum onboardingPeriodPermissionDenied =
@@ -721,7 +771,7 @@ class TrackEventRequestEventNameEnum extends EnumClass {
       _$trackEventRequestEventNameEnum_subscriptionPeriodBillingIssue;
   @BuiltValueEnumConst(wireName: r'subscription.grace_period_started')
   static const TrackEventRequestEventNameEnum
-      subscriptionPeriodGracePeriodStarted =
+  subscriptionPeriodGracePeriodStarted =
       _$trackEventRequestEventNameEnum_subscriptionPeriodGracePeriodStarted;
   @BuiltValueEnumConst(wireName: r'subscription.recovered')
   static const TrackEventRequestEventNameEnum subscriptionPeriodRecovered =
@@ -731,11 +781,11 @@ class TrackEventRequestEventNameEnum extends EnumClass {
       _$trackEventRequestEventNameEnum_subscriptionPeriodRefunded;
   @BuiltValueEnumConst(wireName: r'subscription.price_increase_accepted')
   static const TrackEventRequestEventNameEnum
-      subscriptionPeriodPriceIncreaseAccepted =
+  subscriptionPeriodPriceIncreaseAccepted =
       _$trackEventRequestEventNameEnum_subscriptionPeriodPriceIncreaseAccepted;
   @BuiltValueEnumConst(wireName: r'subscription.price_increase_declined')
   static const TrackEventRequestEventNameEnum
-      subscriptionPeriodPriceIncreaseDeclined =
+  subscriptionPeriodPriceIncreaseDeclined =
       _$trackEventRequestEventNameEnum_subscriptionPeriodPriceIncreaseDeclined;
   @BuiltValueEnumConst(wireName: r'revenue.received')
   static const TrackEventRequestEventNameEnum revenuePeriodReceived =

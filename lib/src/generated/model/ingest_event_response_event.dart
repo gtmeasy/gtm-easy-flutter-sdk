@@ -25,9 +25,9 @@ abstract class IngestEventResponseEvent
 
   IngestEventResponseEvent._();
 
-  factory IngestEventResponseEvent(
-          [void updates(IngestEventResponseEventBuilder b)]) =
-      _$IngestEventResponseEvent;
+  factory IngestEventResponseEvent([
+    void updates(IngestEventResponseEventBuilder b),
+  ]) = _$IngestEventResponseEvent;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(IngestEventResponseEventBuilder b) => b;
@@ -42,7 +42,7 @@ class _$IngestEventResponseEventSerializer
   @override
   final Iterable<Type> types = const [
     IngestEventResponseEvent,
-    _$IngestEventResponseEvent
+    _$IngestEventResponseEvent,
   ];
 
   @override
@@ -71,9 +71,11 @@ class _$IngestEventResponseEventSerializer
     IngestEventResponseEvent object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -89,17 +91,21 @@ class _$IngestEventResponseEventSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.id = valueDes;
           break;
         case r'eventName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(String),
+                  )
+                  as String;
           result.eventName = valueDes;
           break;
         default:

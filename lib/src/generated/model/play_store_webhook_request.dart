@@ -25,9 +25,9 @@ abstract class PlayStoreWebhookRequest
 
   PlayStoreWebhookRequest._();
 
-  factory PlayStoreWebhookRequest(
-          [void updates(PlayStoreWebhookRequestBuilder b)]) =
-      _$PlayStoreWebhookRequest;
+  factory PlayStoreWebhookRequest([
+    void updates(PlayStoreWebhookRequestBuilder b),
+  ]) = _$PlayStoreWebhookRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PlayStoreWebhookRequestBuilder b) => b;
@@ -42,7 +42,7 @@ class _$PlayStoreWebhookRequestSerializer
   @override
   final Iterable<Type> types = const [
     PlayStoreWebhookRequest,
-    _$PlayStoreWebhookRequest
+    _$PlayStoreWebhookRequest,
   ];
 
   @override
@@ -73,9 +73,11 @@ class _$PlayStoreWebhookRequestSerializer
     PlayStoreWebhookRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object,
-            specifiedType: specifiedType)
-        .toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -91,17 +93,23 @@ class _$PlayStoreWebhookRequestSerializer
       final value = serializedList[i + 1];
       switch (key) {
         case r'message':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(PlayStoreWebhookRequestMessage),
-          ) as PlayStoreWebhookRequestMessage;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType(
+                      PlayStoreWebhookRequestMessage,
+                    ),
+                  )
+                  as PlayStoreWebhookRequestMessage;
           result.message.replace(valueDes);
           break;
         case r'subscription':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
+          final valueDes =
+              serializers.deserialize(
+                    value,
+                    specifiedType: const FullType.nullable(String),
+                  )
+                  as String?;
           if (valueDes == null) continue;
           result.subscription = valueDes;
           break;

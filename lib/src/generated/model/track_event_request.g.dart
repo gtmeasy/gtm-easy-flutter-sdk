@@ -7,17 +7,18 @@ part of 'track_event_request.dart';
 // **************************************************************************
 
 const TrackEventRequestEnvironmentEnum
-    _$trackEventRequestEnvironmentEnum_production =
+_$trackEventRequestEnvironmentEnum_production =
     const TrackEventRequestEnvironmentEnum._('production');
 const TrackEventRequestEnvironmentEnum
-    _$trackEventRequestEnvironmentEnum_staging =
+_$trackEventRequestEnvironmentEnum_staging =
     const TrackEventRequestEnvironmentEnum._('staging');
 const TrackEventRequestEnvironmentEnum
-    _$trackEventRequestEnvironmentEnum_development =
+_$trackEventRequestEnvironmentEnum_development =
     const TrackEventRequestEnvironmentEnum._('development');
 
 TrackEventRequestEnvironmentEnum _$trackEventRequestEnvironmentEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'production':
       return _$trackEventRequestEnvironmentEnum_production;
@@ -31,12 +32,14 @@ TrackEventRequestEnvironmentEnum _$trackEventRequestEnvironmentEnumValueOf(
 }
 
 final BuiltSet<TrackEventRequestEnvironmentEnum>
-    _$trackEventRequestEnvironmentEnumValues = BuiltSet<
-        TrackEventRequestEnvironmentEnum>(const <TrackEventRequestEnvironmentEnum>[
-  _$trackEventRequestEnvironmentEnum_production,
-  _$trackEventRequestEnvironmentEnum_staging,
-  _$trackEventRequestEnvironmentEnum_development,
-]);
+_$trackEventRequestEnvironmentEnumValues =
+    BuiltSet<TrackEventRequestEnvironmentEnum>(
+      const <TrackEventRequestEnvironmentEnum>[
+        _$trackEventRequestEnvironmentEnum_production,
+        _$trackEventRequestEnvironmentEnum_staging,
+        _$trackEventRequestEnvironmentEnum_development,
+      ],
+    );
 
 const TrackEventRequestPlatformEnum _$trackEventRequestPlatformEnum_ios =
     const TrackEventRequestPlatformEnum._('ios');
@@ -54,7 +57,8 @@ const TrackEventRequestPlatformEnum _$trackEventRequestPlatformEnum_server =
     const TrackEventRequestPlatformEnum._('server');
 
 TrackEventRequestPlatformEnum _$trackEventRequestPlatformEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'ios':
       return _$trackEventRequestPlatformEnum_ios;
@@ -76,238 +80,245 @@ TrackEventRequestPlatformEnum _$trackEventRequestPlatformEnumValueOf(
 }
 
 final BuiltSet<TrackEventRequestPlatformEnum>
-    _$trackEventRequestPlatformEnumValues = BuiltSet<
-        TrackEventRequestPlatformEnum>(const <TrackEventRequestPlatformEnum>[
-  _$trackEventRequestPlatformEnum_ios,
-  _$trackEventRequestPlatformEnum_android,
-  _$trackEventRequestPlatformEnum_web,
-  _$trackEventRequestPlatformEnum_macos,
-  _$trackEventRequestPlatformEnum_windows,
-  _$trackEventRequestPlatformEnum_linux,
-  _$trackEventRequestPlatformEnum_server,
-]);
+_$trackEventRequestPlatformEnumValues = BuiltSet<TrackEventRequestPlatformEnum>(
+  const <TrackEventRequestPlatformEnum>[
+    _$trackEventRequestPlatformEnum_ios,
+    _$trackEventRequestPlatformEnum_android,
+    _$trackEventRequestPlatformEnum_web,
+    _$trackEventRequestPlatformEnum_macos,
+    _$trackEventRequestPlatformEnum_windows,
+    _$trackEventRequestPlatformEnum_linux,
+    _$trackEventRequestPlatformEnum_server,
+  ],
+);
 
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_appPeriodFirstOpen =
+_$trackEventRequestEventNameEnum_appPeriodFirstOpen =
     const TrackEventRequestEventNameEnum._('appPeriodFirstOpen');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_appPeriodOpened =
+_$trackEventRequestEventNameEnum_appPeriodOpened =
     const TrackEventRequestEventNameEnum._('appPeriodOpened');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_appPeriodUpdated =
+_$trackEventRequestEventNameEnum_appPeriodUpdated =
     const TrackEventRequestEventNameEnum._('appPeriodUpdated');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_userPeriodCreated =
+_$trackEventRequestEventNameEnum_userPeriodCreated =
     const TrackEventRequestEventNameEnum._('userPeriodCreated');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_sessionPeriodStarted =
+_$trackEventRequestEventNameEnum_sessionPeriodStarted =
     const TrackEventRequestEventNameEnum._('sessionPeriodStarted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_sessionPeriodEnded =
+_$trackEventRequestEventNameEnum_sessionPeriodEnded =
     const TrackEventRequestEventNameEnum._('sessionPeriodEnded');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_acquisitionPeriodAttributionResolved =
+_$trackEventRequestEventNameEnum_acquisitionPeriodAttributionResolved =
     const TrackEventRequestEventNameEnum._(
-        'acquisitionPeriodAttributionResolved');
+      'acquisitionPeriodAttributionResolved',
+    );
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_acquisitionPeriodAppDownload =
+_$trackEventRequestEventNameEnum_acquisitionPeriodAppDownload =
     const TrackEventRequestEventNameEnum._('acquisitionPeriodAppDownload');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_acquisitionPeriodUserRegistered =
+_$trackEventRequestEventNameEnum_acquisitionPeriodUserRegistered =
     const TrackEventRequestEventNameEnum._('acquisitionPeriodUserRegistered');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_appStorePeriodProductPageViewed =
+_$trackEventRequestEventNameEnum_appStorePeriodProductPageViewed =
     const TrackEventRequestEventNameEnum._('appStorePeriodProductPageViewed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_appStorePeriodInstallAttributed =
+_$trackEventRequestEventNameEnum_appStorePeriodInstallAttributed =
     const TrackEventRequestEventNameEnum._('appStorePeriodInstallAttributed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_onboardingPeriodStarted =
+_$trackEventRequestEventNameEnum_onboardingPeriodStarted =
     const TrackEventRequestEventNameEnum._('onboardingPeriodStarted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_onboardingPeriodCompleted =
+_$trackEventRequestEventNameEnum_onboardingPeriodCompleted =
     const TrackEventRequestEventNameEnum._('onboardingPeriodCompleted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_onboardingPeriodStepViewed =
+_$trackEventRequestEventNameEnum_onboardingPeriodStepViewed =
     const TrackEventRequestEventNameEnum._('onboardingPeriodStepViewed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_onboardingPeriodStepCompleted =
+_$trackEventRequestEventNameEnum_onboardingPeriodStepCompleted =
     const TrackEventRequestEventNameEnum._('onboardingPeriodStepCompleted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_onboardingPeriodStepSkipped =
+_$trackEventRequestEventNameEnum_onboardingPeriodStepSkipped =
     const TrackEventRequestEventNameEnum._('onboardingPeriodStepSkipped');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_onboardingPeriodGoalSelected =
+_$trackEventRequestEventNameEnum_onboardingPeriodGoalSelected =
     const TrackEventRequestEventNameEnum._('onboardingPeriodGoalSelected');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_onboardingPeriodPermissionPrompted =
+_$trackEventRequestEventNameEnum_onboardingPeriodPermissionPrompted =
     const TrackEventRequestEventNameEnum._(
-        'onboardingPeriodPermissionPrompted');
+      'onboardingPeriodPermissionPrompted',
+    );
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_onboardingPeriodPermissionGranted =
+_$trackEventRequestEventNameEnum_onboardingPeriodPermissionGranted =
     const TrackEventRequestEventNameEnum._('onboardingPeriodPermissionGranted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_onboardingPeriodPermissionDenied =
+_$trackEventRequestEventNameEnum_onboardingPeriodPermissionDenied =
     const TrackEventRequestEventNameEnum._('onboardingPeriodPermissionDenied');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_surveyPeriodShown =
+_$trackEventRequestEventNameEnum_surveyPeriodShown =
     const TrackEventRequestEventNameEnum._('surveyPeriodShown');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_surveyPeriodStarted =
+_$trackEventRequestEventNameEnum_surveyPeriodStarted =
     const TrackEventRequestEventNameEnum._('surveyPeriodStarted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_surveyPeriodCompleted =
+_$trackEventRequestEventNameEnum_surveyPeriodCompleted =
     const TrackEventRequestEventNameEnum._('surveyPeriodCompleted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_surveyPeriodDismissed =
+_$trackEventRequestEventNameEnum_surveyPeriodDismissed =
     const TrackEventRequestEventNameEnum._('surveyPeriodDismissed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_activationPeriodCompleted =
+_$trackEventRequestEventNameEnum_activationPeriodCompleted =
     const TrackEventRequestEventNameEnum._('activationPeriodCompleted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_featurePeriodUsed =
+_$trackEventRequestEventNameEnum_featurePeriodUsed =
     const TrackEventRequestEventNameEnum._('featurePeriodUsed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_featurePeriodFirstUsed =
+_$trackEventRequestEventNameEnum_featurePeriodFirstUsed =
     const TrackEventRequestEventNameEnum._('featurePeriodFirstUsed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_pagePeriodViewed =
+_$trackEventRequestEventNameEnum_pagePeriodViewed =
     const TrackEventRequestEventNameEnum._('pagePeriodViewed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_buttonPeriodClicked =
+_$trackEventRequestEventNameEnum_buttonPeriodClicked =
     const TrackEventRequestEventNameEnum._('buttonPeriodClicked');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_goalPeriodCompleted =
+_$trackEventRequestEventNameEnum_goalPeriodCompleted =
     const TrackEventRequestEventNameEnum._('goalPeriodCompleted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodOpened =
+_$trackEventRequestEventNameEnum_paywallPeriodOpened =
     const TrackEventRequestEventNameEnum._('paywallPeriodOpened');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodClosed =
+_$trackEventRequestEventNameEnum_paywallPeriodClosed =
     const TrackEventRequestEventNameEnum._('paywallPeriodClosed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodUpgradeClicked =
+_$trackEventRequestEventNameEnum_paywallPeriodUpgradeClicked =
     const TrackEventRequestEventNameEnum._('paywallPeriodUpgradeClicked');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodUpgradeCancelled =
+_$trackEventRequestEventNameEnum_paywallPeriodUpgradeCancelled =
     const TrackEventRequestEventNameEnum._('paywallPeriodUpgradeCancelled');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodProductsRequested =
+_$trackEventRequestEventNameEnum_paywallPeriodProductsRequested =
     const TrackEventRequestEventNameEnum._('paywallPeriodProductsRequested');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodProductsLoaded =
+_$trackEventRequestEventNameEnum_paywallPeriodProductsLoaded =
     const TrackEventRequestEventNameEnum._('paywallPeriodProductsLoaded');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodProductsFailed =
+_$trackEventRequestEventNameEnum_paywallPeriodProductsFailed =
     const TrackEventRequestEventNameEnum._('paywallPeriodProductsFailed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodOfferEligible =
+_$trackEventRequestEventNameEnum_paywallPeriodOfferEligible =
     const TrackEventRequestEventNameEnum._('paywallPeriodOfferEligible');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodPlanSelected =
+_$trackEventRequestEventNameEnum_paywallPeriodPlanSelected =
     const TrackEventRequestEventNameEnum._('paywallPeriodPlanSelected');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodRestoreClicked =
+_$trackEventRequestEventNameEnum_paywallPeriodRestoreClicked =
     const TrackEventRequestEventNameEnum._('paywallPeriodRestoreClicked');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodRestoreCompleted =
+_$trackEventRequestEventNameEnum_paywallPeriodRestoreCompleted =
     const TrackEventRequestEventNameEnum._('paywallPeriodRestoreCompleted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_paywallPeriodRestoreFailed =
+_$trackEventRequestEventNameEnum_paywallPeriodRestoreFailed =
     const TrackEventRequestEventNameEnum._('paywallPeriodRestoreFailed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_purchasePeriodStarted =
+_$trackEventRequestEventNameEnum_purchasePeriodStarted =
     const TrackEventRequestEventNameEnum._('purchasePeriodStarted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_purchasePeriodCompleted =
+_$trackEventRequestEventNameEnum_purchasePeriodCompleted =
     const TrackEventRequestEventNameEnum._('purchasePeriodCompleted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_purchasePeriodFailed =
+_$trackEventRequestEventNameEnum_purchasePeriodFailed =
     const TrackEventRequestEventNameEnum._('purchasePeriodFailed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_purchasePeriodRefunded =
+_$trackEventRequestEventNameEnum_purchasePeriodRefunded =
     const TrackEventRequestEventNameEnum._('purchasePeriodRefunded');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_trialPeriodEligible =
+_$trackEventRequestEventNameEnum_trialPeriodEligible =
     const TrackEventRequestEventNameEnum._('trialPeriodEligible');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_trialPeriodIneligible =
+_$trackEventRequestEventNameEnum_trialPeriodIneligible =
     const TrackEventRequestEventNameEnum._('trialPeriodIneligible');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_trialPeriodStarted =
+_$trackEventRequestEventNameEnum_trialPeriodStarted =
     const TrackEventRequestEventNameEnum._('trialPeriodStarted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_trialPeriodConverted =
+_$trackEventRequestEventNameEnum_trialPeriodConverted =
     const TrackEventRequestEventNameEnum._('trialPeriodConverted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_trialPeriodCancelled =
+_$trackEventRequestEventNameEnum_trialPeriodCancelled =
     const TrackEventRequestEventNameEnum._('trialPeriodCancelled');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_trialPeriodExpired =
+_$trackEventRequestEventNameEnum_trialPeriodExpired =
     const TrackEventRequestEventNameEnum._('trialPeriodExpired');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_trialPeriodBillingRetryStarted =
+_$trackEventRequestEventNameEnum_trialPeriodBillingRetryStarted =
     const TrackEventRequestEventNameEnum._('trialPeriodBillingRetryStarted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_subscriptionPeriodStarted =
+_$trackEventRequestEventNameEnum_subscriptionPeriodStarted =
     const TrackEventRequestEventNameEnum._('subscriptionPeriodStarted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_subscriptionPeriodRenewed =
+_$trackEventRequestEventNameEnum_subscriptionPeriodRenewed =
     const TrackEventRequestEventNameEnum._('subscriptionPeriodRenewed');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_subscriptionPeriodCancelled =
+_$trackEventRequestEventNameEnum_subscriptionPeriodCancelled =
     const TrackEventRequestEventNameEnum._('subscriptionPeriodCancelled');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_subscriptionPeriodExpired =
+_$trackEventRequestEventNameEnum_subscriptionPeriodExpired =
     const TrackEventRequestEventNameEnum._('subscriptionPeriodExpired');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_subscriptionPeriodBillingIssue =
+_$trackEventRequestEventNameEnum_subscriptionPeriodBillingIssue =
     const TrackEventRequestEventNameEnum._('subscriptionPeriodBillingIssue');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_subscriptionPeriodGracePeriodStarted =
+_$trackEventRequestEventNameEnum_subscriptionPeriodGracePeriodStarted =
     const TrackEventRequestEventNameEnum._(
-        'subscriptionPeriodGracePeriodStarted');
+      'subscriptionPeriodGracePeriodStarted',
+    );
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_subscriptionPeriodRecovered =
+_$trackEventRequestEventNameEnum_subscriptionPeriodRecovered =
     const TrackEventRequestEventNameEnum._('subscriptionPeriodRecovered');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_subscriptionPeriodRefunded =
+_$trackEventRequestEventNameEnum_subscriptionPeriodRefunded =
     const TrackEventRequestEventNameEnum._('subscriptionPeriodRefunded');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_subscriptionPeriodPriceIncreaseAccepted =
+_$trackEventRequestEventNameEnum_subscriptionPeriodPriceIncreaseAccepted =
     const TrackEventRequestEventNameEnum._(
-        'subscriptionPeriodPriceIncreaseAccepted');
+      'subscriptionPeriodPriceIncreaseAccepted',
+    );
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_subscriptionPeriodPriceIncreaseDeclined =
+_$trackEventRequestEventNameEnum_subscriptionPeriodPriceIncreaseDeclined =
     const TrackEventRequestEventNameEnum._(
-        'subscriptionPeriodPriceIncreaseDeclined');
+      'subscriptionPeriodPriceIncreaseDeclined',
+    );
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_revenuePeriodReceived =
+_$trackEventRequestEventNameEnum_revenuePeriodReceived =
     const TrackEventRequestEventNameEnum._('revenuePeriodReceived');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_referralPeriodSent =
+_$trackEventRequestEventNameEnum_referralPeriodSent =
     const TrackEventRequestEventNameEnum._('referralPeriodSent');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_referralPeriodAccepted =
+_$trackEventRequestEventNameEnum_referralPeriodAccepted =
     const TrackEventRequestEventNameEnum._('referralPeriodAccepted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_reviewPeriodPrompted =
+_$trackEventRequestEventNameEnum_reviewPeriodPrompted =
     const TrackEventRequestEventNameEnum._('reviewPeriodPrompted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_reviewPeriodSubmitted =
+_$trackEventRequestEventNameEnum_reviewPeriodSubmitted =
     const TrackEventRequestEventNameEnum._('reviewPeriodSubmitted');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_notificationPeriodReceived =
+_$trackEventRequestEventNameEnum_notificationPeriodReceived =
     const TrackEventRequestEventNameEnum._('notificationPeriodReceived');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_notificationPeriodOpened =
+_$trackEventRequestEventNameEnum_notificationPeriodOpened =
     const TrackEventRequestEventNameEnum._('notificationPeriodOpened');
 const TrackEventRequestEventNameEnum
-    _$trackEventRequestEventNameEnum_errorPeriodOccurred =
+_$trackEventRequestEventNameEnum_errorPeriodOccurred =
     const TrackEventRequestEventNameEnum._('errorPeriodOccurred');
 
 TrackEventRequestEventNameEnum _$trackEventRequestEventNameEnumValueOf(
-    String name) {
+  String name,
+) {
   switch (name) {
     case 'appPeriodFirstOpen':
       return _$trackEventRequestEventNameEnum_appPeriodFirstOpen;
@@ -457,89 +468,91 @@ TrackEventRequestEventNameEnum _$trackEventRequestEventNameEnumValueOf(
 }
 
 final BuiltSet<TrackEventRequestEventNameEnum>
-    _$trackEventRequestEventNameEnumValues = BuiltSet<
-        TrackEventRequestEventNameEnum>(const <TrackEventRequestEventNameEnum>[
-  _$trackEventRequestEventNameEnum_appPeriodFirstOpen,
-  _$trackEventRequestEventNameEnum_appPeriodOpened,
-  _$trackEventRequestEventNameEnum_appPeriodUpdated,
-  _$trackEventRequestEventNameEnum_userPeriodCreated,
-  _$trackEventRequestEventNameEnum_sessionPeriodStarted,
-  _$trackEventRequestEventNameEnum_sessionPeriodEnded,
-  _$trackEventRequestEventNameEnum_acquisitionPeriodAttributionResolved,
-  _$trackEventRequestEventNameEnum_acquisitionPeriodAppDownload,
-  _$trackEventRequestEventNameEnum_acquisitionPeriodUserRegistered,
-  _$trackEventRequestEventNameEnum_appStorePeriodProductPageViewed,
-  _$trackEventRequestEventNameEnum_appStorePeriodInstallAttributed,
-  _$trackEventRequestEventNameEnum_onboardingPeriodStarted,
-  _$trackEventRequestEventNameEnum_onboardingPeriodCompleted,
-  _$trackEventRequestEventNameEnum_onboardingPeriodStepViewed,
-  _$trackEventRequestEventNameEnum_onboardingPeriodStepCompleted,
-  _$trackEventRequestEventNameEnum_onboardingPeriodStepSkipped,
-  _$trackEventRequestEventNameEnum_onboardingPeriodGoalSelected,
-  _$trackEventRequestEventNameEnum_onboardingPeriodPermissionPrompted,
-  _$trackEventRequestEventNameEnum_onboardingPeriodPermissionGranted,
-  _$trackEventRequestEventNameEnum_onboardingPeriodPermissionDenied,
-  _$trackEventRequestEventNameEnum_surveyPeriodShown,
-  _$trackEventRequestEventNameEnum_surveyPeriodStarted,
-  _$trackEventRequestEventNameEnum_surveyPeriodCompleted,
-  _$trackEventRequestEventNameEnum_surveyPeriodDismissed,
-  _$trackEventRequestEventNameEnum_activationPeriodCompleted,
-  _$trackEventRequestEventNameEnum_featurePeriodUsed,
-  _$trackEventRequestEventNameEnum_featurePeriodFirstUsed,
-  _$trackEventRequestEventNameEnum_pagePeriodViewed,
-  _$trackEventRequestEventNameEnum_buttonPeriodClicked,
-  _$trackEventRequestEventNameEnum_goalPeriodCompleted,
-  _$trackEventRequestEventNameEnum_paywallPeriodOpened,
-  _$trackEventRequestEventNameEnum_paywallPeriodClosed,
-  _$trackEventRequestEventNameEnum_paywallPeriodUpgradeClicked,
-  _$trackEventRequestEventNameEnum_paywallPeriodUpgradeCancelled,
-  _$trackEventRequestEventNameEnum_paywallPeriodProductsRequested,
-  _$trackEventRequestEventNameEnum_paywallPeriodProductsLoaded,
-  _$trackEventRequestEventNameEnum_paywallPeriodProductsFailed,
-  _$trackEventRequestEventNameEnum_paywallPeriodOfferEligible,
-  _$trackEventRequestEventNameEnum_paywallPeriodPlanSelected,
-  _$trackEventRequestEventNameEnum_paywallPeriodRestoreClicked,
-  _$trackEventRequestEventNameEnum_paywallPeriodRestoreCompleted,
-  _$trackEventRequestEventNameEnum_paywallPeriodRestoreFailed,
-  _$trackEventRequestEventNameEnum_purchasePeriodStarted,
-  _$trackEventRequestEventNameEnum_purchasePeriodCompleted,
-  _$trackEventRequestEventNameEnum_purchasePeriodFailed,
-  _$trackEventRequestEventNameEnum_purchasePeriodRefunded,
-  _$trackEventRequestEventNameEnum_trialPeriodEligible,
-  _$trackEventRequestEventNameEnum_trialPeriodIneligible,
-  _$trackEventRequestEventNameEnum_trialPeriodStarted,
-  _$trackEventRequestEventNameEnum_trialPeriodConverted,
-  _$trackEventRequestEventNameEnum_trialPeriodCancelled,
-  _$trackEventRequestEventNameEnum_trialPeriodExpired,
-  _$trackEventRequestEventNameEnum_trialPeriodBillingRetryStarted,
-  _$trackEventRequestEventNameEnum_subscriptionPeriodStarted,
-  _$trackEventRequestEventNameEnum_subscriptionPeriodRenewed,
-  _$trackEventRequestEventNameEnum_subscriptionPeriodCancelled,
-  _$trackEventRequestEventNameEnum_subscriptionPeriodExpired,
-  _$trackEventRequestEventNameEnum_subscriptionPeriodBillingIssue,
-  _$trackEventRequestEventNameEnum_subscriptionPeriodGracePeriodStarted,
-  _$trackEventRequestEventNameEnum_subscriptionPeriodRecovered,
-  _$trackEventRequestEventNameEnum_subscriptionPeriodRefunded,
-  _$trackEventRequestEventNameEnum_subscriptionPeriodPriceIncreaseAccepted,
-  _$trackEventRequestEventNameEnum_subscriptionPeriodPriceIncreaseDeclined,
-  _$trackEventRequestEventNameEnum_revenuePeriodReceived,
-  _$trackEventRequestEventNameEnum_referralPeriodSent,
-  _$trackEventRequestEventNameEnum_referralPeriodAccepted,
-  _$trackEventRequestEventNameEnum_reviewPeriodPrompted,
-  _$trackEventRequestEventNameEnum_reviewPeriodSubmitted,
-  _$trackEventRequestEventNameEnum_notificationPeriodReceived,
-  _$trackEventRequestEventNameEnum_notificationPeriodOpened,
-  _$trackEventRequestEventNameEnum_errorPeriodOccurred,
-]);
+_$trackEventRequestEventNameEnumValues =
+    BuiltSet<TrackEventRequestEventNameEnum>(const <
+      TrackEventRequestEventNameEnum
+    >[
+      _$trackEventRequestEventNameEnum_appPeriodFirstOpen,
+      _$trackEventRequestEventNameEnum_appPeriodOpened,
+      _$trackEventRequestEventNameEnum_appPeriodUpdated,
+      _$trackEventRequestEventNameEnum_userPeriodCreated,
+      _$trackEventRequestEventNameEnum_sessionPeriodStarted,
+      _$trackEventRequestEventNameEnum_sessionPeriodEnded,
+      _$trackEventRequestEventNameEnum_acquisitionPeriodAttributionResolved,
+      _$trackEventRequestEventNameEnum_acquisitionPeriodAppDownload,
+      _$trackEventRequestEventNameEnum_acquisitionPeriodUserRegistered,
+      _$trackEventRequestEventNameEnum_appStorePeriodProductPageViewed,
+      _$trackEventRequestEventNameEnum_appStorePeriodInstallAttributed,
+      _$trackEventRequestEventNameEnum_onboardingPeriodStarted,
+      _$trackEventRequestEventNameEnum_onboardingPeriodCompleted,
+      _$trackEventRequestEventNameEnum_onboardingPeriodStepViewed,
+      _$trackEventRequestEventNameEnum_onboardingPeriodStepCompleted,
+      _$trackEventRequestEventNameEnum_onboardingPeriodStepSkipped,
+      _$trackEventRequestEventNameEnum_onboardingPeriodGoalSelected,
+      _$trackEventRequestEventNameEnum_onboardingPeriodPermissionPrompted,
+      _$trackEventRequestEventNameEnum_onboardingPeriodPermissionGranted,
+      _$trackEventRequestEventNameEnum_onboardingPeriodPermissionDenied,
+      _$trackEventRequestEventNameEnum_surveyPeriodShown,
+      _$trackEventRequestEventNameEnum_surveyPeriodStarted,
+      _$trackEventRequestEventNameEnum_surveyPeriodCompleted,
+      _$trackEventRequestEventNameEnum_surveyPeriodDismissed,
+      _$trackEventRequestEventNameEnum_activationPeriodCompleted,
+      _$trackEventRequestEventNameEnum_featurePeriodUsed,
+      _$trackEventRequestEventNameEnum_featurePeriodFirstUsed,
+      _$trackEventRequestEventNameEnum_pagePeriodViewed,
+      _$trackEventRequestEventNameEnum_buttonPeriodClicked,
+      _$trackEventRequestEventNameEnum_goalPeriodCompleted,
+      _$trackEventRequestEventNameEnum_paywallPeriodOpened,
+      _$trackEventRequestEventNameEnum_paywallPeriodClosed,
+      _$trackEventRequestEventNameEnum_paywallPeriodUpgradeClicked,
+      _$trackEventRequestEventNameEnum_paywallPeriodUpgradeCancelled,
+      _$trackEventRequestEventNameEnum_paywallPeriodProductsRequested,
+      _$trackEventRequestEventNameEnum_paywallPeriodProductsLoaded,
+      _$trackEventRequestEventNameEnum_paywallPeriodProductsFailed,
+      _$trackEventRequestEventNameEnum_paywallPeriodOfferEligible,
+      _$trackEventRequestEventNameEnum_paywallPeriodPlanSelected,
+      _$trackEventRequestEventNameEnum_paywallPeriodRestoreClicked,
+      _$trackEventRequestEventNameEnum_paywallPeriodRestoreCompleted,
+      _$trackEventRequestEventNameEnum_paywallPeriodRestoreFailed,
+      _$trackEventRequestEventNameEnum_purchasePeriodStarted,
+      _$trackEventRequestEventNameEnum_purchasePeriodCompleted,
+      _$trackEventRequestEventNameEnum_purchasePeriodFailed,
+      _$trackEventRequestEventNameEnum_purchasePeriodRefunded,
+      _$trackEventRequestEventNameEnum_trialPeriodEligible,
+      _$trackEventRequestEventNameEnum_trialPeriodIneligible,
+      _$trackEventRequestEventNameEnum_trialPeriodStarted,
+      _$trackEventRequestEventNameEnum_trialPeriodConverted,
+      _$trackEventRequestEventNameEnum_trialPeriodCancelled,
+      _$trackEventRequestEventNameEnum_trialPeriodExpired,
+      _$trackEventRequestEventNameEnum_trialPeriodBillingRetryStarted,
+      _$trackEventRequestEventNameEnum_subscriptionPeriodStarted,
+      _$trackEventRequestEventNameEnum_subscriptionPeriodRenewed,
+      _$trackEventRequestEventNameEnum_subscriptionPeriodCancelled,
+      _$trackEventRequestEventNameEnum_subscriptionPeriodExpired,
+      _$trackEventRequestEventNameEnum_subscriptionPeriodBillingIssue,
+      _$trackEventRequestEventNameEnum_subscriptionPeriodGracePeriodStarted,
+      _$trackEventRequestEventNameEnum_subscriptionPeriodRecovered,
+      _$trackEventRequestEventNameEnum_subscriptionPeriodRefunded,
+      _$trackEventRequestEventNameEnum_subscriptionPeriodPriceIncreaseAccepted,
+      _$trackEventRequestEventNameEnum_subscriptionPeriodPriceIncreaseDeclined,
+      _$trackEventRequestEventNameEnum_revenuePeriodReceived,
+      _$trackEventRequestEventNameEnum_referralPeriodSent,
+      _$trackEventRequestEventNameEnum_referralPeriodAccepted,
+      _$trackEventRequestEventNameEnum_reviewPeriodPrompted,
+      _$trackEventRequestEventNameEnum_reviewPeriodSubmitted,
+      _$trackEventRequestEventNameEnum_notificationPeriodReceived,
+      _$trackEventRequestEventNameEnum_notificationPeriodOpened,
+      _$trackEventRequestEventNameEnum_errorPeriodOccurred,
+    ]);
 
 Serializer<TrackEventRequestEnvironmentEnum>
-    _$trackEventRequestEnvironmentEnumSerializer =
+_$trackEventRequestEnvironmentEnumSerializer =
     _$TrackEventRequestEnvironmentEnumSerializer();
 Serializer<TrackEventRequestPlatformEnum>
-    _$trackEventRequestPlatformEnumSerializer =
+_$trackEventRequestPlatformEnumSerializer =
     _$TrackEventRequestPlatformEnumSerializer();
 Serializer<TrackEventRequestEventNameEnum>
-    _$trackEventRequestEventNameEnumSerializer =
+_$trackEventRequestEventNameEnumSerializer =
     _$TrackEventRequestEventNameEnumSerializer();
 
 class _$TrackEventRequestEnvironmentEnumSerializer
@@ -562,16 +575,19 @@ class _$TrackEventRequestEnvironmentEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, TrackEventRequestEnvironmentEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    TrackEventRequestEnvironmentEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   TrackEventRequestEnvironmentEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      TrackEventRequestEnvironmentEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => TrackEventRequestEnvironmentEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$TrackEventRequestPlatformEnumSerializer
@@ -602,16 +618,19 @@ class _$TrackEventRequestPlatformEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, TrackEventRequestPlatformEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    TrackEventRequestPlatformEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   TrackEventRequestPlatformEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      TrackEventRequestPlatformEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => TrackEventRequestPlatformEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$TrackEventRequestEventNameEnumSerializer
@@ -774,16 +793,19 @@ class _$TrackEventRequestEventNameEnumSerializer
 
   @override
   Object serialize(
-          Serializers serializers, TrackEventRequestEventNameEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    TrackEventRequestEventNameEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   TrackEventRequestEventNameEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      TrackEventRequestEventNameEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => TrackEventRequestEventNameEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$TrackEventRequest extends TrackEventRequest {
@@ -828,32 +850,32 @@ class _$TrackEventRequest extends TrackEventRequest {
   @override
   final String? metricLabel;
 
-  factory _$TrackEventRequest(
-          [void Function(TrackEventRequestBuilder)? updates]) =>
-      (TrackEventRequestBuilder()..update(updates))._build();
+  factory _$TrackEventRequest([
+    void Function(TrackEventRequestBuilder)? updates,
+  ]) => (TrackEventRequestBuilder()..update(updates))._build();
 
-  _$TrackEventRequest._(
-      {required this.app,
-      this.environment,
-      this.platform,
-      this.userId,
-      this.anonymousId,
-      this.deviceId,
-      this.eventId,
-      required this.eventName,
-      this.appVersion,
-      this.buildNumber,
-      this.source_,
-      this.country,
-      this.locale,
-      this.timezone,
-      this.attributionProvider,
-      this.attributionId,
-      this.occurredAt,
-      this.properties,
-      this.metricValue,
-      this.metricLabel})
-      : super._();
+  _$TrackEventRequest._({
+    required this.app,
+    this.environment,
+    this.platform,
+    this.userId,
+    this.anonymousId,
+    this.deviceId,
+    this.eventId,
+    required this.eventName,
+    this.appVersion,
+    this.buildNumber,
+    this.source_,
+    this.country,
+    this.locale,
+    this.timezone,
+    this.attributionProvider,
+    this.attributionId,
+    this.occurredAt,
+    this.properties,
+    this.metricValue,
+    this.metricLabel,
+  }) : super._();
   @override
   TrackEventRequest rebuild(void Function(TrackEventRequestBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -1081,10 +1103,14 @@ class TrackEventRequestBuilder
   _$TrackEventRequest _build() {
     _$TrackEventRequest _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$TrackEventRequest._(
             app: BuiltValueNullFieldError.checkNotNull(
-                app, r'TrackEventRequest', 'app'),
+              app,
+              r'TrackEventRequest',
+              'app',
+            ),
             environment: environment,
             platform: platform,
             userId: userId,
@@ -1092,7 +1118,10 @@ class TrackEventRequestBuilder
             deviceId: deviceId,
             eventId: eventId,
             eventName: BuiltValueNullFieldError.checkNotNull(
-                eventName, r'TrackEventRequest', 'eventName'),
+              eventName,
+              r'TrackEventRequest',
+              'eventName',
+            ),
             appVersion: appVersion,
             buildNumber: buildNumber,
             source_: source_,
@@ -1113,7 +1142,10 @@ class TrackEventRequestBuilder
         _properties?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'TrackEventRequest', _$failedField, e.toString());
+          r'TrackEventRequest',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

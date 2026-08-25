@@ -7,17 +7,17 @@ part of 'apple_attribution_request.dart';
 // **************************************************************************
 
 const AppleAttributionRequestEnvironmentEnum
-    _$appleAttributionRequestEnvironmentEnum_production =
+_$appleAttributionRequestEnvironmentEnum_production =
     const AppleAttributionRequestEnvironmentEnum._('production');
 const AppleAttributionRequestEnvironmentEnum
-    _$appleAttributionRequestEnvironmentEnum_staging =
+_$appleAttributionRequestEnvironmentEnum_staging =
     const AppleAttributionRequestEnvironmentEnum._('staging');
 const AppleAttributionRequestEnvironmentEnum
-    _$appleAttributionRequestEnvironmentEnum_development =
+_$appleAttributionRequestEnvironmentEnum_development =
     const AppleAttributionRequestEnvironmentEnum._('development');
 
 AppleAttributionRequestEnvironmentEnum
-    _$appleAttributionRequestEnvironmentEnumValueOf(String name) {
+_$appleAttributionRequestEnvironmentEnumValueOf(String name) {
   switch (name) {
     case 'production':
       return _$appleAttributionRequestEnvironmentEnum_production;
@@ -31,37 +31,39 @@ AppleAttributionRequestEnvironmentEnum
 }
 
 final BuiltSet<AppleAttributionRequestEnvironmentEnum>
-    _$appleAttributionRequestEnvironmentEnumValues = BuiltSet<
-        AppleAttributionRequestEnvironmentEnum>(const <AppleAttributionRequestEnvironmentEnum>[
-  _$appleAttributionRequestEnvironmentEnum_production,
-  _$appleAttributionRequestEnvironmentEnum_staging,
-  _$appleAttributionRequestEnvironmentEnum_development,
-]);
+_$appleAttributionRequestEnvironmentEnumValues =
+    BuiltSet<AppleAttributionRequestEnvironmentEnum>(
+      const <AppleAttributionRequestEnvironmentEnum>[
+        _$appleAttributionRequestEnvironmentEnum_production,
+        _$appleAttributionRequestEnvironmentEnum_staging,
+        _$appleAttributionRequestEnvironmentEnum_development,
+      ],
+    );
 
 const AppleAttributionRequestPlatformEnum
-    _$appleAttributionRequestPlatformEnum_ios =
+_$appleAttributionRequestPlatformEnum_ios =
     const AppleAttributionRequestPlatformEnum._('ios');
 const AppleAttributionRequestPlatformEnum
-    _$appleAttributionRequestPlatformEnum_android =
+_$appleAttributionRequestPlatformEnum_android =
     const AppleAttributionRequestPlatformEnum._('android');
 const AppleAttributionRequestPlatformEnum
-    _$appleAttributionRequestPlatformEnum_web =
+_$appleAttributionRequestPlatformEnum_web =
     const AppleAttributionRequestPlatformEnum._('web');
 const AppleAttributionRequestPlatformEnum
-    _$appleAttributionRequestPlatformEnum_macos =
+_$appleAttributionRequestPlatformEnum_macos =
     const AppleAttributionRequestPlatformEnum._('macos');
 const AppleAttributionRequestPlatformEnum
-    _$appleAttributionRequestPlatformEnum_windows =
+_$appleAttributionRequestPlatformEnum_windows =
     const AppleAttributionRequestPlatformEnum._('windows');
 const AppleAttributionRequestPlatformEnum
-    _$appleAttributionRequestPlatformEnum_linux =
+_$appleAttributionRequestPlatformEnum_linux =
     const AppleAttributionRequestPlatformEnum._('linux');
 const AppleAttributionRequestPlatformEnum
-    _$appleAttributionRequestPlatformEnum_server =
+_$appleAttributionRequestPlatformEnum_server =
     const AppleAttributionRequestPlatformEnum._('server');
 
 AppleAttributionRequestPlatformEnum
-    _$appleAttributionRequestPlatformEnumValueOf(String name) {
+_$appleAttributionRequestPlatformEnumValueOf(String name) {
   switch (name) {
     case 'ios':
       return _$appleAttributionRequestPlatformEnum_ios;
@@ -83,22 +85,24 @@ AppleAttributionRequestPlatformEnum
 }
 
 final BuiltSet<AppleAttributionRequestPlatformEnum>
-    _$appleAttributionRequestPlatformEnumValues = BuiltSet<
-        AppleAttributionRequestPlatformEnum>(const <AppleAttributionRequestPlatformEnum>[
-  _$appleAttributionRequestPlatformEnum_ios,
-  _$appleAttributionRequestPlatformEnum_android,
-  _$appleAttributionRequestPlatformEnum_web,
-  _$appleAttributionRequestPlatformEnum_macos,
-  _$appleAttributionRequestPlatformEnum_windows,
-  _$appleAttributionRequestPlatformEnum_linux,
-  _$appleAttributionRequestPlatformEnum_server,
-]);
+_$appleAttributionRequestPlatformEnumValues =
+    BuiltSet<AppleAttributionRequestPlatformEnum>(
+      const <AppleAttributionRequestPlatformEnum>[
+        _$appleAttributionRequestPlatformEnum_ios,
+        _$appleAttributionRequestPlatformEnum_android,
+        _$appleAttributionRequestPlatformEnum_web,
+        _$appleAttributionRequestPlatformEnum_macos,
+        _$appleAttributionRequestPlatformEnum_windows,
+        _$appleAttributionRequestPlatformEnum_linux,
+        _$appleAttributionRequestPlatformEnum_server,
+      ],
+    );
 
 Serializer<AppleAttributionRequestEnvironmentEnum>
-    _$appleAttributionRequestEnvironmentEnumSerializer =
+_$appleAttributionRequestEnvironmentEnumSerializer =
     _$AppleAttributionRequestEnvironmentEnumSerializer();
 Serializer<AppleAttributionRequestPlatformEnum>
-    _$appleAttributionRequestPlatformEnumSerializer =
+_$appleAttributionRequestPlatformEnumSerializer =
     _$AppleAttributionRequestPlatformEnumSerializer();
 
 class _$AppleAttributionRequestEnvironmentEnumSerializer
@@ -116,23 +120,26 @@ class _$AppleAttributionRequestEnvironmentEnumSerializer
 
   @override
   final Iterable<Type> types = const <Type>[
-    AppleAttributionRequestEnvironmentEnum
+    AppleAttributionRequestEnvironmentEnum,
   ];
   @override
   final String wireName = 'AppleAttributionRequestEnvironmentEnum';
 
   @override
-  Object serialize(Serializers serializers,
-          AppleAttributionRequestEnvironmentEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+  Object serialize(
+    Serializers serializers,
+    AppleAttributionRequestEnvironmentEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   AppleAttributionRequestEnvironmentEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      AppleAttributionRequestEnvironmentEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => AppleAttributionRequestEnvironmentEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$AppleAttributionRequestPlatformEnumSerializer
@@ -158,23 +165,26 @@ class _$AppleAttributionRequestPlatformEnumSerializer
 
   @override
   final Iterable<Type> types = const <Type>[
-    AppleAttributionRequestPlatformEnum
+    AppleAttributionRequestPlatformEnum,
   ];
   @override
   final String wireName = 'AppleAttributionRequestPlatformEnum';
 
   @override
   Object serialize(
-          Serializers serializers, AppleAttributionRequestPlatformEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
+    Serializers serializers,
+    AppleAttributionRequestPlatformEnum object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => _toWire[object.name] ?? object.name;
 
   @override
   AppleAttributionRequestPlatformEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      AppleAttributionRequestPlatformEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => AppleAttributionRequestPlatformEnum.valueOf(
+    _fromWire[serialized] ?? (serialized is String ? serialized : ''),
+  );
 }
 
 class _$AppleAttributionRequest extends AppleAttributionRequest {
@@ -209,31 +219,31 @@ class _$AppleAttributionRequest extends AppleAttributionRequest {
   @override
   final String appleAttributionToken;
 
-  factory _$AppleAttributionRequest(
-          [void Function(AppleAttributionRequestBuilder)? updates]) =>
-      (AppleAttributionRequestBuilder()..update(updates))._build();
+  factory _$AppleAttributionRequest([
+    void Function(AppleAttributionRequestBuilder)? updates,
+  ]) => (AppleAttributionRequestBuilder()..update(updates))._build();
 
-  _$AppleAttributionRequest._(
-      {required this.app,
-      this.environment,
-      this.userId,
-      this.anonymousId,
-      this.deviceId,
-      this.platform,
-      this.appVersion,
-      this.buildNumber,
-      this.source_,
-      this.country,
-      this.locale,
-      this.timezone,
-      this.occurredAt,
-      this.properties,
-      required this.appleAttributionToken})
-      : super._();
+  _$AppleAttributionRequest._({
+    required this.app,
+    this.environment,
+    this.userId,
+    this.anonymousId,
+    this.deviceId,
+    this.platform,
+    this.appVersion,
+    this.buildNumber,
+    this.source_,
+    this.country,
+    this.locale,
+    this.timezone,
+    this.occurredAt,
+    this.properties,
+    required this.appleAttributionToken,
+  }) : super._();
   @override
   AppleAttributionRequest rebuild(
-          void Function(AppleAttributionRequestBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(AppleAttributionRequestBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   AppleAttributionRequestBuilder toBuilder() =>
@@ -418,10 +428,14 @@ class AppleAttributionRequestBuilder
   _$AppleAttributionRequest _build() {
     _$AppleAttributionRequest _$result;
     try {
-      _$result = _$v ??
+      _$result =
+          _$v ??
           _$AppleAttributionRequest._(
             app: BuiltValueNullFieldError.checkNotNull(
-                app, r'AppleAttributionRequest', 'app'),
+              app,
+              r'AppleAttributionRequest',
+              'app',
+            ),
             environment: environment,
             userId: userId,
             anonymousId: anonymousId,
@@ -436,9 +450,10 @@ class AppleAttributionRequestBuilder
             occurredAt: occurredAt,
             properties: _properties?.build(),
             appleAttributionToken: BuiltValueNullFieldError.checkNotNull(
-                appleAttributionToken,
-                r'AppleAttributionRequest',
-                'appleAttributionToken'),
+              appleAttributionToken,
+              r'AppleAttributionRequest',
+              'appleAttributionToken',
+            ),
           );
     } catch (_) {
       late String _$failedField;
@@ -447,7 +462,10 @@ class AppleAttributionRequestBuilder
         _properties?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'AppleAttributionRequest', _$failedField, e.toString());
+          r'AppleAttributionRequest',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
