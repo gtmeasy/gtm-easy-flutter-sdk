@@ -1,0 +1,5 @@
+# OpenAPI Generator Ignore
+# Regenerated dart-dio output is copied into lib/src/generated/ by tool/generate.sh.
+# Do not edit those files by hand.
+
+_gen/

@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      built_value_generator|built_value:
+        generate_for:
+          - lib/src/generated/**
+      source_gen|combining_builder:
+        generate_for:
+          - lib/src/generated/**

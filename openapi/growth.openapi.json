@@ -1,0 +1,2405 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "version": "0.6.0",
+    "title": "GTM Easy Growth API",
+    "description": "Native + web SDK ingest surface for GTM Easy. Consumed by the official Swift, Kotlin, TypeScript, Flutter, and C++ SDKs and by third-party server integrations.",
+    "contact": {
+      "name": "RockieStar",
+      "url": "https://gtmeasy.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://www.gtmeasy.com/api/v1/growth",
+      "description": "production"
+    },
+    {
+      "url": "http://localhost:3000/api/v1/growth",
+      "description": "local dev"
+    }
+  ],
+  "tags": [
+    {
+      "name": "events",
+      "description": "Tracked behavioral events."
+    },
+    {
+      "name": "users",
+      "description": "User identity + traits."
+    },
+    {
+      "name": "acquisition",
+      "description": "App download + new-user registration ingest (Discord-notified)."
+    },
+    {
+      "name": "surveys",
+      "description": "Flexible onboarding-survey responses."
+    },
+    {
+      "name": "attribution",
+      "description": "Install + click attribution endpoints."
+    },
+    {
+      "name": "skan",
+      "description": "SKAdNetwork 4.0 postback receiver."
+    },
+    {
+      "name": "webhooks",
+      "description": "App Store + Play store server notifications."
+    },
+    {
+      "name": "meta",
+      "description": "Health + version probes."
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "growthWriteKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-gtm-growth-key",
+        "description": "SDK write key issued from the GTM Easy dashboard for this app."
+      }
+    },
+    "schemas": {
+      "HealthResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ]
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "version"
+        ]
+      },
+      "BatchIngestResponse": {
+        "type": "object",
+        "properties": {
+          "accepted": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "rejected": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BatchIngestItemResult"
+            }
+          }
+        },
+        "required": [
+          "accepted",
+          "rejected",
+          "results"
+        ]
+      },
+      "BatchIngestItemResult": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Position in the request events array."
+          },
+          "eventId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Client eventId when provided; otherwise null."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "accepted",
+              "ignored",
+              "rejected"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "description": "reviewer_infrastructure when ignored, or the validation message when rejected."
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "index",
+          "eventId",
+          "status",
+          "warnings"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "BatchTrackEventRequest": {
+        "type": "object",
+        "properties": {
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrackEventRequest"
+            },
+            "minItems": 1,
+            "maxItems": 100,
+            "description": "1–100 tracked events. Invalid items are rejected individually; the batch still returns 200."
+          }
+        },
+        "required": [
+          "events"
+        ]
+      },
+      "TrackEventRequest": {
+        "type": "object",
+        "properties": {
+          "app": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "example": "twilar"
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "production",
+              "staging",
+              "development"
+            ],
+            "default": "production",
+            "example": "production"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android",
+              "web",
+              "macos",
+              "windows",
+              "linux",
+              "server"
+            ],
+            "default": "ios",
+            "example": "ios",
+            "description": "Originating platform."
+          },
+          "userId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "anonymousId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "deviceId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "eventId": {
+            "type": "string",
+            "maxLength": 64,
+            "format": "uuid",
+            "description": "Client-generated idempotency key. Reuse the same UUID and original occurredAt when retrying the same event.",
+            "example": "018fd5c2-4d5b-4c1b-aee3-6e2c2ad8c82b"
+          },
+          "eventName": {
+            "type": "string",
+            "enum": [
+              "app.first_open",
+              "app.opened",
+              "app.updated",
+              "user.created",
+              "session.started",
+              "session.ended",
+              "acquisition.attribution_resolved",
+              "acquisition.app_download",
+              "acquisition.user_registered",
+              "app_store.product_page_viewed",
+              "app_store.install_attributed",
+              "onboarding.started",
+              "onboarding.completed",
+              "onboarding.step_viewed",
+              "onboarding.step_completed",
+              "onboarding.step_skipped",
+              "onboarding.goal_selected",
+              "onboarding.permission_prompted",
+              "onboarding.permission_granted",
+              "onboarding.permission_denied",
+              "survey.shown",
+              "survey.started",
+              "survey.completed",
+              "survey.dismissed",
+              "activation.completed",
+              "feature.used",
+              "feature.first_used",
+              "page.viewed",
+              "button.clicked",
+              "goal.completed",
+              "paywall.opened",
+              "paywall.closed",
+              "paywall.upgrade_clicked",
+              "paywall.upgrade_cancelled",
+              "paywall.products_requested",
+              "paywall.products_loaded",
+              "paywall.products_failed",
+              "paywall.offer_eligible",
+              "paywall.plan_selected",
+              "paywall.restore_clicked",
+              "paywall.restore_completed",
+              "paywall.restore_failed",
+              "purchase.started",
+              "purchase.completed",
+              "purchase.failed",
+              "purchase.refunded",
+              "trial.eligible",
+              "trial.ineligible",
+              "trial.started",
+              "trial.converted",
+              "trial.cancelled",
+              "trial.expired",
+              "trial.billing_retry_started",
+              "subscription.started",
+              "subscription.renewed",
+              "subscription.cancelled",
+              "subscription.expired",
+              "subscription.billing_issue",
+              "subscription.grace_period_started",
+              "subscription.recovered",
+              "subscription.refunded",
+              "subscription.price_increase_accepted",
+              "subscription.price_increase_declined",
+              "revenue.received",
+              "referral.sent",
+              "referral.accepted",
+              "review.prompted",
+              "review.submitted",
+              "notification.received",
+              "notification.opened",
+              "error.occurred"
+            ],
+            "example": "paywall.opened"
+          },
+          "appVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "buildNumber": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "default": "native"
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "ISO-3166 alpha-2; server fills from Cloudflare if absent."
+          },
+          "locale": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "timezone": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "attributionProvider": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "attributionId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "occurredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Free-form structured properties. Reserved keys: `_ctx` for SDK common context."
+          },
+          "metricValue": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "metricLabel": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "app",
+          "eventName"
+        ]
+      },
+      "IngestEventResponse": {
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "eventName": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "eventName"
+            ]
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "event",
+          "warnings"
+        ]
+      },
+      "IngestUserResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "object",
+            "properties": {
+              "identityHash": {
+                "type": "string"
+              },
+              "principalId": {
+                "type": "string",
+                "description": "Resolved stable principal (userId, else anonymousId, else deviceId) used for attribution."
+              }
+            },
+            "required": [
+              "identityHash"
+            ]
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "user",
+          "warnings"
+        ]
+      },
+      "IdentifyUserRequest": {
+        "type": "object",
+        "properties": {
+          "app": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "production",
+              "staging",
+              "development"
+            ],
+            "default": "production",
+            "example": "production"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android",
+              "web",
+              "macos",
+              "windows",
+              "linux",
+              "server"
+            ],
+            "default": "ios",
+            "example": "ios",
+            "description": "Originating platform."
+          },
+          "userId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "anonymousId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "deviceId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "username": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 240,
+            "example": "john_wayne",
+            "description": "Human-readable display name / handle. Plaintext at rest."
+          },
+          "email": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 320,
+            "example": "john@example.com",
+            "description": "User email. Plaintext at rest; SHA-256 hashed only at ad-platform egress."
+          },
+          "appVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "buildNumber": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "locale": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "timezone": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "traits": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Free-form structured properties. Reserved keys: `_ctx` for SDK common context."
+          }
+        },
+        "required": [
+          "app"
+        ]
+      },
+      "RegistrationResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "object",
+            "properties": {
+              "identityHash": {
+                "type": "string"
+              },
+              "principalId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "identityHash"
+            ]
+          },
+          "event": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "user",
+          "event",
+          "warnings"
+        ]
+      },
+      "RegistrationRequest": {
+        "type": "object",
+        "properties": {
+          "app": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "example": "screenkite-ios",
+            "description": "Optional; the server derives the app from the write key when omitted."
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "production",
+              "staging",
+              "development"
+            ],
+            "default": "production",
+            "example": "production"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android",
+              "web",
+              "macos",
+              "windows",
+              "linux",
+              "server"
+            ],
+            "example": "ios",
+            "description": "Defaults to the registered app's platform when omitted."
+          },
+          "userId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "anonymousId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "deviceId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "username": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 240
+          },
+          "email": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 320
+          },
+          "appVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "buildNumber": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "default": "native"
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "ISO-3166 alpha-2; server fills from Cloudflare if absent."
+          },
+          "locale": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "timezone": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "attributionProvider": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "attributionId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "occurredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traits": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Free-form structured properties. Reserved keys: `_ctx` for SDK common context."
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Free-form structured properties. Reserved keys: `_ctx` for SDK common context."
+          }
+        }
+      },
+      "DownloadResponse": {
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "event",
+          "warnings"
+        ]
+      },
+      "DownloadRequest": {
+        "type": "object",
+        "properties": {
+          "app": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "example": "screenkite-mac",
+            "description": "Optional; the server derives the app from the write key when omitted."
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "production",
+              "staging",
+              "development"
+            ],
+            "default": "production",
+            "example": "production"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android",
+              "web",
+              "macos",
+              "windows",
+              "linux",
+              "server"
+            ],
+            "example": "ios",
+            "description": "Defaults to the registered app's platform when omitted."
+          },
+          "userId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "anonymousId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "deviceId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "appVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "buildNumber": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "default": "website"
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "locale": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "timezone": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "attributionProvider": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "attributionId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "occurredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Download metadata, e.g. { channel, fileSize, downloadUrl }."
+          }
+        }
+      },
+      "SubmitSurveyResponse": {
+        "type": "object",
+        "properties": {
+          "submissionId": {
+            "type": "string"
+          },
+          "accepted": {
+            "type": "integer",
+            "description": "Number of answer rows persisted."
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "submissionId",
+          "accepted",
+          "warnings"
+        ]
+      },
+      "SubmitSurveyRequest": {
+        "type": "object",
+        "properties": {
+          "app": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "example": "screenkite-ios",
+            "description": "Optional; the server derives the app from the write key when omitted."
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "production",
+              "staging",
+              "development"
+            ],
+            "default": "production",
+            "example": "production"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android",
+              "web",
+              "macos",
+              "windows",
+              "linux",
+              "server"
+            ],
+            "example": "ios",
+            "description": "Defaults to the registered app's platform when omitted."
+          },
+          "userId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "anonymousId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "deviceId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "surveyId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "example": "onboarding_v1"
+          },
+          "surveyVersion": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 64
+          },
+          "surveyName": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 200
+          },
+          "submissionId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 200,
+            "description": "Optional; server generates a UUID when omitted. Idempotency key for retries."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "completed",
+              "partial",
+              "dismissed"
+            ],
+            "default": "completed"
+          },
+          "appVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "locale": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "occurredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "responses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SurveyResponseAnswer"
+            },
+            "maxItems": 50,
+            "default": [],
+            "description": "Per-question answers (0–50). May be empty when status = dismissed."
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Free-form structured properties. Reserved keys: `_ctx` for SDK common context."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Optional submission-level extensibility payload (A/B variant, locale overrides, UI context…). Echoed onto every answer row; persisted to the `metadata` JSON column for JSONExtract-on-demand reads."
+          }
+        },
+        "required": [
+          "surveyId"
+        ]
+      },
+      "SurveyResponseAnswer": {
+        "type": "object",
+        "properties": {
+          "questionId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "example": "source"
+          },
+          "type": {
+            "type": "string",
+            "maxLength": 40,
+            "example": "single_choice",
+            "description": "Question type. Known: single_choice | multi_choice | rating | scale | nps | boolean | text | link. Unknown values are stored as text."
+          },
+          "questionText": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 300,
+            "description": "Human-readable prompt, for friendly dashboards."
+          },
+          "position": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "choices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 50,
+            "description": "Option IDs (single_choice = one element)."
+          },
+          "choiceLabels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 50,
+            "description": "Optional parallel human labels for `choices`."
+          },
+          "number": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "rating | scale | nps numeric answer."
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2000,
+            "description": "Free-text answer (up to 2000 chars)."
+          },
+          "bool": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "skipped": {
+            "type": "boolean"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Optional per-answer extensibility payload (answer timing, validation flags…). Merged OVER submission-level metadata."
+          }
+        },
+        "required": [
+          "questionId",
+          "type"
+        ]
+      },
+      "AppleAttributionRequest": {
+        "type": "object",
+        "properties": {
+          "app": {
+            "type": "string",
+            "minLength": 1
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "production",
+              "staging",
+              "development"
+            ],
+            "default": "production",
+            "example": "production"
+          },
+          "userId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "anonymousId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "deviceId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android",
+              "web",
+              "macos",
+              "windows",
+              "linux",
+              "server"
+            ],
+            "default": "ios",
+            "example": "ios",
+            "description": "Originating platform."
+          },
+          "appVersion": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "buildNumber": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "default": "native"
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "locale": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "timezone": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "occurredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Free-form structured properties. Reserved keys: `_ctx` for SDK common context."
+          },
+          "appleAttributionToken": {
+            "type": "string",
+            "minLength": 10
+          }
+        },
+        "required": [
+          "app",
+          "appleAttributionToken"
+        ]
+      },
+      "PlayInstallReferrerRequest": {
+        "type": "object",
+        "properties": {
+          "app": {
+            "type": "string",
+            "minLength": 1
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "production",
+              "staging",
+              "development"
+            ],
+            "default": "production",
+            "example": "production"
+          },
+          "userId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "anonymousId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "android"
+            ],
+            "default": "android"
+          },
+          "source": {
+            "type": "string",
+            "default": "native"
+          },
+          "occurredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "playInstallReferrer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Free-form structured properties. Reserved keys: `_ctx` for SDK common context."
+          }
+        },
+        "required": [
+          "app",
+          "playInstallReferrer"
+        ]
+      },
+      "WebReferrerRequest": {
+        "type": "object",
+        "properties": {
+          "app": {
+            "type": "string",
+            "minLength": 1
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "production",
+              "staging",
+              "development"
+            ],
+            "default": "production",
+            "example": "production"
+          },
+          "userId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "anonymousId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android",
+              "web",
+              "macos",
+              "windows",
+              "linux",
+              "server"
+            ],
+            "default": "web",
+            "example": "ios",
+            "description": "Originating platform."
+          },
+          "source": {
+            "type": "string",
+            "default": "native"
+          },
+          "occurredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "webReferrer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "clickId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Free-form structured properties. Reserved keys: `_ctx` for SDK common context."
+          }
+        },
+        "required": [
+          "app",
+          "webReferrer"
+        ]
+      },
+      "SkanPostbackRequest": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "example": "4.0"
+          },
+          "ad-network-id": {
+            "type": "string"
+          },
+          "campaign-id": {
+            "type": "integer"
+          },
+          "source-identifier": {
+            "type": "string"
+          },
+          "transaction-id": {
+            "type": "string"
+          },
+          "app-id": {
+            "type": "integer"
+          },
+          "attribution-signature": {
+            "type": "string"
+          },
+          "redownload": {
+            "type": "boolean"
+          },
+          "source-app-id": {
+            "type": "integer"
+          },
+          "source-domain": {
+            "type": "string"
+          },
+          "fidelity-type": {
+            "type": "integer"
+          },
+          "conversion-value": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 63
+          },
+          "coarse-conversion-value": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "did-win": {
+            "type": "boolean"
+          },
+          "postback-sequence-index": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "version",
+          "ad-network-id",
+          "transaction-id",
+          "app-id",
+          "attribution-signature"
+        ],
+        "additionalProperties": {}
+      },
+      "GenericOkResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "AppStoreWebhookRequest": {
+        "type": "object",
+        "properties": {
+          "signedPayload": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "signedPayload"
+        ]
+      },
+      "PlayStoreWebhookRequest": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "string",
+                "minLength": 1
+              },
+              "attributes": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              },
+              "messageId": {
+                "type": "string"
+              },
+              "publishTime": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "data"
+            ]
+          },
+          "subscription": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ]
+      }
+    },
+    "parameters": {}
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "Health probe",
+        "responses": {
+          "200": {
+            "description": "Service healthy.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/batch": {
+      "post": {
+        "tags": [
+          "events"
+        ],
+        "summary": "Record up to 100 tracked events in one request",
+        "description": "Accepts 1–100 TrackEventRequest objects. Auth and rate limiting run once for the whole request (one rate-limit unit). Each item is validated independently: invalid items are marked rejected and do not fail the batch. HTTP 200 is returned even when some items are rejected. Cap is 100 events.",
+        "security": [
+          {
+            "growthWriteKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+              "example": "wk_live_..."
+            },
+            "required": true,
+            "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+            "name": "x-gtm-growth-key",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchTrackEventRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Per-item ingest results. accepted + ignored + rejected cover the input array.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchIngestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid write key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Ingest rate limit exceeded. Retry after the response's Retry-After interval.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Ingest temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events": {
+      "post": {
+        "tags": [
+          "events"
+        ],
+        "summary": "Record a tracked event",
+        "description": "Persists a single event and fans out to configured connectors (Meta CAPI, Google Ads, TikTok Events, PostHog, Sentry, Statsig). Idempotent on `(app, eventName, occurredAt, identityHash)`.",
+        "security": [
+          {
+            "growthWriteKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+              "example": "wk_live_..."
+            },
+            "required": true,
+            "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+            "name": "x-gtm-growth-key",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrackEventRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Event accepted and queued for fan-out.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestEventResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid write key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Ingest rate limit exceeded. Retry after the response's Retry-After interval.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Ingest temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Identify a user / upsert traits",
+        "security": [
+          {
+            "growthWriteKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+              "example": "wk_live_..."
+            },
+            "required": true,
+            "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+            "name": "x-gtm-growth-key",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IdentifyUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User upserted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestUserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid write key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Ingest rate limit exceeded. Retry after the response's Retry-After interval.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Ingest temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/registrations": {
+      "post": {
+        "tags": [
+          "acquisition"
+        ],
+        "summary": "Record a new app user registration",
+        "description": "Identifies the user (upserts traits + People geo from Cloudflare) AND records an `acquisition.user_registered` event, then fires the configured Discord notification (unless the IP is Apple/Google review infrastructure).",
+        "security": [
+          {
+            "growthWriteKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+              "example": "wk_live_..."
+            },
+            "required": true,
+            "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+            "name": "x-gtm-growth-key",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Registration recorded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid write key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Ingest rate limit exceeded. Retry after the response's Retry-After interval.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Ingest temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/downloads": {
+      "post": {
+        "tags": [
+          "acquisition"
+        ],
+        "summary": "Record an app download / first open",
+        "description": "Records an `acquisition.app_download` event and fires the configured Discord notification (unless the IP is Apple/Google review infrastructure).",
+        "security": [
+          {
+            "growthWriteKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+              "example": "wk_live_..."
+            },
+            "required": true,
+            "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+            "name": "x-gtm-growth-key",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DownloadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Download recorded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DownloadResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid write key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Ingest rate limit exceeded. Retry after the response's Retry-After interval.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Ingest temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/surveys": {
+      "post": {
+        "tags": [
+          "surveys"
+        ],
+        "summary": "Submit an onboarding-survey response",
+        "description": "Persists flexible onboarding-survey answers (one stored row per question, no 240-char truncation). A `survey.completed`/`survey.dismissed` lifecycle event is also recorded for the journey timeline + connector fan-out (`partial` submissions emit no event). Idempotent on `submissionId`.",
+        "security": [
+          {
+            "growthWriteKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+              "example": "wk_live_..."
+            },
+            "required": true,
+            "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+            "name": "x-gtm-growth-key",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitSurveyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Survey response accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitSurveyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid write key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Ingest rate limit exceeded. Retry after the response's Retry-After interval.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Ingest temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/attribution/apple-search-ads": {
+      "post": {
+        "tags": [
+          "attribution"
+        ],
+        "summary": "Submit an Apple Search Ads attribution token",
+        "security": [
+          {
+            "growthWriteKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+              "example": "wk_live_..."
+            },
+            "required": true,
+            "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+            "name": "x-gtm-growth-key",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppleAttributionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Attribution resolved or accepted for later resolution.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestEventResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid write key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Ingest rate limit exceeded. Retry after the response's Retry-After interval.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Ingest temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/attribution/play-install-referrer": {
+      "post": {
+        "tags": [
+          "attribution"
+        ],
+        "summary": "Submit a Google Play install referrer string",
+        "security": [
+          {
+            "growthWriteKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+              "example": "wk_live_..."
+            },
+            "required": true,
+            "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+            "name": "x-gtm-growth-key",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayInstallReferrerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Referrer parsed and persisted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestEventResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid write key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Ingest rate limit exceeded. Retry after the response's Retry-After interval.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Ingest temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/attribution/web-referrer": {
+      "post": {
+        "tags": [
+          "attribution"
+        ],
+        "summary": "Submit a web referrer URL + click id",
+        "security": [
+          {
+            "growthWriteKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+              "example": "wk_live_..."
+            },
+            "required": true,
+            "description": "SDK write key issued from the GTM Easy dashboard for this app.",
+            "name": "x-gtm-growth-key",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebReferrerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Web referrer accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestEventResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid write key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Ingest rate limit exceeded. Retry after the response's Retry-After interval.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Ingest temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/skan/postback": {
+      "post": {
+        "tags": [
+          "skan"
+        ],
+        "summary": "SKAdNetwork postback receiver",
+        "description": "Apple sends signed postbacks here when a SKAN install attribution wins. Body is verified against Apple's published JWKS before persistence.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkanPostbackRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Postback accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhook/appstore": {
+      "post": {
+        "tags": [
+          "webhooks"
+        ],
+        "summary": "App Store Server Notifications V2",
+        "description": "Apple sends signed payloads here when a subscription state changes (renew, refund, expire, etc).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppStoreWebhookRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Notification accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericOkResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhook/playstore": {
+      "post": {
+        "tags": [
+          "webhooks"
+        ],
+        "summary": "Google Play Real-time Developer Notifications",
+        "description": "Pub/Sub-delivered notifications for Play subscription state changes + voided purchases.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayStoreWebhookRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Notification accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenericOkResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed — see error message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "webhooks": {}
+}
