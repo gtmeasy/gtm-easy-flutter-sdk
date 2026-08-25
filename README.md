@@ -1,5 +1,7 @@
 # GTM Easy Flutter SDK
 
+![ci](https://github.com/gtmeasy/gtm-easy-flutter-sdk/actions/workflows/ci.yml/badge.svg)
+
 First-party Flutter / Dart SDK for [GTM Easy](https://gtmeasy.com) growth analytics, attribution, onboarding surveys, and paywall-funnel events. Sends events to the GTM Easy ingestion API, identifies users, persists an anonymous ID, tracks app lifecycle (`app.first_open` / `app.updated` / `app.opened`), and captures system context (locale, timezone, device model).
 
 Targets every Flutter platform: **iOS, Android, macOS, Windows, Linux, and Web**.
@@ -39,6 +41,8 @@ await analytics.flush();
 ```
 
 `track` and `identify` validate and enqueue; they do not wait for the network. Call `flush()` (or rely on the interval / lifecycle pause) to send.
+
+Example app builds on iOS, Android, macOS, Windows, Linux, and Web in CI.
 
 Pass the write key with `--dart-define=GTM_GROWTH_KEY=...` in the example app.
 

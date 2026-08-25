@@ -35,3 +35,61 @@ jobs:
           if pct < 80:
               sys.exit(f"pana score {pct:.1f}% is below the 80% threshold")
           PY
+
+  example-build:
+    name: example ${{ matrix.name }}
+    needs: test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: web
+            os: ubuntu-latest
+            build: flutter build web --release
+          - name: linux
+            os: ubuntu-latest
+            linux_deps: true
+            enable_desktop: linux
+            build: flutter build linux --release
+          - name: android
+            os: ubuntu-latest
+            setup_java: true
+            build: flutter build apk --debug
+          - name: windows
+            os: windows-latest
+            enable_desktop: windows
+            build: flutter build windows --release
+          - name: macos
+            os: macos-latest
+            enable_desktop: macos
+            build: flutter build macos --release
+          - name: ios
+            os: macos-latest
+            build: flutter build ios --release --no-codesign
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter --version
+      - run: flutter pub get
+      - run: flutter pub get
+        working-directory: example
+      - name: Install Linux desktop build dependencies
+        if: matrix.linux_deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
+      - uses: actions/setup-java@v4
+        if: matrix.setup_java
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Enable Flutter desktop
+        if: matrix.enable_desktop
+        run: flutter config --enable-${{ matrix.enable_desktop }}-desktop
+      - name: Build example (${{ matrix.name }})
+        run: ${{ matrix.build }}
+        working-directory: example
