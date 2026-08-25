@@ -13,28 +13,29 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
+          cache: true
       - run: flutter pub get
       - run: dart format --set-exit-if-changed .
       - run: flutter analyze
       - run: flutter test
-      - id: pana
-        uses: axel-op/dart-package-analyzer@v3
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-      - name: Enforce 80 percent pana score
-        env:
-          TOTAL: ${{ steps.pana.outputs.total }}
-          TOTAL_MAX: ${{ steps.pana.outputs.total_max }}
+      - name: Run pana
         run: |
+          dart pub global activate pana
+          dart pub global run pana --json --no-warning . > pana.json
           python3 - <<'PY'
-          import os, sys
-          total = int(os.environ["TOTAL"])
-          maximum = int(os.environ["TOTAL_MAX"])
-          pct = 0 if maximum == 0 else (100.0 * total / maximum)
+          import json, sys
+          r = json.load(open("pana.json"))
+          s = r["scores"]; total, maximum = s["grantedPoints"], s["maxPoints"]
+          pct = 100.0 * total / maximum if maximum else 0
           print(f"pana score {total}/{maximum} ({pct:.1f}%)")
-          if pct < 80:
-              sys.exit(f"pana score {pct:.1f}% is below the 80% threshold")
+          for sec in r.get("report", {}).get("sections", []):
+              if sec.get("status") != "passed":
+                  print("----", sec.get("title")); print(sec.get("summary", "")[:2000])
+          if pct < 80: sys.exit(f"pana score {pct:.1f}% is below the 80% threshold")
           PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: pana-report, path: pana.json, retention-days: 7 }
 
   example-build:
     name: example ${{ matrix.name }}
