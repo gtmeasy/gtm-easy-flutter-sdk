@@ -9,7 +9,7 @@ const _kUsername = 'gtmeasy.username';
 const _kEmail = 'gtmeasy.email';
 
 class IdentityStore {
-  IdentityStore(this._prefs, {Uuid uuid = const Uuid()}) : _uuid = uuid;
+  IdentityStore(this._prefs, {this._uuid = const Uuid()});
 
   final SharedPreferences _prefs;
   final Uuid _uuid;

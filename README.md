@@ -10,6 +10,8 @@ Sibling SDKs: [Apple (Swift)](https://github.com/gtmeasy/gtm-easy-apple-sdk) · 
 
 ## Install
 
+Requires the latest stable Flutter (currently 3.44+); older releases are not supported.
+
 ```yaml
 dependencies:
   gtmeasy_growth: ^0.1.0

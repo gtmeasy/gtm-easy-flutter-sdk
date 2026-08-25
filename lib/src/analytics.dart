@@ -27,22 +27,15 @@ typedef FlutterContextFactory =
 class GrowthAnalytics {
   GrowthAnalytics._({
     required this.config,
-    required IdentityStore identity,
-    required ClickIdStore clickIds,
-    required GrowthDispatcher dispatcher,
-    required GrowthContextProvider contextProvider,
-    required DeviceSnapshot snapshot,
-    required GrowthLogger logger,
-    required Uuid uuid,
-    required DateTime Function() now,
-  }) : _identity = identity,
-       _clickIds = clickIds,
-       _dispatcher = dispatcher,
-       _contextProvider = contextProvider,
-       _snapshot = snapshot,
-       _logger = logger,
-       _uuid = uuid,
-       _now = now;
+    required this._identity,
+    required this._clickIds,
+    required this._dispatcher,
+    required this._contextProvider,
+    required this._snapshot,
+    required this._logger,
+    required this._uuid,
+    required this._now,
+  });
 
   static GrowthAnalytics? _instance;
   static FlutterContextFactory? _flutterContextFactory;
