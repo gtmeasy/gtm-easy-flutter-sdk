@@ -6,29 +6,41 @@ Targets every Flutter platform: **iOS, Android, macOS, Windows, Linux, and Web**
 
 Sibling SDKs: [Apple (Swift)](https://github.com/gtmeasy/gtm-easy-apple-sdk) · [Android (Kotlin)](https://github.com/gtmeasy/gtm-easy-android-sdk) · [Web (TypeScript)](https://github.com/gtmeasy/gtm-easy-js-sdk) · [C++](https://github.com/gtmeasy/gtm-easy-cpp-sdk)
 
-## Status
+## Install
 
-`0.1.0` — scaffold. Package structure, the generated OpenAPI client, and the public API are being designed; not yet published to pub.dev.
-
-## Planned layout
-
-```
-lib/gtmeasy_growth.dart      public entry point
-lib/src/                     analytics core (queue, persistence, lifecycle, context)
-lib/src/generated/           OpenAPI-generated API client (do not edit by hand)
-example/                     sample app
-test/
+```yaml
+dependencies:
+  gtmeasy_growth: ^0.1.0
 ```
 
-## Planned usage
+## Usage
+
+Import `package:gtmeasy_growth/gtmeasy_growth.dart` from pure Dart. In a Flutter app, import `package:gtmeasy_growth/gtmeasy_growth_flutter.dart` so device context and `GrowthLifecycleObserver` are available.
 
 ```dart
-import 'package:gtmeasy_growth/gtmeasy_growth.dart';
+import 'package:gtmeasy_growth/gtmeasy_growth_flutter.dart';
 
-final analytics = await GrowthAnalytics.init(apiKey: 'gtm_growth_...');
-await analytics.identify('user_123', traits: {'plan': 'pro'});
-await analytics.track('paywall.shown', properties: {'placement': 'onboarding'});
+final analytics = await GrowthAnalytics.init(
+  GrowthConfig(
+    apiKey: 'gtm_growth_...',
+    app: 'my-app',
+  ),
+);
+
+await analytics.identify(userId: 'user_123', traits: {'plan': 'pro'});
+await analytics.track(
+  GrowthEvents.paywallOpened,
+  properties: {'placement': 'onboarding'},
+);
+
+final observer = GrowthLifecycleObserver(analytics)..attach();
+
+await analytics.flush();
 ```
+
+`track` and `identify` validate and enqueue; they do not wait for the network. Call `flush()` (or rely on the interval / lifecycle pause) to send.
+
+Pass the write key with `--dart-define=GTM_GROWTH_KEY=...` in the example app.
 
 ## License
 
