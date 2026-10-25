@@ -1,3 +1,5 @@
+import 'build_channel.dart';
+
 /// Ingest environment sent on every payload.
 enum GrowthEnvironment { production, staging, development }
 
@@ -20,6 +22,9 @@ class GrowthConfig {
     this.appVersion,
     this.buildNumber,
     this.autoCollectDeviceContext = true,
+    this.disabled = false,
+    this.suppressTestBuilds = false,
+    this.buildChannel,
   });
 
   final String apiKey;
@@ -35,6 +40,16 @@ class GrowthConfig {
   final String? appVersion;
   final String? buildNumber;
   final bool autoCollectDeviceContext;
+
+  /// Turns the SDK into a no-op: no network, no durable SDK state written.
+  final bool disabled;
+
+  /// Drops every event when the resolved build channel is `debug`,
+  /// `testflight` or `internalTest`. `unknown` and `production` still send.
+  final bool suppressTestBuilds;
+
+  /// Overrides build-channel auto-detection. `null` = auto-detect.
+  final GrowthBuildChannel? buildChannel;
 
   String get environmentName => environment.name;
 

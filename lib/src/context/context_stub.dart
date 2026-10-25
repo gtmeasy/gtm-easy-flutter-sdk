@@ -1,3 +1,4 @@
+import '../version.dart';
 import 'provider.dart';
 
 GrowthContextProvider createDefaultContextProvider({
@@ -11,7 +12,7 @@ GrowthContextProvider createDefaultContextProvider({
       buildNumber: buildNumber,
       ctx: const <String, Object?>{
         'sdk': 'flutter',
-        'sdk_version': '0.1.0',
+        'sdk_version': growthSdkVersion,
         'platform': 'server',
       },
     ),

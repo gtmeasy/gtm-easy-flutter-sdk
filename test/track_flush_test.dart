@@ -49,7 +49,7 @@ void main() {
     final props = event['properties'] as Map<Object?, Object?>;
     final ctx = props['_ctx'] as Map<Object?, Object?>;
     expect(ctx['sdk'], 'flutter');
-    expect(ctx['sdk_version'], '0.1.0');
+    expect(ctx['sdk_version'], '0.2.0');
     expect(ctx['platform'], 'ios');
     expect(ctx['device_model'], 'iPhone');
   });

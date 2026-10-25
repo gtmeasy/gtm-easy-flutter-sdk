@@ -50,4 +50,38 @@ void main() {
     observer.detach();
     await analytics.close();
   });
+
+  testWidgets('Flutter detector (debug) + suppressTestBuilds: observer '
+      'sends and persists nothing', (tester) async {
+    await mockPrefs();
+    final storage = MemoryGrowthStorage()
+      ..items.add(
+        const QueueItem(
+          id: 'old',
+          kind: 'event',
+          body: <String, Object?>{'eventName': 'page.viewed'},
+        ),
+      );
+    final transport = FakeTransport();
+    final analytics = await GrowthAnalytics.init(
+      testConfig(suppressTestBuilds: true),
+      storage: storage,
+      transport: transport,
+      contextProvider: testContext(),
+    );
+    expect(analytics.resolvedBuildChannel, GrowthBuildChannel.debug);
+    expect(analytics.isSuppressed, isTrue);
+
+    final observer = GrowthLifecycleObserver(analytics)..attach();
+    await tester.pump();
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.hidden);
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
+    await tester.pump();
+    observer.detach();
+    await analytics.close();
+
+    expect(transport.requests, isEmpty);
+    expect(storage.items.map((i) => i.id), ['old']);
+  });
 }

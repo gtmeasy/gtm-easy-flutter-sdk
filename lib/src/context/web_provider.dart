@@ -1,5 +1,6 @@
 import 'package:web/web.dart' as web;
 
+import '../version.dart';
 import 'provider.dart';
 
 class WebGrowthContextProvider implements GrowthContextProvider {
@@ -23,7 +24,7 @@ class WebGrowthContextProvider implements GrowthContextProvider {
       buildNumber: buildNumber,
       ctx: <String, Object?>{
         'sdk': 'flutter',
-        'sdk_version': '0.1.0',
+        'sdk_version': growthSdkVersion,
         'platform': 'web',
         'user_agent': nav.userAgent,
         'browser_language': nav.language,

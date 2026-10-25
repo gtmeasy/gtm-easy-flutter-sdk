@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../version.dart';
 import 'provider.dart';
 import 'web_bits_stub.dart' if (dart.library.html) 'web_bits.dart';
 
@@ -36,7 +37,7 @@ class FlutterGrowthContextProvider implements GrowthContextProvider {
 
     final ctx = <String, Object?>{
       'sdk': 'flutter',
-      'sdk_version': '0.1.0',
+      'sdk_version': growthSdkVersion,
       'platform': _platformName(),
     };
 

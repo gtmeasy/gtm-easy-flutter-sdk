@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import '../version.dart';
 import 'provider.dart';
 
 class DartGrowthContextProvider implements GrowthContextProvider {
@@ -21,7 +22,7 @@ class DartGrowthContextProvider implements GrowthContextProvider {
       buildNumber: buildNumber,
       ctx: <String, Object?>{
         'sdk': 'flutter',
-        'sdk_version': '0.1.0',
+        'sdk_version': growthSdkVersion,
         'platform': platform,
         'os_version': Platform.operatingSystemVersion,
       },

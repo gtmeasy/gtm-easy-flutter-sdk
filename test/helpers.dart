@@ -59,7 +59,7 @@ StaticGrowthContextProvider testContext({String platform = 'ios'}) {
       buildNumber: '1',
       ctx: const <String, Object?>{
         'sdk': 'flutter',
-        'sdk_version': '0.1.0',
+        'sdk_version': '0.2.0',
         'platform': 'ios',
         'os_version': '17.0',
         'device_manufacturer': 'Apple',
@@ -76,6 +76,10 @@ GrowthConfig testConfig({
   String? appVersion = '1.0.0',
   String? buildNumber = '1',
   Duration flushInterval = const Duration(hours: 1),
+  bool disabled = false,
+  bool suppressTestBuilds = false,
+  GrowthBuildChannel? buildChannel,
+  GrowthLogLevel logLevel = GrowthLogLevel.none,
 }) {
   return GrowthConfig(
     apiKey: 'gtm_growth_test',
@@ -86,7 +90,10 @@ GrowthConfig testConfig({
     appVersion: appVersion,
     buildNumber: buildNumber,
     flushInterval: flushInterval,
-    logLevel: GrowthLogLevel.none,
+    logLevel: logLevel,
+    disabled: disabled,
+    suppressTestBuilds: suppressTestBuilds,
+    buildChannel: buildChannel,
   );
 }
 

@@ -2,6 +2,8 @@
 library;
 
 export 'src/analytics.dart' show GrowthAnalytics;
+export 'src/build_channel.dart'
+    show GrowthBuildChannel, GrowthBuildChannelDetector;
 export 'src/config.dart';
 export 'src/context/provider.dart';
 export 'src/errors.dart';

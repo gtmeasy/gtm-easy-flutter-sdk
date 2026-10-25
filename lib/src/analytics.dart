@@ -5,8 +5,10 @@ import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
+import 'build_channel.dart';
 import 'click_ids.dart';
 import 'config.dart';
+import 'context/default_build_channel.dart';
 import 'context/default_context.dart';
 import 'context/provider.dart';
 import 'dispatcher.dart';
@@ -19,6 +21,7 @@ import 'storage/storage.dart';
 import 'survey.dart';
 import 'transport/dio_transport.dart';
 import 'transport/transport.dart';
+import 'version.dart';
 
 typedef FlutterContextFactory =
     GrowthContextProvider Function({String? appVersion, String? buildNumber});
@@ -35,12 +38,14 @@ class GrowthAnalytics {
     required this._logger,
     required this._uuid,
     required this._now,
+    required this.resolvedBuildChannel,
+    required this.isSuppressed,
   });
 
   static GrowthAnalytics? _instance;
   static FlutterContextFactory? _flutterContextFactory;
 
-  static const String version = '0.1.0';
+  static const String version = growthSdkVersion;
 
   static void registerFlutterContextFactory(FlutterContextFactory factory) {
     _flutterContextFactory = factory;
@@ -57,7 +62,9 @@ class GrowthAnalytics {
   final GrowthConfig config;
   final IdentityStore _identity;
   final ClickIdStore _clickIds;
-  final GrowthDispatcher _dispatcher;
+
+  /// `null` when suppressed: no queue is opened, written, or flushed.
+  final GrowthDispatcher? _dispatcher;
   final GrowthContextProvider _contextProvider;
   DeviceSnapshot _snapshot;
   final GrowthLogger _logger;
@@ -65,6 +72,12 @@ class GrowthAnalytics {
   final DateTime Function() _now;
   Timer? _timer;
   bool _closed = false;
+
+  /// Build channel after applying [GrowthConfig.buildChannel] over detection.
+  final GrowthBuildChannel resolvedBuildChannel;
+
+  /// True when this client drops everything: no network, no durable writes.
+  final bool isSuppressed;
 
   String get anonymousId => _identity.anonymousId;
   String? get userId => _identity.userId;
@@ -80,6 +93,7 @@ class GrowthAnalytics {
     @visibleForTesting DateTime Function()? now,
     @visibleForTesting Uri? webUri,
     @visibleForTesting Uuid? uuid,
+    GrowthBuildChannelDetector? buildChannelDetector,
   }) async {
     if (config.apiKey.trim().isEmpty) {
       throw const GrowthError(
@@ -94,13 +108,35 @@ class GrowthAnalytics {
       );
     }
 
-    await _instance?.close();
+    final logger = GrowthLogger(config.logLevel);
+    // Decide suppression before touching the previous singleton: a suppressed
+    // init must not flush the shared queue on the way in.
+    final channel = await resolveBuildChannel(
+      override: config.buildChannel,
+      detector: buildChannelDetector ?? flutterBuildChannelDetector,
+    );
+    final suppressed = resolveSuppressed(
+      disabled: config.disabled,
+      suppressTestBuilds: config.suppressTestBuilds,
+      channel: channel,
+    );
+
+    final previous = _instance;
+    if (previous != null) {
+      await previous._shutdown(flush: !suppressed);
+    }
+
+    if (suppressed) {
+      logger.info(
+        'GTM Easy: suppressing events (channel=${channel.name}'
+        '${config.disabled ? ', disabled' : ''})',
+      );
+    }
 
     final clock = now ?? DateTime.now;
     final ids = uuid ?? const Uuid();
-    final logger = GrowthLogger(config.logLevel);
     final prefs = preferences ?? await SharedPreferences.getInstance();
-    final identity = IdentityStore(prefs, uuid: ids);
+    final identity = IdentityStore(prefs, uuid: ids, persist: !suppressed);
     await identity.load();
     final clickIds = ClickIdStore(prefs, random: random, now: clock);
 
@@ -123,21 +159,24 @@ class GrowthAnalytics {
         timezone: snapshot.timezone,
         appVersion: config.appVersion ?? snapshot.appVersion,
         buildNumber: config.buildNumber ?? snapshot.buildNumber,
-        ctx: const {'sdk': 'flutter', 'sdk_version': '0.1.0'},
+        ctx: const {'sdk': 'flutter', 'sdk_version': growthSdkVersion},
       );
     }
 
-    final queue = storage ?? await openDefaultStorage(config.app);
-    final http = transport ?? DioGrowthTransport(config: config);
-    final dispatcher = GrowthDispatcher(
-      config: config,
-      storage: queue,
-      transport: http,
-      logger: logger,
-      apiKey: config.apiKey,
-      random: random,
-      sleep: sleep,
-    );
+    GrowthDispatcher? dispatcher;
+    if (!suppressed) {
+      final queue = storage ?? await openDefaultStorage(config.app);
+      final http = transport ?? DioGrowthTransport(config: config);
+      dispatcher = GrowthDispatcher(
+        config: config,
+        storage: queue,
+        transport: http,
+        logger: logger,
+        apiKey: config.apiKey,
+        random: random,
+        sleep: sleep,
+      );
+    }
 
     final analytics = GrowthAnalytics._(
       config: config,
@@ -149,20 +188,24 @@ class GrowthAnalytics {
       logger: logger,
       uuid: ids,
       now: clock,
+      resolvedBuildChannel: channel,
+      isSuppressed: suppressed,
     );
 
-    final captureUri = webUri ?? currentWebUri();
-    if (captureUri != null && snapshot.platform == 'web') {
-      await analytics.captureClickIds(captureUri);
-      final referrer = documentReferrer();
-      if (referrer != null) {
-        await analytics._enqueueWebReferrer(referrer);
+    if (dispatcher != null) {
+      final captureUri = webUri ?? currentWebUri();
+      if (captureUri != null && snapshot.platform == 'web') {
+        await analytics.captureClickIds(captureUri);
+        final referrer = documentReferrer();
+        if (referrer != null) {
+          await analytics._enqueueWebReferrer(referrer);
+        }
       }
-    }
 
-    analytics._timer = Timer.periodic(config.flushInterval, (_) {
-      unawaited(analytics._dispatcher.flush(timeout: config.requestTimeout));
-    });
+      analytics._timer = Timer.periodic(config.flushInterval, (_) {
+        unawaited(dispatcher!.flush(timeout: config.requestTimeout));
+      });
+    }
 
     _instance = analytics;
     return analytics;
@@ -176,6 +219,11 @@ class GrowthAnalytics {
   }) async {
     _ensureOpen();
     await _identity.setUser(userId: userId, username: username, email: email);
+    final dispatcher = _dispatcher;
+    if (dispatcher == null) {
+      _logSuppressed('user', userId ?? '', traits);
+      return;
+    }
     final body = await _envelope(
       extra: <String, Object?>{
         if (username != null) 'username': username,
@@ -183,7 +231,7 @@ class GrowthAnalytics {
         'traits': await _withCtx(traits),
       },
     );
-    await _dispatcher.enqueue(
+    await dispatcher.enqueue(
       QueueItem(id: _uuid.v4(), kind: 'user', body: body),
     );
   }
@@ -202,6 +250,11 @@ class GrowthAnalytics {
         message: 'eventName is required',
       );
     }
+    final dispatcher = _dispatcher;
+    if (dispatcher == null) {
+      _logSuppressed('event', eventName, properties);
+      return;
+    }
     final when = occurredAt ?? _now();
     final body = await _envelope(
       extra: <String, Object?>{
@@ -214,7 +267,7 @@ class GrowthAnalytics {
         'source': _snapshot.platform == 'web' ? 'web' : 'native',
       },
     );
-    await _dispatcher.enqueue(
+    await dispatcher.enqueue(
       QueueItem(id: body['eventId'] as String, kind: 'event', body: body),
     );
   }
@@ -271,6 +324,14 @@ class GrowthAnalytics {
         message: 'surveyId is required',
       );
     }
+    final dispatcher = _dispatcher;
+    if (dispatcher == null) {
+      _logSuppressed('survey', surveyId, {
+        'status': status.name,
+        'responses': answers.map((a) => a.toJson()).toList(),
+      });
+      return;
+    }
     final body = await _envelope(
       extra: <String, Object?>{
         'surveyId': surveyId,
@@ -281,7 +342,7 @@ class GrowthAnalytics {
         'responses': answers.map((a) => a.toJson()).toList(),
       },
     );
-    await _dispatcher.enqueue(
+    await dispatcher.enqueue(
       QueueItem(id: _uuid.v4(), kind: 'survey', body: body),
     );
   }
@@ -295,6 +356,7 @@ class GrowthAnalytics {
         message: 'Unknown click id provider: $provider',
       );
     }
+    if (isSuppressed) return;
     await _clickIds.record(lc, value);
     if (lc == 'fbclid') {
       await _clickIds.ensureFbc(value);
@@ -304,6 +366,7 @@ class GrowthAnalytics {
 
   Future<int> captureClickIds(Uri uri) async {
     _ensureOpen();
+    if (isSuppressed) return 0;
     return _clickIds.captureFromUri(uri);
   }
 
@@ -311,7 +374,11 @@ class GrowthAnalytics {
     Duration timeout = const Duration(seconds: 5),
   }) async {
     _ensureOpen();
-    return _dispatcher.flush(timeout: timeout);
+    final dispatcher = _dispatcher;
+    if (dispatcher == null) {
+      return const GrowthFlushResult(sent: 0, failed: 0, remaining: 0);
+    }
+    return dispatcher.flush(timeout: timeout);
   }
 
   Future<void> reset() async {
@@ -319,14 +386,19 @@ class GrowthAnalytics {
     await _identity.reset();
   }
 
-  Future<void> close() async {
+  Future<void> close() => _shutdown(flush: true);
+
+  Future<void> _shutdown({required bool flush}) async {
     if (_closed) return;
     _timer?.cancel();
     _timer = null;
-    try {
-      await _dispatcher.flush(timeout: config.requestTimeout);
-    } catch (error) {
-      _logger.warn('close flush failed: $error');
+    final dispatcher = _dispatcher;
+    if (flush && dispatcher != null) {
+      try {
+        await dispatcher.flush(timeout: config.requestTimeout);
+      } catch (error) {
+        _logger.warn('close flush failed: $error');
+      }
     }
     _closed = true;
     if (identical(_instance, this)) {
@@ -384,8 +456,21 @@ class GrowthAnalytics {
         'source': 'web',
       },
     );
-    await _dispatcher.enqueue(
+    await _dispatcher?.enqueue(
       QueueItem(id: _uuid.v4(), kind: 'web_referrer', body: body),
+    );
+  }
+
+  /// Debug sink for suppressed mode: name + caller properties only, no
+  /// context collection (which could synthesize and persist click ids).
+  void _logSuppressed(
+    String kind,
+    String name,
+    Map<String, Object?> properties,
+  ) {
+    _logger.debug(
+      'suppressed $kind: '
+      '${<String, Object?>{'name': name, 'properties': properties, 'suppressed': true}}',
     );
   }
 
